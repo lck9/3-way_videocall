@@ -183,7 +183,6 @@
          <resource-file src="src/android/res/drawable/participant_selected_background.xml" target="res/drawable/participant_selected_background.xml" />
          <resource-file src="src/android/res/drawable/participant_stroke.xml" target="res/drawable/participant_stroke.xml" />
          <resource-file src="src/android/res/drawable/roundbutton.xml" target="res/drawable/roundbutton.xml" />
-         <resource-file src="src/android/res/drawable/screen/screen.png" target="res/drawable/screen/screen.png" />
          <resource-file src="src/android/res/drawable/splash_screen.xml" target="res/drawable/splash_screen.xml" />
          <resource-file src="src/android/res/drawable/twilio_badge_white.xml" target="res/drawable/twilio_badge_white.xml" />
          <resource-file src="src/android/res/drawable/twilio_badge_white.xml" target="res/drawable/twilio_badge_white.xml" />
