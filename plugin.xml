@@ -173,12 +173,12 @@
          <resource-file src="src/android/res/drawable/ic_volume_down_white_24px.xml" target="res/drawable/ic_volume_down_white_24px.xml" />
          <resource-file src="src/android/res/drawable/ic_volume_up_white_24dp.xml" target="res/drawable/ic_volume_up_white_24dp.xml" />
          <resource-file src="src/android/res/drawable/join_button.xml" target="res/drawable/join_button.xml" />
-         <resource-file src="src/android/res/drawable/network_quality_level_0/network_quality_level_0.png" target="res/drawable/network_quality_level_0/network_quality_level_0.png" />
-         <resource-file src="src/android/res/drawable/network_quality_level_1/network_quality_level_1.png" target="res/drawable/network_quality_level_1/network_quality_level_1.png" />
-         <resource-file src="src/android/res/drawable/network_quality_level_2/network_quality_level_2.png" target="res/drawable/network_quality_level_2/network_quality_level_2.png" />
-         <resource-file src="src/android/res/drawable/network_quality_level_3/network_quality_level_3.png" target="res/drawable/network_quality_level_3/network_quality_level_3.png" />
-         <resource-file src="src/android/res/drawable/network_quality_level_4/network_quality_level_4.png" target="res/drawable/network_quality_level_4/network_quality_level_4.png" />
-         <resource-file src="src/android/res/drawable/network_quality_level_5/network_quality_level_5.png" target="res/drawable/network_quality_level_5/network_quality_level_5.png" />
+         <resource-file src="src/android/res/drawable/network_quality_level_0.png" target="res/drawable/network_quality_level_0.png" />
+         <resource-file src="src/android/res/drawable/network_quality_level_1.png" target="res/drawable/network_quality_level_1.png" />
+         <resource-file src="src/android/res/drawable/network_quality_level_2.png" target="res/drawable/network_quality_level_2.png" />
+         <resource-file src="src/android/res/drawable/network_quality_level_3.png" target="res/drawable/network_quality_level_3.png" />
+         <resource-file src="src/android/res/drawable/network_quality_level_4.png" target="res/drawable/network_quality_level_4.png" />
+         <resource-file src="src/android/res/drawable/network_quality_level_5.png" target="res/drawable/network_quality_level_5.png" />
          <resource-file src="src/android/res/drawable/participant_background.xml" target="res/drawable/participant_background.xml" />
          <resource-file src="src/android/res/drawable/participant_selected_background.xml" target="res/drawable/participant_selected_background.xml" />
          <resource-file src="src/android/res/drawable/participant_stroke.xml" target="res/drawable/participant_stroke.xml" />
