@@ -91,7 +91,7 @@
          <source-file src="src/android/com/twilio/video/app/ui/settings/BaseSettingsFragment.kt" target-dir="src/cordova/plugin/com/twilio/video/app/ui/settings/BaseSettingsFragment" />
          <source-file src="src/android/com/twilio/video/app/ui/settings/InternalSettingsFragment.kt" target-dir="src/cordova/plugin/com/twilio/video/app/ui/settings/InternalSettingsFragment" />
          <source-file src="src/android/com/twilio/video/app/ui/settings/SettingsActivity.kt" target-dir="src/cordova/plugin/com/twilio/video/app/ui/settings/SettingsActivity" />
-         <source-file src="src/android/com/twilio/video/app/ui/settings/SettingsActivityModule.kt" target-dir="src/cordova/plugin/com/twilio/video/app/ui/settings/SettingsActivityModule" />
+         <source-file src="src/android/com/twilio/video/app/ui/settings/SettingsActivityModule.java" target-dir="src/cordova/plugin/com/twilio/video/app/ui/settings/SettingsActivityModule" />
          <source-file src="src/android/com/twilio/video/app/ui/settings/SettingsActivitySubcomponent.java" target-dir="src/cordova/plugin/com/twilio/video/app/ui/settings/SettingsActivitySubcomponent" />
          <source-file src="src/android/com/twilio/video/app/ui/settings/SettingsFragment.kt" target-dir="src/cordova/plugin/com/twilio/video/app/ui/settings/SettingsFragment" />
          <source-file src="src/android/com/twilio/video/app/ui/settings/SettingsFragmentModule.java" target-dir="src/cordova/plugin/com/twilio/video/app/ui/settings/SettingsFragmentModule" />
