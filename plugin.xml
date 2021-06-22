@@ -91,7 +91,7 @@
          <source-file src="src/android/com/twilio/video/app/ui/settings/BaseSettingsFragment.kt" target-dir="src/cordova/plugin/com/twilio/video/app/ui/settings/BaseSettingsFragment" />
          <source-file src="src/android/com/twilio/video/app/ui/settings/InternalSettingsFragment.kt" target-dir="src/cordova/plugin/com/twilio/video/app/ui/settings/InternalSettingsFragment" />
          <source-file src="src/android/com/twilio/video/app/ui/settings/SettingsActivity.kt" target-dir="src/cordova/plugin/com/twilio/video/app/ui/settings/SettingsActivity" />
-         <source-file src="src/android/com/twilio/video/app/ui/settings/SettingsActivityModule.kt" target-dir="src/cordova/plugin/com/twilio/video/app/ui/settings/SettingsActivityModule" />
+         <source-file src="src/android/com/twilio/video/app/ui/settings/SettingsActivityModule.java" target-dir="src/cordova/plugin/com/twilio/video/app/ui/settings/SettingsActivityModule" />
          <source-file src="src/android/com/twilio/video/app/ui/settings/SettingsActivitySubcomponent.java" target-dir="src/cordova/plugin/com/twilio/video/app/ui/settings/SettingsActivitySubcomponent" />
          <source-file src="src/android/com/twilio/video/app/ui/settings/SettingsFragment.kt" target-dir="src/cordova/plugin/com/twilio/video/app/ui/settings/SettingsFragment" />
          <source-file src="src/android/com/twilio/video/app/ui/settings/SettingsFragmentModule.java" target-dir="src/cordova/plugin/com/twilio/video/app/ui/settings/SettingsFragmentModule" />
@@ -109,7 +109,7 @@
          <source-file src="src/android/com/twilio/video/app/util/InputUtils.java" target-dir="src/cordova/plugin/com/twilio/video/app/util/InputUtils" />
          <source-file src="src/android/com/twilio/video/app/util/PermissionUtil.kt" target-dir="src/cordova/plugin/com/twilio/video/app/util/PermissionUtil" />
          <source-file src="src/android/com/twilio/video/app/util/ReleaseTree.java" target-dir="src/cordova/plugin/com/twilio/video/app/util/ReleaseTree" />
-         <source-file src="src/android/com/twilio/video/app/util/SharedPreferencesUtils.kt" target-dir="src/cordova/plugin/com/twilio/video/app/util/SharedPreferencesUtils" />
+         <source-file src="src/android/com/twilio/video/app/util/SharedPreferencesUtil.kt" target-dir="src/cordova/plugin/com/twilio/video/app/util/SharedPreferencesUtil" />
          <source-file src="src/android/com/twilio/video/app/util/TreeRanger.java" target-dir="src/cordova/plugin/com/twilio/video/app/util/TreeRanger" />
 
          <source-file src="src/android/com/twilio/video/app/ApplicationModule.java" target-dir="src/cordova/plugin/com/twilio/video/app/ApplicationModule" />
@@ -150,7 +150,7 @@
          <resource-file src="src/android/res/drawable/ic_call_end_white_24px.xml" target="res/drawable/ic_call_end_white_24px.xml" />
          <resource-file src="src/android/res/drawable/ic_mic_off_gray_24px.xml" target="res/drawable/ic_mic_off_gray_24px.xml" />
          <resource-file src="src/android/res/drawable/ic_mic_off_red_24px.xml" target="res/drawable/ic_mic_off_red_24px.xml" />
-         <resource-file src="src/android/res/drawable/ic_mic_white_24dp.xml" target="res/drawable/ic_mic_white_24dp.xml" />
+         <resource-file src="src/android/res/drawable/ic_mic_white_24px.xml" target="res/drawable/ic_mic_white_24px.xml" />
          <resource-file src="src/android/res/drawable/ic_more_vert_white_24dp.xml" target="res/drawable/ic_more_vert_white_24dp.xml" />
          <resource-file src="src/android/res/drawable/ic_pause_green_24px.xml" target="res/drawable/ic_pause_green_24px.xml" />
          <resource-file src="src/android/res/drawable/ic_pause_red_24px.xml" target="res/drawable/ic_pause_red_24px.xml" />
@@ -167,18 +167,18 @@
          <resource-file src="src/android/res/drawable/ic_videocam_green_24px.xml" target="res/drawable/ic_videocam_green_24px.xml" />
          <resource-file src="src/android/res/drawable/ic_videocam_off_gray_24px.xml" target="res/drawable/ic_videocam_off_gray_24px.xml" />
          <resource-file src="src/android/res/drawable/ic_videocam_off_red_24px.xml" target="res/drawable/ic_videocam_off_red_24px.xml" />
-         <resource-file src="src/android/res/drawable/ic_video_call_white_24dp.xml" target="res/drawable/ic_video_call_white_24dp.xml" />
+         <resource-file src="src/android/res/drawable/ic_videocam_white_24px.xml" target="res/drawable/ic_videocam_white_24px.xml" />
          <resource-file src="src/android/res/drawable/ic_volume_down_gray_24px.xml" target="res/drawable/ic_volume_down_gray_24px.xml" />
          <resource-file src="src/android/res/drawable/ic_volume_down_green_24px.xml" target="res/drawable/ic_volume_down_green_24px.xml" />
          <resource-file src="src/android/res/drawable/ic_volume_down_white_24px.xml" target="res/drawable/ic_volume_down_white_24px.xml" />
          <resource-file src="src/android/res/drawable/ic_volume_up_white_24dp.xml" target="res/drawable/ic_volume_up_white_24dp.xml" />
          <resource-file src="src/android/res/drawable/join_button.xml" target="res/drawable/join_button.xml" />
-         <resource-file src="src/android/res/drawable/network_quality_level_0/network_quality_level_0.png" target="res/drawable/network_quality_level_0/network_quality_level_0.png" />
-         <resource-file src="src/android/res/drawable/network_quality_level_1/network_quality_level_1.png" target="res/drawable/network_quality_level_1/network_quality_level_1.png" />
-         <resource-file src="src/android/res/drawable/network_quality_level_2/network_quality_level_2.png" target="res/drawable/network_quality_level_2/network_quality_level_2.png" />
-         <resource-file src="src/android/res/drawable/network_quality_level_3/network_quality_level_3.png" target="res/drawable/network_quality_level_3/network_quality_level_3.png" />
-         <resource-file src="src/android/res/drawable/network_quality_level_4/network_quality_level_4.png" target="res/drawable/network_quality_level_4/network_quality_level_4.png" />
-         <resource-file src="src/android/res/drawable/network_quality_level_5/network_quality_level_5.png" target="res/drawable/network_quality_level_5/network_quality_level_5.png" />
+         <resource-file src="src/android/res/drawable/network_quality_level_0.png" target="res/drawable/network_quality_level_0.png" />
+         <resource-file src="src/android/res/drawable/network_quality_level_1.png" target="res/drawable/network_quality_level_1.png" />
+         <resource-file src="src/android/res/drawable/network_quality_level_2.png" target="res/drawable/network_quality_level_2.png" />
+         <resource-file src="src/android/res/drawable/network_quality_level_3.png" target="res/drawable/network_quality_level_3.png" />
+         <resource-file src="src/android/res/drawable/network_quality_level_4.png" target="res/drawable/network_quality_level_4.png" />
+         <resource-file src="src/android/res/drawable/network_quality_level_5.png" target="res/drawable/network_quality_level_5.png" />
          <resource-file src="src/android/res/drawable/participant_background.xml" target="res/drawable/participant_background.xml" />
          <resource-file src="src/android/res/drawable/participant_selected_background.xml" target="res/drawable/participant_selected_background.xml" />
          <resource-file src="src/android/res/drawable/participant_stroke.xml" target="res/drawable/participant_stroke.xml" />
