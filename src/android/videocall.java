@@ -22,6 +22,9 @@ public class videocall extends CordovaPlugin {
             String message = args.getString(0);
             this.coolMethod(message, callbackContext);
             return true;
+        }else{
+            String dataReceived = args.getString(0);
+            return true;
         }
         return false;
     }
