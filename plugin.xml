@@ -28,108 +28,108 @@
       </config-file>
       <source-file src="src/android/videocall.java" target-dir="src/cordova/plugin/videocall/videocall" />
 
-         <source-file src="src/android/com/twilio/video/app/adapter/StatsListAdapter.kt" target-dir="src/cordova/plugin/videocall/com/twilio/video/app/adapter/StatsListAdapter" />
+         <source-file src="src/android/StatsList.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/StatsList" />
 
-         <source-file src="src/android/com/twilio/video/app/android/SharedPreferencesWrapper.kt" target-dir="src/cordova/plugin/videocall/com/twilio/video/app/android/SharedPreferencesWrapper" />
+         <source-file src="src/android/SharedPreferencesWrapper.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/SharedPreferencesWrapper" />
 
-         <source-file src="src/android/com/twilio/video/app/base/BaseActivity.java" target-dir="src/cordova/plugin/videocall/com/twilio/video/app/base/BaseActivity" />
+         <source-file src="src/android/BaseActivity.java" target-dir="src/cordova/plugin/videocall/BaseActivity" />
 
-         <source-file src="src/android/com/twilio/video/app/data/DataModule.kt" target-dir="src/cordova/plugin/videocall/com/twilio/video/app/data/DataModule" />
-         <source-file src="src/android/com/twilio/video/app/data/NumberPreference.java" target-dir="src/cordova/plugin/videocall/com/twilio/video/app/data/NumberPreference" />
-         <source-file src="src/android/com/twilio/video/app/data/NumberPreferenceDialogFragmentCompat.java" target-dir="src/cordova/plugin/videocall/com/twilio/video/app/data/NumberPreferenceDialogFragmentCompat" />
-         <source-file src="src/android/com/twilio/video/app/data/Preferences.kt" target-dir="src/cordova/plugin/videocall/com/twilio/video/app/data/Preferences" />
+         <source-file src="src/android/DataModule.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/DataModule" />
+         <source-file src="src/android/NumberPreference.java" target-dir="src/cordova/plugin/videocall/NumberPreference" />
+         <source-file src="src/android/NumberPreferenceDialogFragmentCompat.java" target-dir="src/cordova/plugin/videocall/NumberPreferenceDialogFragmentCompat" />
+         <source-file src="src/android/Preferences.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/Preferences" />
 
-         <source-file src="src/android/com/twilio/video/app/data/api/TwilioApiEnvironment.kt" target-dir="src/cordova/plugin/videocall/com/twilio/video/app/data/api/TwilioApiEnvironment" />
+         <source-file src="src/android/TwilioApiEnvironment.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/TwilioApiEnvironment" />
 
-         <source-file src="src/android/com/twilio/video/app/data/api/model/Topology.kt" target-dir="src/cordova/plugin/videocall/com/twilio/video/app/data/api/model/Topology" />
+         <source-file src="src/android/Topology.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/Topology" />
 
-         <source-file src="src/android/com/twilio/video/app/model/StatsListItem.java" target-dir="src/cordova/plugin/videocall/com/twilio/video/app/model/StatsListItem" />
+         <source-file src="src/android/StatsListItem.java" target-dir="src/cordova/plugin/videocall/StatsListItem" />
 
-         <source-file src="src/android/com/twilio/video/app/participant/ParticipantManager.kt" target-dir="src/cordova/plugin/videocall/com/twilio/video/app/participant/ParticipantManager" />
-         <source-file src="src/android/com/twilio/video/app/participant/ParticipantViewState.kt" target-dir="src/cordova/plugin/videocall/com/twilio/video/app/participant/ParticipantViewState" />
+         <source-file src="src/android/ParticipantManager.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/ParticipantManager" />
+         <source-file src="src/android/ParticipantViewState.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/ParticipantViewState" />
 
-         <source-file src="src/android/com/twilio/video/app/sdk/ConnectOptionsFactory.kt" target-dir="src/cordova/plugin/videocall/com/twilio/video/app/sdk/ConnectOptionsFactory" />
-         <source-file src="src/android/com/twilio/video/app/sdk/LocalParticipantListener.kt" target-dir="src/cordova/plugin/videocall/com/twilio/video/app/sdk/LocalParticipantListener" />
-         <source-file src="src/android/com/twilio/video/app/sdk/LocalParticipantManager.kt" target-dir="src/cordova/plugin/videocall/com/twilio/video/app/sdk/LocalParticipantManager" />
-         <source-file src="src/android/com/twilio/video/app/sdk/RemoteParticipantListener.kt" target-dir="src/cordova/plugin/videocall/com/twilio/video/app/sdk/RemoteParticipantListener" />
-         <source-file src="src/android/com/twilio/video/app/sdk/RoomManager.kt" target-dir="src/cordova/plugin/videocall/com/twilio/video/app/sdk/RoomManager" />
-         <source-file src="src/android/com/twilio/video/app/sdk/RoomStats.kt" target-dir="src/cordova/plugin/videocall/com/twilio/video/app/sdk/RoomStats" />
-         <source-file src="src/android/com/twilio/video/app/sdk/StatsScheduler.kt" target-dir="src/cordova/plugin/videocall/com/twilio/video/app/sdk/StatsScheduler" />
-         <source-file src="src/android/com/twilio/video/app/sdk/VideoClient.kt" target-dir="src/cordova/plugin/videocall/com/twilio/video/app/sdk/VideoClient" />
-         <source-file src="src/android/com/twilio/video/app/sdk/VideoSdkModule.kt" target-dir="src/cordova/plugin/videocall/com/twilio/video/app/sdk/VideoSdkModule" />
-         <source-file src="src/android/com/twilio/video/app/sdk/VideoTrackViewState.kt" target-dir="src/cordova/plugin/videocall/com/twilio/video/app/sdk/VideoTrackViewState" />
+         <source-file src="src/android/ConnectOptionsFactory.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/ConnectOptionsFactory" />
+         <source-file src="src/android/LocalParticipantListener.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/LocalParticipantListener" />
+         <source-file src="src/android/LocalParticipantManager.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/LocalParticipantManager" />
+         <source-file src="src/android/RemoteParticipantListener.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/RemoteParticipantListener" />
+         <source-file src="src/android/RoomManager.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/RoomManager" />
+         <source-file src="src/android/RoomStats.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/RoomStats" />
+         <source-file src="src/android/StatsScheduler.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/StatsScheduler" />
+         <source-file src="src/android/VideoClient.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/VideoClient" />
+         <source-file src="src/android/VideoSdkModule.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/VideoSdkModule" />
+         <source-file src="src/android/VideoTrackViewState.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/VideoTrackViewState" />
 
-         <source-file src="src/android/com/twilio/video/app/ui/room/ApiService.java" target-dir="src/cordova/plugin/videocall/com/twilio/video/app/ui/room/ApiService" />
-         <source-file src="src/android/com/twilio/video/app/ui/room/ClearableEditText.java" target-dir="src/cordova/plugin/videocall/com/twilio/video/app/ui/room/ClearableEditText" />
-         <source-file src="src/android/com/twilio/video/app/ui/room/Data.java" target-dir="src/cordova/plugin/videocall/com/twilio/video/app/ui/room/Data" />
-         <source-file src="src/android/com/twilio/video/app/ui/room/MyResponse.java" target-dir="src/cordova/plugin/videocall/com/twilio/video/app/ui/room/MyResponse" />
-         <source-file src="src/android/com/twilio/video/app/ui/room/ParticipantAdapter.kt" target-dir="src/cordova/plugin/videocall/com/twilio/video/app/ui/room/ParticipantAdapter" />
-         <source-file src="src/android/com/twilio/video/app/ui/room/ParticipantPrimaryView.kt" target-dir="src/cordova/plugin/videocall/com/twilio/video/app/ui/room/ParticipantPrimaryView" />
-         <source-file src="src/android/com/twilio/video/app/ui/room/ParticipantThumbView.java" target-dir="src/cordova/plugin/videocall/com/twilio/video/app/ui/room/ParticipantThumbView" />
-         <source-file src="src/android/com/twilio/video/app/ui/room/ParticipantView.java" target-dir="src/cordova/plugin/videocall/com/twilio/video/app/ui/room/ParticipantView" />
-         <source-file src="src/android/com/twilio/video/app/ui/room/ParticipantViewHolder.kt" target-dir="src/cordova/plugin/videocall/com/twilio/video/app/ui/room/ParticipantViewHolder" />
-         <source-file src="src/android/com/twilio/video/app/ui/room/PrimaryParticipantController.kt" target-dir="src/cordova/plugin/videocall/com/twilio/video/app/ui/room/PrimaryParticipantController" />
-         <source-file src="src/android/com/twilio/video/app/ui/room/RetrofitAPi.java" target-dir="src/cordova/plugin/videocall/com/twilio/video/app/ui/room/RetrofitAPi" />
-         <source-file src="src/android/com/twilio/video/app/ui/room/RoomActivity.kt" target-dir="src/cordova/plugin/videocall/com/twilio/video/app/ui/room/RoomActivity" />
-         <source-file src="src/android/com/twilio/video/app/ui/room/RoomActivityModule.java" target-dir="src/cordova/plugin/videocall/com/twilio/video/app/ui/room/RoomActivityModule" />
-         <source-file src="src/android/com/twilio/video/app/ui/room/RoomActivitySubcomponent.java" target-dir="src/cordova/plugin/videocall/com/twilio/video/app/ui/room/RoomActivitySubcomponen" />
-         <source-file src="src/android/com/twilio/video/app/ui/room/RoomEvent.kt" target-dir="src/cordova/plugin/videocall/com/twilio/video/app/ui/room/RoomEvent" />
-         <source-file src="src/android/com/twilio/video/app/ui/room/RoomNotification.kt" target-dir="src/cordova/plugin/videocall/com/twilio/video/app/ui/room/RoomNotification" />
-         <source-file src="src/android/com/twilio/video/app/ui/room/RoomViewEffect.kt" target-dir="src/cordova/plugin/videocall/com/twilio/video/app/ui/room/RoomViewEffect" />
-         <source-file src="src/android/com/twilio/video/app/ui/room/RoomViewEvent.kt" target-dir="src/cordova/plugin/videocall/com/twilio/video/app/ui/room/RoomViewEvent" />
-         <source-file src="src/android/com/twilio/video/app/ui/room/RoomViewModel.kt" target-dir="src/cordova/plugin/videocall/com/twilio/video/app/ui/room/RoomViewModel" />
-         <source-file src="src/android/com/twilio/video/app/ui/room/RoomViewState.kt" target-dir="src/cordova/plugin/videocall/com/twilio/video/app/ui/room/RoomViewState" />
-         <source-file src="src/android/com/twilio/video/app/ui/room/UriRoomParser.kt" target-dir="src/cordova/plugin/videocall/com/twilio/video/app/ui/room/UriRoomParser" />
-         <source-file src="src/android/com/twilio/video/app/ui/room/UriWrapper.kt" target-dir="src/cordova/plugin/videocall/com/twilio/video/app/ui/room/UriWrapper" />
-         <source-file src="src/android/com/twilio/video/app/ui/room/VideoService.kt" target-dir="src/cordova/plugin/videocall/com/twilio/video/app/ui/room/VideoService" />
-         <source-file src="src/android/com/twilio/video/app/ui/room/VideoServiceModule.java" target-dir="src/cordova/plugin/videocall/com/twilio/video/app/ui/room/VideoServiceModule" />
-         <source-file src="src/android/com/twilio/video/app/ui/room/VideoServiceSubcomponent.java" target-dir="src/cordova/plugin/videocall/com/twilio/video/app/ui/room/VideoServiceSubcomponent" />
+         <source-file src="src/android/ApiService.java" target-dir="src/cordova/plugin/videocall/ApiService" />
+         <source-file src="src/android/ClearableEditText.java" target-dir="src/cordova/plugin/videocall/ClearableEditText" />
+         <source-file src="src/android/Data.java" target-dir="src/cordova/plugin/videocall/Data" />
+         <source-file src="src/android/MyResponse.java" target-dir="src/cordova/plugin/videocall/MyResponse" />
+         <source-file src="src/android/Participant.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/Participant" />
+         <source-file src="src/android/ParticipantPrimaryView.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/ParticipantPrimaryView" />
+         <source-file src="src/android/ParticipantThumbView.java" target-dir="src/cordova/plugin/videocall/ParticipantThumbView" />
+         <source-file src="src/android/ParticipantView.java" target-dir="src/cordova/plugin/videocall/ParticipantView" />
+         <source-file src="src/android/ParticipantViewHolder.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/ParticipantViewHolder" />
+         <source-file src="src/android/PrimaryParticipantController.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/PrimaryParticipantController" />
+         <source-file src="src/android/RetrofitAPi.java" target-dir="src/cordova/plugin/videocall/RetrofitAPi" />
+         <source-file src="src/android/RoomActivity.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/RoomActivity" />
+         <source-file src="src/android/RoomActivityModule.java" target-dir="src/cordova/plugin/videocall/RoomActivityModule" />
+         <source-file src="src/android/RoomActivitySubcomponent.java" target-dir="src/cordova/plugin/videocall/RoomActivitySubcomponen" />
+         <source-file src="src/android/RoomEvent.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/RoomEvent" />
+         <source-file src="src/android/RoomNotification.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/RoomNotification" />
+         <source-file src="src/android/RoomViewEffect.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/RoomViewEffect" />
+         <source-file src="src/android/RoomViewEvent.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/RoomViewEvent" />
+         <source-file src="src/android/RoomViewModel.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/RoomViewModel" />
+         <source-file src="src/android/RoomViewState.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/RoomViewState" />
+         <source-file src="src/android/UriRoomParser.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/UriRoomParser" />
+         <source-file src="src/android/UriWrapper.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/UriWrapper" />
+         <source-file src="src/android/VideoService.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/VideoService" />
+         <source-file src="src/android/VideoServiceModule.java" target-dir="src/cordova/plugin/videocall/VideoServiceModule" />
+         <source-file src="src/android/VideoServiceSubcomponent.java" target-dir="src/cordova/plugin/videocall/VideoServiceSubcomponent" />
 
-         <source-file src="src/android/com/twilio/video/app/ui/settings/AdvancedSettingsFragment.kt" target-dir="src/cordova/plugin/videocall/com/twilio/video/app/ui/settings/AdvancedSettingsFragment" />
-         <source-file src="src/android/com/twilio/video/app/ui/settings/AudioSettingsFragment.kt" target-dir="src/cordova/plugin/videocall/com/twilio/video/app/ui/settings/AudioSettingsFragment" />
-         <source-file src="src/android/com/twilio/video/app/ui/settings/BandwidthProfileSettingsFragment.kt" target-dir="src/cordova/plugin/videocall/com/twilio/video/app/ui/settings/BandwidthProfileSettingsFragment" />
-         <source-file src="src/android/com/twilio/video/app/ui/settings/BaseSettingsFragment.kt" target-dir="src/cordova/plugin/videocall/com/twilio/video/app/ui/settings/BaseSettingsFragment" />
-         <source-file src="src/android/com/twilio/video/app/ui/settings/InternalSettingsFragment.kt" target-dir="src/cordova/plugin/videocall/com/twilio/video/app/ui/settings/InternalSettingsFragment" />
-         <source-file src="src/android/com/twilio/video/app/ui/settings/SettingsActivity.kt" target-dir="src/cordova/plugin/videocall/com/twilio/video/app/ui/settings/SettingsActivity" />
-         <source-file src="src/android/com/twilio/video/app/ui/settings/SettingsActivityModule.java" target-dir="src/cordova/plugin/videocall/com/twilio/video/app/ui/settings/SettingsActivityModule" />
-         <source-file src="src/android/com/twilio/video/app/ui/settings/SettingsActivitySubcomponent.java" target-dir="src/cordova/plugin/videocall/com/twilio/video/app/ui/settings/SettingsActivitySubcomponent" />
-         <source-file src="src/android/com/twilio/video/app/ui/settings/SettingsFragment.kt" target-dir="src/cordova/plugin/videocall/com/twilio/video/app/ui/settings/SettingsFragment" />
-         <source-file src="src/android/com/twilio/video/app/ui/settings/SettingsFragmentModule.java" target-dir="src/cordova/plugin/videocall/com/twilio/video/app/ui/settings/SettingsFragmentModule" />
-         <source-file src="src/android/com/twilio/video/app/ui/settings/SettingsFragmentSubcomponent.java" target-dir="src/cordova/plugin/videocall/com/twilio/video/app/ui/settings/SettingsFragmentSubcomponent" />
+         <source-file src="src/android/AdvancedSettingsFragment.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/AdvancedSettingsFragment" />
+         <source-file src="src/android/AudioSettingsFragment.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/AudioSettingsFragment" />
+         <source-file src="src/android/BandwidthProfileSettingsFragment.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/BandwidthProfileSettingsFragment" />
+         <source-file src="src/android/BaseSettingsFragment.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/BaseSettingsFragment" />
+         <source-file src="src/android/InternalSettingsFragment.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/InternalSettingsFragment" />
+         <source-file src="src/android/SettingsActivity.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/SettingsActivity" />
+         <source-file src="src/android/SettingsActivityModule.java" target-dir="src/cordova/plugin/videocall/SettingsActivityModule" />
+         <source-file src="src/android/SettingsActivitySubcomponent.java" target-dir="src/cordova/plugin/videocall/SettingsActivitySubcomponent" />
+         <source-file src="src/android/SettingsFragment.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/SettingsFragment" />
+         <source-file src="src/android/SettingsFragmentModule.java" target-dir="src/cordova/plugin/videocall/SettingsFragmentModule" />
+         <source-file src="src/android/SettingsFragmentSubcomponent.java" target-dir="src/cordova/plugin/videocall/SettingsFragmentSubcomponent" />
 
-         <source-file src="src/android/com/twilio/video/app/ui/ScreenSelector.kt" target-dir="src/cordova/plugin/videocall/com/twilio/video/app/ui/ScreenSelector" />
+         <source-file src="src/android/ScreenSelector.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/ScreenSelector" />
 
-         <source-file src="src/android/com/twilio/video/app/util/BuildConfigUtils.kt" target-dir="src/cordova/plugin/videocall/com/twilio/video/app/util/BuildConfigUtils" />
-         <source-file src="src/android/com/twilio/video/app/util/CameraCapturerCompat.kt" target-dir="src/cordova/plugin/videocall/com/twilio/video/app/util/CameraCapturerCompat" />
-         <source-file src="src/android/com/twilio/video/app/util/CompositeDisposableExtensions.kt" target-dir="src/cordova/plugin/videocall/com/twilio/video/app/util/CompositeDisposableExtensions" />
-         <source-file src="src/android/com/twilio/video/app/util/CrashlyticsTreeRanger.java" target-dir="src/cordova/plugin/videocall/com/twilio/video/app/util/CrashlyticsTreeRanger" />
-         <source-file src="src/android/com/twilio/video/app/util/DebugTree.java" target-dir="src/cordova/plugin/videocall/com/twilio/video/app/util/DebugTree" />
-         <source-file src="src/android/com/twilio/video/app/util/EnvUtil.java" target-dir="src/cordova/plugin/videocall/com/twilio/video/app/util/EnvUtil" />
-         <source-file src="src/android/com/twilio/video/app/util/FragmentManagerExtensions.kt" target-dir="src/cordova/plugin/videocall/com/twilio/video/app/util/FragmentManagerExtensions" />
-         <source-file src="src/android/com/twilio/video/app/util/InputUtils.java" target-dir="src/cordova/plugin/videocall/com/twilio/video/app/util/InputUtils" />
-         <source-file src="src/android/com/twilio/video/app/util/PermissionUtil.kt" target-dir="src/cordova/plugin/videocall/com/twilio/video/app/util/PermissionUtil" />
-         <source-file src="src/android/com/twilio/video/app/util/ReleaseTree.java" target-dir="src/cordova/plugin/videocall/com/twilio/video/app/util/ReleaseTree" />
-         <source-file src="src/android/com/twilio/video/app/util/SharedPreferencesUtil.kt" target-dir="src/cordova/plugin/videocall/com/twilio/video/app/util/SharedPreferencesUtil" />
-         <source-file src="src/android/com/twilio/video/app/util/TreeRanger.java" target-dir="src/cordova/plugin/videocall/com/twilio/video/app/util/TreeRanger" />
+         <source-file src="src/android/BuildConfigUtils.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/BuildConfigUtils" />
+         <source-file src="src/android/CameraCapturerCompat.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/CameraCapturerCompat" />
+         <source-file src="src/android/CompositeDisposableExtensions.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/CompositeDisposableExtensions" />
+         <source-file src="src/android/CrashlyticsTreeRanger.java" target-dir="src/cordova/plugin/videocall/CrashlyticsTreeRanger" />
+         <source-file src="src/android/DebugTree.java" target-dir="src/cordova/plugin/videocall/DebugTree" />
+         <source-file src="src/android/EnvUtil.java" target-dir="src/cordova/plugin/videocall/EnvUtil" />
+         <source-file src="src/android/FragmentManagerExtensions.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/FragmentManagerExtensions" />
+         <source-file src="src/android/InputUtils.java" target-dir="src/cordova/plugin/videocall/InputUtils" />
+         <source-file src="src/android/PermissionUtil.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/PermissionUtil" />
+         <source-file src="src/android/ReleaseTree.java" target-dir="src/cordova/plugin/videocall/ReleaseTree" />
+         <source-file src="src/android/SharedPreferencesUtil.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/SharedPreferencesUtil" />
+         <source-file src="src/android/TreeRanger.java" target-dir="src/cordova/plugin/videocall/TreeRanger" />
 
-         <source-file src="src/android/com/twilio/video/app/ApplicationModule.java" target-dir="src/cordova/plugin/videocall/com/twilio/video/app/ApplicationModule" />
-         <source-file src="src/android/com/twilio/video/app/ApplicationScope.java" target-dir="src/cordova/plugin/videocall/com/twilio/video/app/ApplicationScope" />
-         <source-file src="src/android/com/twilio/video/app/AudioSwitchModule.kt" target-dir="src/cordova/plugin/videocall/com/twilio/video/app/AudioSwitchModule" />
-         <source-file src="src/android/com/twilio/video/app/BuildConfig.java" target-dir="src/cordova/plugin/videocall/com/twilio/video/app/BuildConfig" />
-         <source-file src="src/android/com/twilio/video/app/TreeModule.java" target-dir="src/cordova/plugin/videocall/com/twilio/video/app/TreeModule" />
-         <source-file src="src/android/com/twilio/video/app/VideoApplication.kt" target-dir="src/cordova/plugin/videocall/com/twilio/video/app/VideoApplication" />
+         <source-file src="src/android/ApplicationModule.java" target-dir="src/cordova/plugin/videocall/ApplicationModule" />
+         <source-file src="src/android/ApplicationScope.java" target-dir="src/cordova/plugin/videocall/ApplicationScope" />
+         <source-file src="src/android/AudioSwitchModule.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/AudioSwitchModule" />
+         <source-file src="src/android/BuildConfig.java" target-dir="src/cordova/plugin/videocall/BuildConfig" />
+         <source-file src="src/android/TreeModule.java" target-dir="src/cordova/plugin/videocall/TreeModule" />
+         <source-file src="src/android/VideoApplication.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/VideoApplication" />
 
-         <source-file src="src/android/dagger/com/twilio/video/app/data/CommunityPreferences.kt" target-dir="src/cordova/plugin/videocall/dagger/com/twilio/video/app/data/CommunityPreferences" />
+         <source-file src="src/android/CommunityPreferences.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/CommunityPreferences" />
 
-         <source-file src="src/android/dagger/com/twilio/video/app/sdk/CommunityVideoSdkModule.kt" target-dir="src/cordova/plugin/videocall/dagger/com/twilio/video/app/sdk/CommunityVideoSdkModule" />
+         <source-file src="src/android/CommunityVideoSdkModule.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/CommunityVideoSdkModule" />
 
-         <source-file src="src/android/dagger/com/twilio/video/app/security/SecurePreferences.kt" target-dir="src/cordova/plugin/videocall/dagger/com/twilio/video/app/security/SecurePreferences" />
-         <source-file src="src/android/dagger/com/twilio/video/app/security/SecurePreferencesImpl.kt" target-dir="src/cordova/plugin/videocall/dagger/com/twilio/video/app/security/SecurePreferencesImpl" />
-         <source-file src="src/android/dagger/com/twilio/video/app/security/SecurityModule.kt" target-dir="src/cordova/plugin/videocall/dagger/com/twilio/video/app/security/SecurityModule" />
+         <source-file src="src/android/security/SecurePreferences.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/security/SecurePreferences" />
+         <source-file src="src/android/security/SecurePreferencesImpl.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/security/SecurePreferencesImpl" />
+         <source-file src="src/android/security/SecurityModule.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/security/SecurityModule" />
 
-         <source-file src="src/android/dagger/com/twilio/video/app/AppCenterWrapper.kt" target-dir="src/cordova/plugin/videocall/dagger/com/twilio/video/app/AppCenterWrapper" />
-         <source-file src="src/android/dagger/com/twilio/video/app/CommunityTreeModule.java" target-dir="src/cordova/plugin/videocall/dagger/com/twilio/video/app/CommunityTreeModule" />
-         <source-file src="src/android/dagger/com/twilio/video/app/VideoApplicationComponent.java" target-dir="src/cordova/plugin/videocall/dagger/com/twilio/video/app/VideoApplicationComponent" />
+         <source-file src="src/android/AppCenterWrapper.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/AppCenterWrapper" />
+         <source-file src="src/android/CommunityTreeModule.java" target-dir="src/cordova/plugin/videocall/CommunityTreeModule" />
+         <source-file src="src/android/VideoApplicationComponent.java" target-dir="src/cordova/plugin/videocall/VideoApplicationComponent" />
 
          <framework custom="true" src="src/android/twiliovideo.gradle" type="gradleReference" />
 
