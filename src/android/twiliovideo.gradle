@@ -6,7 +6,7 @@ apply plugin: 'kotlin-android-extensions'
 android{
 sourceSets {
         main.java {
-            srcDirs += 'src/cordova/plugin/videocall'
+            srcDirs += 'src/cordova/plugin/'
         }
     }
 apply plugin: 'kotlin-android-extensions'
