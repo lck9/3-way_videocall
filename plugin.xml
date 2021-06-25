@@ -123,9 +123,9 @@
 
          <source-file src="src/android/CommunityVideoSdkModule.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/CommunityVideoSdkModule" />
 
-         <source-file src="src/android/security/SecurePreferences.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/security/SecurePreferences" />
-         <source-file src="src/android/security/SecurePreferencesImpl.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/security/SecurePreferencesImpl" />
-         <source-file src="src/android/security/SecurityModule.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/security/SecurityModule" />
+         <source-file src="src/android/SecurePreferences.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/SecurePreferences" />
+         <source-file src="src/android/SecurePreferencesImpl.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/SecurePreferencesImpl" />
+         <source-file src="src/android/SecurityModule.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/SecurityModule" />
 
          <source-file src="src/android/AppCenterWrapper.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/AppCenterWrapper" />
          <source-file src="src/android/CommunityTreeModule.java" target-dir="src/cordova/plugin/videocall/CommunityTreeModule" />
