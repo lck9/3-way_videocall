@@ -63,7 +63,7 @@
          <source-file src="src/android/ClearableEditText.java" target-dir="src/cordova/plugin/videocall/ClearableEditText" />
          <source-file src="src/android/Data.java" target-dir="src/cordova/plugin/videocall/Data" />
          <source-file src="src/android/MyResponse.java" target-dir="src/cordova/plugin/videocall/MyResponse" />
-         <source-file src="src/android/Participant.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/Participant" />
+         <source-file src="src/android/ParticipantAdapter.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/ParticipantAdapter" />
          <source-file src="src/android/ParticipantPrimaryView.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/ParticipantPrimaryView" />
          <source-file src="src/android/ParticipantThumbView.java" target-dir="src/cordova/plugin/videocall/ParticipantThumbView" />
          <source-file src="src/android/ParticipantView.java" target-dir="src/cordova/plugin/videocall/ParticipantView" />
