@@ -28,7 +28,7 @@
       </config-file>
       <source-file src="src/android/videocall.java" target-dir="src/cordova/plugin/videocall/videocall" />
 
-         <source-file src="src/android/StatsList.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/StatsList" />
+         <source-file src="src/android/StatsListAdapter.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/StatsListAdapter" />
 
          <source-file src="src/android/SharedPreferencesWrapper.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/SharedPreferencesWrapper" />
 
