@@ -1,4 +1,4 @@
-/*
+package cordova.plugin.videocall.TreeModule;/*
  * Copyright (C) 2019 Twilio, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,16 +14,18 @@
  * limitations under the License.
  */
 
-package com.twilio.video.app;
 
 import com.twilio.video.LogLevel;
 import com.twilio.video.Video;
-import com.twilio.video.app.util.BuildConfigUtilsKt;
-import com.twilio.video.app.util.CrashlyticsTreeRanger;
-import com.twilio.video.app.util.DebugTree;
-import com.twilio.video.app.util.ReleaseTree;
+
+import cordova.plugin.videocall.ApplicationScope.ApplicationScope;
+import cordova.plugin.videocall.BuildConfig.BuildConfig;
+import cordova.plugin.videocall.CrashlyticsTreeRanger.CrashlyticsTreeRanger;
+import cordova.plugin.videocall.DebugTree.DebugTree;
+import cordova.plugin.videocall.ReleaseTree.ReleaseTree;
 import dagger.Module;
 import dagger.Provides;
+import src.cordova.plugin.videocall.BuildConfigUtils.BuildConfigUtilsKt;
 import timber.log.Timber;
 
 @Module

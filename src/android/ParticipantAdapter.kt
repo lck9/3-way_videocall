@@ -1,11 +1,15 @@
-package com.twilio.video.app.ui.room
+package src.cordova.plugin.videocall.ParticipantAdapter
 
 import android.view.ViewGroup
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
-import com.twilio.video.app.participant.ParticipantViewState
+import cordova.plugin.videocall.ParticipantThumbView.ParticipantThumbView
+import src.cordova.plugin.videocall.ParticipantViewHolder.ParticipantViewHolder
+import src.cordova.plugin.videocall.ParticipantViewState.ParticipantViewState
+import src.cordova.plugin.videocall.RoomViewEvent.RoomViewEvent
+
 
 internal class ParticipantAdapter : ListAdapter<ParticipantViewState, ParticipantViewHolder>(
         ParticipantDiffCallback()) {

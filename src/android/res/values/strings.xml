@@ -1,9 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <!-- General -->
     <string name="web_app_domain">twilio-video-react.appspot.com</string>
-
-    <!--  Room Screen  -->
     <string name="room_screen_connection_failure_title">Connection Failure</string>
     <string name="room_screen_connection_failure_message">Failed to connect to the room.</string>
     <string name="room_screen_max_participant_failure_message">Room contains too many participants.</string>
@@ -11,13 +8,9 @@
     <string name="room_screen_token_expired_message">Passcode expired. Please sign in with a new passcode.</string>
     <string name="room_screen_select_device">Select Device</string>
     <string name="room_screen_pin_icon_description">Participant Pin</string>
-
-    <!--  Notifications  -->
     <string name="room_notification_channel_title">Video Call</string>
     <string name="room_notification_title">Ongoing video call in %s</string>
     <string name="room_notification_message">Tap to return to the room.</string>
-
-    <!--  Settings Screen  -->
     <string name="settings_screen_enable_stats">Enable Stats</string>
     <string name="settings_screen_enable_network_quality_level">Enable Network Quality Level</string>
     <string name="settings_screen_enable_insights">Enable Insights</string>
@@ -43,13 +36,11 @@
         <item>Staging</item>
         <item>Development</item>
     </string-array>
-
     <string-array name="settings_screen_environment_array_values">
         <item>production</item>
         <item>stage</item>
         <item>dev</item>
     </string-array>
-
     <string-array name="settings_screen_bandwidth_profile_modes">
         <item>Server Default</item>
         <item>Collaboration</item>
@@ -94,11 +85,10 @@
         <item>1280x720</item>
         <item>1920x1080</item>
     </string-array>
-
     <string name="stats_enable_in_settings">Enable in Settings</string>
     <string name="enable_ice">Enable ICE Options</string>
     <string name="ice_options">Enable ICE options</string>
-    <string name="app_name">Video</string>
+    <string name="app_name">MyApp</string>
     <string name="client_name">Client Name</string>
     <string name="settings_title">Settings</string>
     <string name="settings_title_advanced">Advanced</string>

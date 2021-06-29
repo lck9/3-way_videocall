@@ -1,4 +1,4 @@
-package com.twilio.video.app.sdk
+package src.cordova.plugin.videocall.ConnectOptionsFactory
 
 import android.content.Context
 import android.content.SharedPreferences
@@ -21,14 +21,15 @@ import com.twilio.video.VideoCodec
 import com.twilio.video.VideoDimensions
 import com.twilio.video.Vp8Codec
 import com.twilio.video.Vp9Codec
-import com.twilio.video.app.data.Preferences
-import com.twilio.video.app.ui.room.RoomActivity
-import com.twilio.video.app.util.EnvUtil
-import com.twilio.video.app.util.get
+
 import com.twilio.video.ktx.createBandwidthProfileOptions
 import com.twilio.video.ktx.createConnectOptions
+import cordova.plugin.videocall.EnvUtil.EnvUtil
+import src.cordova.plugin.videocall.Preferences.Preferences
+import src.cordova.plugin.videocall.RoomActivity.RoomActivity
 import tvi.webrtc.voiceengine.WebRtcAudioManager
 import tvi.webrtc.voiceengine.WebRtcAudioUtils
+import src.cordova.plugin.videocall.SharedPreferencesUtil.get
 
 class ConnectOptionsFactory(
     private val context: Context,

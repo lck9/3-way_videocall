@@ -13,11 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.twilio.video.app.ui.room
+package src.cordova.plugin.videocall.ParticipantPrimaryView
 
 import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
+import cordova.plugin.videocall.ParticipantView.ParticipantView
 import io.ionic.starter.databinding.ParticipantPrimaryViewBinding
 
 internal class ParticipantPrimaryView @JvmOverloads constructor(

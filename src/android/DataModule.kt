@@ -14,14 +14,15 @@
  * limitations under the License.
  */
 
-package com.twilio.video.app.data
+package src.cordova.plugin.videocall.DataModule
 
 import android.app.Application
 import android.content.SharedPreferences
-import com.twilio.video.app.ApplicationScope
-import com.twilio.video.app.util.getSharedPreferences
+import cordova.plugin.videocall.ApplicationScope.ApplicationScope
+
 import dagger.Module
 import dagger.Provides
+import src.cordova.plugin.videocall.SharedPreferencesUtil.getSharedPreferences
 
 @Module
 class DataModule {

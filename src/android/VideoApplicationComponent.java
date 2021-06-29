@@ -1,32 +1,19 @@
-package dagger.com.twilio.video.app;/*
- * Copyright (C) 2019 Twilio, Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *    http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+package cordova.plugin.videocall.VideoApplicationComponent;
 
-import com.twilio.video.app.ApplicationModule;
-import com.twilio.video.app.ApplicationScope;
-import com.twilio.video.app.AudioSwitchModule;
-import com.twilio.video.app.VideoApplication;
-import dagger.com.twilio.video.app.sdk.CommunityVideoSdkModule;
-import dagger.com.twilio.video.app.security.SecurityModule;
 
-import com.twilio.video.app.ui.room.RoomActivityModule;
-import com.twilio.video.app.ui.room.VideoServiceModule;
-import com.twilio.video.app.ui.settings.SettingsActivityModule;
-import com.twilio.video.app.ui.settings.SettingsFragmentModule;
+import cordova.plugin.videocall.ApplicationModule.ApplicationModule;
+import cordova.plugin.videocall.ApplicationScope.ApplicationScope;
+import cordova.plugin.videocall.CommunityTreeModule.CommunityTreeModule;
+import cordova.plugin.videocall.RoomActivityModule.RoomActivityModule;
+import cordova.plugin.videocall.SettingsActivityModule.SettingsActivityModule;
+import cordova.plugin.videocall.SettingsFragmentModule.SettingsFragmentModule;
+import cordova.plugin.videocall.VideoServiceModule.VideoServiceModule;
 import dagger.Component;
 import dagger.android.AndroidInjectionModule;
+import src.cordova.plugin.videocall.AudioSwitchModule.AudioSwitchModule;
+import src.cordova.plugin.videocall.CommunityVideoSdkModule.CommunityVideoSdkModule;
+import src.cordova.plugin.videocall.SecurityModule.SecurityModule;
+import src.cordova.plugin.videocall.VideoApplication.VideoApplication;
 
 @ApplicationScope
 @Component(

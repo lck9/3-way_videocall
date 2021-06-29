@@ -14,14 +14,17 @@
  * limitations under the License.
  */
 
-package com.twilio.video.app.ui.settings
+package src.cordova.plugin.videocall.SettingsActivity
 
 import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
-import com.twilio.video.app.base.BaseActivity
-import com.twilio.video.app.util.replaceFragment
+
+
+import cordova.plugin.videocall.BaseActivity.BaseActivity
+import src.cordova.plugin.videocall.FragmentManagerExtensions.replaceFragment
+import src.cordova.plugin.videocall.SettingsFragment.SettingsFragment
 import javax.inject.Inject
 
 class SettingsActivity : BaseActivity(),

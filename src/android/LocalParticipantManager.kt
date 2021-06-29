@@ -1,51 +1,40 @@
-package com.twilio.video.app.sdk
+package src.cordova.plugin.videocall.LocalParticipantManager
 
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import com.twilio.video.LocalAudioTrack
-import com.twilio.video.LocalParticipant
-import com.twilio.video.LocalTrackPublicationOptions
-import com.twilio.video.LocalVideoTrack
-import com.twilio.video.ScreenCapturer
-import com.twilio.video.TrackPriority
-import com.twilio.video.VideoFormat
-
-import com.twilio.video.app.data.Preferences.VIDEO_CAPTURE_RESOLUTION
-import com.twilio.video.app.data.Preferences.VIDEO_CAPTURE_RESOLUTION_DEFAULT
-import com.twilio.video.app.data.Preferences.VIDEO_DIMENSIONS
-import com.twilio.video.app.ui.room.RoomEvent.LocalParticipantEvent.AudioDisabled
-import com.twilio.video.app.ui.room.RoomEvent.LocalParticipantEvent.AudioEnabled
-import com.twilio.video.app.ui.room.RoomEvent.LocalParticipantEvent.AudioOff
-import com.twilio.video.app.ui.room.RoomEvent.LocalParticipantEvent.AudioOn
-import com.twilio.video.app.ui.room.RoomEvent.LocalParticipantEvent.ScreenCaptureOff
-import com.twilio.video.app.ui.room.RoomEvent.LocalParticipantEvent.ScreenCaptureOn
-import com.twilio.video.app.ui.room.RoomEvent.LocalParticipantEvent.VideoDisabled
-import com.twilio.video.app.ui.room.RoomEvent.LocalParticipantEvent.VideoEnabled
-import com.twilio.video.app.ui.room.RoomEvent.LocalParticipantEvent.VideoTrackUpdated
-import com.twilio.video.app.util.CameraCapturerCompat
-import com.twilio.video.app.util.get
+import com.twilio.video.*
 import com.twilio.video.ktx.createLocalAudioTrack
 import com.twilio.video.ktx.createLocalVideoTrack
 import io.ionic.starter.R
+import src.cordova.plugin.videocall.CameraCapturerCompat.CameraCapturerCompat
+import src.cordova.plugin.videocall.Preferences.Preferences.VIDEO_CAPTURE_RESOLUTION
+import src.cordova.plugin.videocall.Preferences.Preferences.VIDEO_CAPTURE_RESOLUTION_DEFAULT
+import src.cordova.plugin.videocall.Preferences.Preferences.VIDEO_DIMENSIONS
+import src.cordova.plugin.videocall.RoomEvent.RoomEvent
+import src.cordova.plugin.videocall.RoomManager.CAMERA_TRACK_NAME
+import src.cordova.plugin.videocall.RoomManager.MICROPHONE_TRACK_NAME
+import src.cordova.plugin.videocall.RoomManager.RoomManager
+import src.cordova.plugin.videocall.RoomManager.SCREEN_TRACK_NAME
+import src.cordova.plugin.videocall.SharedPreferencesUtil.get
 import timber.log.Timber
 
 class LocalParticipantManager(
-    private val context: Context,
-    private val roomManager: RoomManager,
-    private val sharedPreferences: SharedPreferences
+  private val context: Context,
+  private val roomManager: RoomManager,
+  private val sharedPreferences: SharedPreferences
 ) {
 
     private var localAudioTrack: LocalAudioTrack? = null
         set(value) {
             field = value
-            roomManager.sendRoomEvent(if (value == null) AudioOff else AudioOn)
+            roomManager.sendRoomEvent(if (value == null) RoomEvent.LocalParticipantEvent.AudioOff else RoomEvent.LocalParticipantEvent.AudioOn)
         }
     internal var localParticipant: LocalParticipant? = null
     private var cameraVideoTrack: LocalVideoTrack? = null
         set(value) {
             field = value
-            roomManager.sendRoomEvent(VideoTrackUpdated(value))
+            roomManager.sendRoomEvent(RoomEvent.LocalParticipantEvent.VideoTrackUpdated(value))
         }
     private var cameraCapturer: CameraCapturerCompat? = null
     private var screenCapturer: ScreenCapturer? = null
@@ -60,7 +49,7 @@ class LocalParticipantManager(
     private var screenVideoTrack: LocalVideoTrack? = null
         set(value) {
             field = value
-            roomManager.sendRoomEvent(if (value == null) ScreenCaptureOff else ScreenCaptureOn)
+            roomManager.sendRoomEvent(if (value == null) RoomEvent.LocalParticipantEvent.ScreenCaptureOff else RoomEvent.LocalParticipantEvent.ScreenCaptureOn)
         }
     private var isAudioMuted = false
     private var isVideoMuted = false
@@ -87,22 +76,22 @@ class LocalParticipantManager(
 
     fun enableLocalVideo() {
         cameraVideoTrack?.enable(true)
-        roomManager.sendRoomEvent(VideoEnabled)
+        roomManager.sendRoomEvent(RoomEvent.LocalParticipantEvent.VideoEnabled)
     }
 
     fun disableLocalVideo() {
         cameraVideoTrack?.enable(false)
-        roomManager.sendRoomEvent(VideoDisabled)
+        roomManager.sendRoomEvent(RoomEvent.LocalParticipantEvent.VideoDisabled)
     }
 
     fun enableLocalAudio() {
         localAudioTrack?.enable(true)
-        roomManager.sendRoomEvent(AudioEnabled)
+        roomManager.sendRoomEvent(RoomEvent.LocalParticipantEvent.AudioEnabled)
     }
 
     fun disableLocalAudio() {
         localAudioTrack?.enable(false)
-        roomManager.sendRoomEvent(AudioDisabled)
+        roomManager.sendRoomEvent(RoomEvent.LocalParticipantEvent.AudioDisabled)
     }
 
     fun toggleLocalAudio() {

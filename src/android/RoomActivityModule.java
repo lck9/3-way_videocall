@@ -1,4 +1,4 @@
-/*
+package cordova.plugin.videocall.RoomActivityModule;/*
  * Copyright (C) 2019 Twilio, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,13 +14,14 @@
  * limitations under the License.
  */
 
-package com.twilio.video.app.ui.room;
 
+import cordova.plugin.videocall.RoomActivitySubcomponen.RoomActivitySubcomponent;
 import dagger.Binds;
 import dagger.Module;
 import dagger.android.AndroidInjector;
 import dagger.multibindings.ClassKey;
 import dagger.multibindings.IntoMap;
+import src.cordova.plugin.videocall.RoomActivity.RoomActivity;
 
 @Module(subcomponents = RoomActivitySubcomponent.class)
 public abstract class RoomActivityModule {

@@ -13,12 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.twilio.video.app.sdk
+package src.cordova.plugin.videocall.StatsScheduler
 
 import android.os.Handler
 import android.os.HandlerThread
 import com.twilio.video.Room
 import com.twilio.video.StatsListener
+import src.cordova.plugin.videocall.RoomManager.RoomManager
 import timber.log.Timber
 
 class StatsScheduler(private val roomManager: RoomManager, private val room: Room) {

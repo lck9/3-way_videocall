@@ -1,14 +1,16 @@
-package com.twilio.video.app.ui.room
+package src.cordova.plugin.videocall.VideoService
 
 import android.app.Service
 import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.os.IBinder
-import com.twilio.video.app.sdk.RoomManager
-import com.twilio.video.app.util.plus
+
 import dagger.android.AndroidInjection
 import io.reactivex.disposables.CompositeDisposable
+import src.cordova.plugin.videocall.RoomManager.RoomManager
+import src.cordova.plugin.videocall.RoomNotification.ONGOING_NOTIFICATION_ID
+import src.cordova.plugin.videocall.RoomNotification.RoomNotification
 import javax.inject.Inject
 import timber.log.Timber
 

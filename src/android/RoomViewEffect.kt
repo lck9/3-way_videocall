@@ -1,4 +1,4 @@
-package com.twilio.video.app.ui.room
+package src.cordova.plugin.videocall.RoomViewEffect
 
 import com.twilio.video.Room
 import io.uniflow.core.flow.data.UIEvent

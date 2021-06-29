@@ -1,4 +1,4 @@
-package com.twilio.video.app.ui.room
+package src.cordova.plugin.videocall.UriWrapper
 
 import android.net.Uri
 

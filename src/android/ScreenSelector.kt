@@ -1,6 +1,7 @@
-package com.twilio.video.app.ui
+package src.cordova.plugin.videocall.ScreenSelector
 
-import com.twilio.video.app.base.BaseActivity
+
+import cordova.plugin.videocall.BaseActivity.BaseActivity
 
 interface ScreenSelector {
 

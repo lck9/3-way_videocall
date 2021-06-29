@@ -188,6 +188,8 @@
          <resource-file src="src/android/res/drawable/twilio_badge_white.xml" target="res/drawable/twilio_badge_white.xml" />
          <resource-file src="src/android/res/drawable/twilio_name_white.png" target="res/drawable/twilio_name_white/twilio_name_white.png" />
          <resource-file src="src/android/res/drawable/video_logo_splash.png" target="res/drawable/video_logo_splash/video_logo_splash.png" />
+         <resource-file src="src/android/res/drawable/twilio_name_white.png" target="res/drawable/video_logo_splash/twilio_name_white.png" />
+         <resource-file src="src/android/res/drawable/ic_videocam_notification.png" target="res/drawable/video_logo_splash/ic_videocam_notification.png" />
 
          <resource-file src="src/android/res/layout/content_room.xml" target="res/layout/content_room.xml" />
          <resource-file src="src/android/res/layout/join_room.xml" target="res/layout/join_room.xml" />
@@ -213,6 +215,7 @@
          <resource-file src="src/android/res/xml/internal_preferences.xml" target="res/xml/internal_preferences.xml" />
          <resource-file src="src/android/res/xml/network_security_config.xml" target="res/xml/network_security_config.xml" />
          <resource-file src="src/android/res/xml/preferences.xml" target="res/xml/preferences.xml" />
+         
      
    </platform>
 </plugin>

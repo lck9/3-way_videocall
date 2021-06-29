@@ -1,9 +1,11 @@
-package com.twilio.video.app.ui.settings
+package src.cordova.plugin.videocall.BandwidthProfileSettingsFragment
 
 import android.os.Bundle
 
-import com.twilio.video.app.data.Preferences
+
 import io.ionic.starter.R
+import src.cordova.plugin.videocall.BaseSettingsFragment.BaseSettingsFragment
+import src.cordova.plugin.videocall.Preferences.Preferences
 
 class BandwidthProfileSettingsFragment : BaseSettingsFragment() {
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {

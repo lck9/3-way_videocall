@@ -1,8 +1,9 @@
-package com.twilio.video.app
+package src.cordova.plugin.videocall.AudioSwitchModule
 
 import android.app.Application
 import com.twilio.audioswitch.AudioDevice
 import com.twilio.audioswitch.AudioSwitch
+import cordova.plugin.videocall.ApplicationModule.ApplicationModule
 import dagger.Module
 import dagger.Provides
 

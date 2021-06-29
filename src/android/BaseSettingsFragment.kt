@@ -1,14 +1,15 @@
-package com.twilio.video.app.ui.settings
+package src.cordova.plugin.videocall.BaseSettingsFragment
 
 import android.content.SharedPreferences
 import android.view.MenuItem
 import androidx.preference.ListPreference
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
-import com.twilio.video.app.base.BaseActivity
-import com.twilio.video.app.data.NumberPreference
-import com.twilio.video.app.data.NumberPreferenceDialogFragmentCompat
-import com.twilio.video.app.util.get
+import cordova.plugin.videocall.BaseActivity.BaseActivity
+import cordova.plugin.videocall.NumberPreference.NumberPreference
+import cordova.plugin.videocall.NumberPreferenceDialogFragmentCompat.NumberPreferenceDialogFragmentCompat
+import src.cordova.plugin.videocall.SettingsFragment.SettingsFragment
+import src.cordova.plugin.videocall.SharedPreferencesUtil.get
 
 abstract class BaseSettingsFragment : PreferenceFragmentCompat() {
 

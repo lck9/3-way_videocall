@@ -1,4 +1,4 @@
-package com.twilio.video.app.ui.room
+package src.cordova.plugin.videocall.ParticipantViewHolder
 
 import android.view.View
 import android.widget.ImageView
@@ -11,11 +11,12 @@ import com.twilio.video.NetworkQualityLevel.NETWORK_QUALITY_LEVEL_THREE
 import com.twilio.video.NetworkQualityLevel.NETWORK_QUALITY_LEVEL_TWO
 import com.twilio.video.NetworkQualityLevel.NETWORK_QUALITY_LEVEL_ZERO
 import com.twilio.video.VideoTrack
-
-import com.twilio.video.app.participant.ParticipantViewState
-import com.twilio.video.app.sdk.VideoTrackViewState
-import com.twilio.video.app.ui.room.RoomViewEvent.PinParticipant
+import cordova.plugin.videocall.ParticipantThumbView.ParticipantThumbView
+import cordova.plugin.videocall.ParticipantView.ParticipantView
 import io.ionic.starter.R
+import src.cordova.plugin.videocall.ParticipantViewState.ParticipantViewState
+import src.cordova.plugin.videocall.RoomViewEvent.RoomViewEvent
+import src.cordova.plugin.videocall.VideoTrackViewState.VideoTrackViewState
 import timber.log.Timber
 
 internal class ParticipantViewHolder(private val thumb: ParticipantThumbView) :
@@ -30,7 +31,7 @@ internal class ParticipantViewHolder(private val thumb: ParticipantThumbView) :
         thumb.run {
             participantViewState.sid?.let { sid ->
                 setOnClickListener {
-                    viewEventAction(PinParticipant(sid))
+                    viewEventAction(RoomViewEvent.PinParticipant(sid))
                 }
             }
             val identity = if (participantViewState.isLocalParticipant)

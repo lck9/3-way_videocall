@@ -1,8 +1,10 @@
-package com.twilio.video.app.participant
+package src.cordova.plugin.videocall.ParticipantManager
 
 import com.twilio.video.NetworkQualityLevel
 import com.twilio.video.TrackPriority.HIGH
-import com.twilio.video.app.sdk.VideoTrackViewState
+import src.cordova.plugin.videocall.ParticipantViewState.ParticipantViewState
+import src.cordova.plugin.videocall.VideoTrackViewState.VideoTrackViewState
+
 import timber.log.Timber
 
 class ParticipantManager {

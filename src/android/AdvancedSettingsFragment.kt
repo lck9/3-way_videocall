@@ -1,25 +1,17 @@
-package com.twilio.video.app.ui.settings
+package src.cordova.plugin.videocall.AdvancedSettingsFragment
+
 
 import android.os.Bundle
 import androidx.preference.EditTextPreference
 import androidx.preference.ListPreference
 import androidx.preference.Preference
-import com.twilio.video.AudioCodec
-import com.twilio.video.G722Codec
-import com.twilio.video.H264Codec
-import com.twilio.video.IsacCodec
-import com.twilio.video.OpusCodec
-import com.twilio.video.PcmaCodec
-import com.twilio.video.PcmuCodec
-import com.twilio.video.VideoCodec
-import com.twilio.video.Vp8Codec
-import com.twilio.video.Vp9Codec
-
-import com.twilio.video.app.data.Preferences
-import com.twilio.video.app.data.Preferences.VIDEO_CAPTURE_RESOLUTION
-import com.twilio.video.app.data.Preferences.VIDEO_DIMENSIONS
-import com.twilio.video.app.util.isInternalFlavor
+import com.twilio.video.*
 import io.ionic.starter.R
+import src.cordova.plugin.videocall.BaseSettingsFragment.BaseSettingsFragment
+import src.cordova.plugin.videocall.BuildConfigUtils.isInternalFlavor
+import src.cordova.plugin.videocall.Preferences.Preferences
+import src.cordova.plugin.videocall.Preferences.Preferences.VIDEO_CAPTURE_RESOLUTION
+import src.cordova.plugin.videocall.Preferences.Preferences.VIDEO_DIMENSIONS
 
 class AdvancedSettingsFragment : BaseSettingsFragment() {
 

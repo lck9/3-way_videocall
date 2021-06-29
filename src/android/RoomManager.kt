@@ -1,4 +1,4 @@
-package com.twilio.video.app.sdk
+package src.cordova.plugin.videocall.RoomManager
 
 import android.content.Context
 import android.content.Intent
@@ -11,26 +11,21 @@ import com.twilio.video.Room
 import com.twilio.video.StatsReport
 import com.twilio.video.TwilioException
 import com.twilio.video.TwilioException.ROOM_MAX_PARTICIPANTS_EXCEEDED_EXCEPTION
-import com.twilio.video.app.ui.room.RoomEvent
-import com.twilio.video.app.ui.room.RoomEvent.ConnectFailure
-import com.twilio.video.app.ui.room.RoomEvent.Connected
-import com.twilio.video.app.ui.room.RoomEvent.Connecting
-import com.twilio.video.app.ui.room.RoomEvent.Disconnected
-import com.twilio.video.app.ui.room.RoomEvent.DominantSpeakerChanged
-import com.twilio.video.app.ui.room.RoomEvent.MaxParticipantFailure
-import com.twilio.video.app.ui.room.RoomEvent.RecordingStarted
-import com.twilio.video.app.ui.room.RoomEvent.RecordingStopped
-import com.twilio.video.app.ui.room.RoomEvent.RemoteParticipantEvent.RemoteParticipantConnected
-import com.twilio.video.app.ui.room.RoomEvent.RemoteParticipantEvent.RemoteParticipantDisconnected
-import com.twilio.video.app.ui.room.RoomEvent.StatsUpdate
-import com.twilio.video.app.ui.room.VideoService.Companion.startService
-import com.twilio.video.app.ui.room.VideoService.Companion.stopService
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.launch
+import src.cordova.plugin.videocall.LocalParticipantListener.LocalParticipantListener
+import src.cordova.plugin.videocall.LocalParticipantManager.LocalParticipantManager
+import src.cordova.plugin.videocall.RemoteParticipantListener.RemoteParticipantListener
+import src.cordova.plugin.videocall.RoomEvent.RoomEvent
+import src.cordova.plugin.videocall.RoomStats.RoomStats
+import src.cordova.plugin.videocall.StatsScheduler.StatsScheduler
+import src.cordova.plugin.videocall.VideoClient.VideoClient
+import src.cordova.plugin.videocall.VideoService.VideoService.Companion.startService
+import src.cordova.plugin.videocall.VideoService.VideoService.Companion.stopService
 import timber.log.Timber
 
 const val MICROPHONE_TRACK_NAME = "microphone"
@@ -38,10 +33,10 @@ const val CAMERA_TRACK_NAME = "camera"
 const val SCREEN_TRACK_NAME = "screen"
 
 class RoomManager(
-    private val context: Context,
-    private val videoClient: VideoClient,
-    sharedPreferences: SharedPreferences,
-    coroutineDispatcher: CoroutineDispatcher = Dispatchers.IO
+  private val context: Context,
+  private val videoClient: VideoClient,
+  sharedPreferences: SharedPreferences,
+  coroutineDispatcher: CoroutineDispatcher = Dispatchers.IO
 ) {
 
     private var statsScheduler: StatsScheduler? = null
@@ -60,7 +55,7 @@ class RoomManager(
     }
 
     suspend fun connect(identity: String, roomName: String) {
-        sendRoomEvent(Connecting)
+        sendRoomEvent(RoomEvent.Connecting)
         connectToRoom(identity, roomName)
     }
 
@@ -114,7 +109,7 @@ class RoomManager(
                     localParticipantManager.localVideoTrackNames,
                     statsReports
             )
-            sendRoomEvent(StatsUpdate(roomStats))
+            sendRoomEvent(RoomEvent.StatsUpdate(roomStats))
         }
     }
 
@@ -145,7 +140,7 @@ class RoomManager(
 
             stopService(context)
 
-            sendRoomEvent(Disconnected)
+            sendRoomEvent(RoomEvent.Disconnected)
 
             localParticipantManager.localParticipant = null
 
@@ -162,9 +157,9 @@ class RoomManager(
                     twilioException.message)
 
             if (twilioException.code == ROOM_MAX_PARTICIPANTS_EXCEEDED_EXCEPTION) {
-                sendRoomEvent(MaxParticipantFailure)
+                sendRoomEvent(RoomEvent.MaxParticipantFailure)
             } else {
-                sendRoomEvent(ConnectFailure)
+                sendRoomEvent(RoomEvent.ConnectFailure)
             }
         }
 
@@ -173,26 +168,34 @@ class RoomManager(
                     room.sid, remoteParticipant.sid)
 
             remoteParticipant.setListener(RemoteParticipantListener(this@RoomManager))
-            sendRoomEvent(RemoteParticipantConnected(remoteParticipant))
+            sendRoomEvent(
+              RoomEvent.RemoteParticipantEvent.RemoteParticipantConnected(
+                remoteParticipant
+              )
+            )
         }
 
         override fun onParticipantDisconnected(room: Room, remoteParticipant: RemoteParticipant) {
             Timber.i("RemoteParticipant disconnected -> room sid: %s, remoteParticipant: %s",
                     room.sid, remoteParticipant.sid)
 
-            sendRoomEvent(RemoteParticipantDisconnected(remoteParticipant.sid))
+            sendRoomEvent(
+              RoomEvent.RemoteParticipantEvent.RemoteParticipantDisconnected(
+                remoteParticipant.sid
+              )
+            )
         }
 
         override fun onDominantSpeakerChanged(room: Room, remoteParticipant: RemoteParticipant?) {
             Timber.i("DominantSpeakerChanged -> room sid: %s, remoteParticipant: %s",
                     room.sid, remoteParticipant?.sid)
 
-            sendRoomEvent(DominantSpeakerChanged(remoteParticipant?.sid))
+            sendRoomEvent(RoomEvent.DominantSpeakerChanged(remoteParticipant?.sid))
         }
 
-        override fun onRecordingStarted(room: Room) = sendRoomEvent(RecordingStarted)
+        override fun onRecordingStarted(room: Room) = sendRoomEvent(RoomEvent.RecordingStarted)
 
-        override fun onRecordingStopped(room: Room) = sendRoomEvent(RecordingStopped)
+        override fun onRecordingStopped(room: Room) = sendRoomEvent(RoomEvent.RecordingStopped)
 
         override fun onReconnected(room: Room) {
             Timber.i("onReconnected: %s", room.name)
@@ -214,7 +217,7 @@ class RoomManager(
                     participants.add(it)
                 }
 
-                sendRoomEvent(Connected(participants, room, room.name))
+                sendRoomEvent(RoomEvent.Connected(participants, room, room.name))
                 localParticipantManager.publishLocalTracks()
             }
         }

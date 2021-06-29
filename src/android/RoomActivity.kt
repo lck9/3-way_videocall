@@ -13,7 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.twilio.video.app.ui.room
+package src.cordova.plugin.videocall.RoomActivity
+
 
 import android.Manifest
 import android.animation.ObjectAnimator
@@ -39,7 +40,6 @@ import android.view.View
 import android.view.WindowManager
 import androidx.core.content.ContextCompat
 import androidx.core.widget.doOnTextChanged
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -49,22 +49,14 @@ import com.twilio.audioswitch.AudioDevice
 import com.twilio.audioswitch.AudioDevice.*
 import com.twilio.audioswitch.AudioSwitch
 
-import com.twilio.video.app.adapter.StatsListAdapter
-import com.twilio.video.app.base.BaseActivity
-import com.twilio.video.app.data.Preferences
-
-import com.twilio.video.app.participant.ParticipantViewState
-import com.twilio.video.app.sdk.RoomManager
-import com.twilio.video.app.ui.room.RoomViewConfiguration.Connecting
-import com.twilio.video.app.ui.room.RoomViewConfiguration.Lobby
-import com.twilio.video.app.ui.room.RoomViewEffect.*
-import com.twilio.video.app.ui.room.RoomViewEvent.*
-import com.twilio.video.app.ui.room.RoomViewModel.RoomViewModelFactory
-import com.twilio.video.app.ui.settings.SettingsActivity
-import com.twilio.video.app.util.InputUtils
-import com.twilio.video.app.util.PermissionUtil
+import cordova.plugin.videocall.ApiService.ApiService
+import cordova.plugin.videocall.BaseActivity.BaseActivity
+import cordova.plugin.videocall.InputUtils.InputUtils
+import cordova.plugin.videocall.MyResponse.MyResponse
+import cordova.plugin.videocall.RetrofitAPi.RetrofitAPi
 import io.ionic.starter.R
 import io.ionic.starter.databinding.RoomActivityBinding
+
 import io.reactivex.SingleObserver
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
@@ -72,6 +64,21 @@ import io.reactivex.schedulers.Schedulers
 import io.uniflow.android.livedata.onEvents
 import io.uniflow.android.livedata.onStates
 import org.jetbrains.annotations.NotNull
+import src.cordova.plugin.videocall.ParticipantAdapter.ParticipantAdapter
+import src.cordova.plugin.videocall.ParticipantViewState.ParticipantViewState
+import src.cordova.plugin.videocall.PermissionUtil.PermissionUtil
+import src.cordova.plugin.videocall.Preferences.Preferences
+import src.cordova.plugin.videocall.PrimaryParticipantController.PrimaryParticipantController
+import src.cordova.plugin.videocall.RoomManager.RoomManager
+import src.cordova.plugin.videocall.RoomViewEffect.RoomViewEffect
+import src.cordova.plugin.videocall.RoomViewEvent.RoomViewEvent
+import src.cordova.plugin.videocall.RoomViewModel.RoomViewModel
+import src.cordova.plugin.videocall.RoomViewState.RoomViewConfiguration
+import src.cordova.plugin.videocall.RoomViewState.RoomViewState
+import src.cordova.plugin.videocall.SettingsActivity.SettingsActivity
+import src.cordova.plugin.videocall.StatsListAdapter.StatsListAdapter
+import src.cordova.plugin.videocall.UriRoomParser.UriRoomParser
+import src.cordova.plugin.videocall.UriWrapper.UriWrapper
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -106,7 +113,7 @@ class RoomActivity : BaseActivity() {
   private lateinit var recordingAnimation: ObjectAnimator
   private val roomId: String = "chetan04"
 
-  private val identity: String = "rammedley"
+  private val identity: String = "chakri_hybrid"
 
 
   override fun onCreate(savedInstanceState: Bundle?) {
@@ -139,7 +146,7 @@ class RoomActivity : BaseActivity() {
     binding.disconnect.setOnClickListener { disconnectButtonClick() }
     binding.localVideo.setOnClickListener { toggleLocalVideo() }
     binding.localAudio.setOnClickListener { toggleLocalAudio() }
-    val factory = RoomViewModelFactory(roomManager, audioSwitch, PermissionUtil(this))
+    val factory = RoomViewModel.RoomViewModelFactory(roomManager, audioSwitch, PermissionUtil(this))
     roomViewModel = ViewModelProvider(this, factory).get(RoomViewModel::class.java)
 
     // So calls can be answered when screen is locked
@@ -176,12 +183,12 @@ class RoomActivity : BaseActivity() {
     super.onResume()
     displayName = identity
     setTitle(displayName)
-    roomViewModel.processInput(OnResume)
+    roomViewModel.processInput(RoomViewEvent.OnResume)
   }
 
   override fun onPause() {
     super.onPause()
-    roomViewModel.processInput(OnPause)
+    roomViewModel.processInput(RoomViewEvent.OnPause)
   }
 
   public override fun onSaveInstanceState(outState: Bundle) {
@@ -198,7 +205,7 @@ class RoomActivity : BaseActivity() {
       val recordAudioPermissionGranted = grantResults[0] == PackageManager.PERMISSION_GRANTED
       val cameraPermissionGranted = grantResults[1] == PackageManager.PERMISSION_GRANTED
       if (recordAudioPermissionGranted && cameraPermissionGranted) {
-        roomViewModel.processInput(OnResume)
+        roomViewModel.processInput(RoomViewEvent.OnResume)
       }
     }
   }
@@ -226,14 +233,14 @@ class RoomActivity : BaseActivity() {
   override fun onOptionsItemSelected(item: MenuItem): Boolean {
     return when (item.itemId) {
       R.id.switch_camera_menu_item -> {
-        roomViewModel.processInput(SwitchCamera)
+        roomViewModel.processInput(RoomViewEvent.SwitchCamera)
         true
       }
       R.id.share_screen_menu_item -> {
         if (item.title == getString(R.string.share_screen)) {
           requestScreenCapturePermission()
         } else {
-          roomViewModel.processInput(StopScreenCapture)
+          roomViewModel.processInput(RoomViewEvent.StopScreenCapture)
         }
         true
       }
@@ -243,16 +250,16 @@ class RoomActivity : BaseActivity() {
       }
       R.id.pause_audio_menu_item -> {
         if (item.title == getString(R.string.pause_audio))
-          roomViewModel.processInput(DisableLocalAudio)
+          roomViewModel.processInput(RoomViewEvent.DisableLocalAudio)
         else
-          roomViewModel.processInput(EnableLocalAudio)
+          roomViewModel.processInput(RoomViewEvent.EnableLocalAudio)
         true
       }
       R.id.pause_video_menu_item -> {
         if (item.title == getString(R.string.pause_video))
-          roomViewModel.processInput(DisableLocalVideo)
+          roomViewModel.processInput(RoomViewEvent.DisableLocalVideo)
         else
-          roomViewModel.processInput(EnableLocalVideo)
+          roomViewModel.processInput(RoomViewEvent.EnableLocalVideo)
         true
       }
       R.id.settings_menu_item -> {
@@ -276,14 +283,14 @@ class RoomActivity : BaseActivity() {
         return
       }
       data?.let { data ->
-        roomViewModel.processInput(StartScreenCapture(resultCode, data))
+        roomViewModel.processInput(RoomViewEvent.StartScreenCapture(resultCode, data))
       }
     }
   }
 
   override fun onBackPressed() {
     super.onBackPressed()
-    roomViewModel.processInput(Disconnect)
+    roomViewModel.processInput(RoomViewEvent.Disconnect)
   }
 
   private fun setupRecordingAnimation() {
@@ -332,23 +339,23 @@ class RoomActivity : BaseActivity() {
     val text = roomId
 //        if (text != null) {
     val roomName = text.toString()
-    val viewEvent = Connect(displayName ?: "", roomName)
+    val viewEvent = RoomViewEvent.Connect(displayName ?: "", roomName)
     roomViewModel.processInput(viewEvent)
 //        }
   }
 
   private fun disconnectButtonClick() {
-    roomViewModel.processInput(Disconnect)
+    roomViewModel.processInput(RoomViewEvent.Disconnect)
     finish()
     // TODO Handle screen share
   }
 
   private fun toggleLocalVideo() {
-    roomViewModel.processInput(ToggleLocalVideo)
+    roomViewModel.processInput(RoomViewEvent.ToggleLocalVideo)
   }
 
   private fun toggleLocalAudio() {
-    roomViewModel.processInput(ToggleLocalAudio)
+    roomViewModel.processInput(RoomViewEvent.ToggleLocalAudio)
   }
 
   private fun requestPermissions() {
@@ -375,7 +382,7 @@ class RoomActivity : BaseActivity() {
     var joinStatus = ""
     var recordingWarningVisibility = View.GONE
     when (roomViewState.configuration) {
-      Connecting -> {
+      RoomViewConfiguration.Connecting -> {
         disconnectButtonState = View.VISIBLE
         joinRoomLayoutState = View.GONE
         joinStatusLayoutState = View.VISIBLE
@@ -400,7 +407,7 @@ class RoomActivity : BaseActivity() {
         binding.recordingIndicator.visibility =
           if (roomViewState.isRecording) View.VISIBLE else View.GONE
       }
-      Lobby -> {
+      RoomViewConfiguration.Lobby -> {
         connectButtonEnabled = isRoomTextNotEmpty
         screenCaptureMenuItemState = false
         binding.recordingIndicator.visibility = View.GONE
@@ -512,7 +519,7 @@ class RoomActivity : BaseActivity() {
 
   private fun toggleAudioDevice(enableAudioDevice: Boolean) {
     setVolumeControl(enableAudioDevice)
-    val viewEvent = if (enableAudioDevice) ActivateAudioDevice else DeactivateAudioDevice
+    val viewEvent = if (enableAudioDevice) RoomViewEvent.ActivateAudioDevice else RoomViewEvent.DeactivateAudioDevice
     roomViewModel.processInput(viewEvent)
   }
 
@@ -527,16 +534,16 @@ class RoomActivity : BaseActivity() {
 
   private fun bindRoomViewEffects(roomViewEffect: RoomViewEffect) {
     when (roomViewEffect) {
-      is Connected -> {
+      is RoomViewEffect.Connected -> {
         toggleAudioDevice(true)
       }
-      Disconnected -> {
+      RoomViewEffect.Disconnected -> {
 
         localParticipantSid = LOCAL_PARTICIPANT_STUB_SID
         // TODO Update stats
         toggleAudioDevice(false)
       }
-      ShowConnectFailureDialog, ShowMaxParticipantFailureDialog -> {
+      RoomViewEffect.ShowConnectFailureDialog, RoomViewEffect.ShowMaxParticipantFailureDialog -> {
         AlertDialog.Builder(this, R.style.AppTheme_Dialog)
           .setTitle(getString(R.string.room_screen_connection_failure_title))
           .setMessage(getConnectFailureMessage(roomViewEffect))
@@ -548,14 +555,14 @@ class RoomActivity : BaseActivity() {
 //                val error = roomViewEffect.serviceError
 //                handleTokenError(error)
 //            }
-      PermissionsDenied -> requestPermissions()
+      RoomViewEffect.PermissionsDenied -> requestPermissions()
     }
   }
 
   private fun getConnectFailureMessage(roomViewEffect: RoomViewEffect) =
     getString(
       when (roomViewEffect) {
-        ShowMaxParticipantFailureDialog -> R.string.room_screen_max_participant_failure_message
+        RoomViewEffect.ShowMaxParticipantFailureDialog -> R.string.room_screen_max_participant_failure_message
         else -> R.string.room_screen_connection_failure_message
       }
     )
@@ -601,7 +608,7 @@ class RoomActivity : BaseActivity() {
 
         createAudioDeviceDialog(this, index, audioDeviceNames,
           DialogInterface.OnClickListener { dialogInterface, i ->  dialogInterface.dismiss()
-            val viewEvent = SelectAudioDevice(audioDevices[i])
+            val viewEvent = RoomViewEvent.SelectAudioDevice(audioDevices[i])
             roomViewModel.processInput(viewEvent)
           })
         /*createAudioDeviceDialog(

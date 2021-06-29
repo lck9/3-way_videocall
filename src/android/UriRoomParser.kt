@@ -1,4 +1,6 @@
-package com.twilio.video.app.ui.room
+package src.cordova.plugin.videocall.UriRoomParser
+
+import src.cordova.plugin.videocall.UriWrapper.UriWrapper
 
 class UriRoomParser(private val uri: UriWrapper) {
 

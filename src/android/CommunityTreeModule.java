@@ -1,4 +1,4 @@
-/*
+package cordova.plugin.videocall.CommunityTreeModule;/*
  * Copyright (C) 2019 Twilio, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,12 +14,11 @@
  * limitations under the License.
  */
 
-package dagger.com.twilio.video.app;
 
 import com.twilio.video.LogLevel;
 import com.twilio.video.Video;
-import com.twilio.video.app.ApplicationScope;
 
+import cordova.plugin.videocall.ApplicationScope.ApplicationScope;
 import dagger.Module;
 import dagger.Provides;
 import timber.log.Timber;

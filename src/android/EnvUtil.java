@@ -1,4 +1,4 @@
-/*
+package cordova.plugin.videocall.EnvUtil;/*
  * Copyright (C) 2019 Twilio, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,10 +14,9 @@
  * limitations under the License.
  */
 
-package com.twilio.video.app.util;
 
-import static com.twilio.video.app.data.api.TwilioApiEnvironmentKt.TWILIO_API_DEV_ENV;
-import static com.twilio.video.app.data.api.TwilioApiEnvironmentKt.TWILIO_API_STAGE_ENV;
+import static src.cordova.plugin.videocall.TwilioApiEnvironment.TwilioApiEnvironmentKt.TWILIO_API_DEV_ENV;
+import static src.cordova.plugin.videocall.TwilioApiEnvironment.TwilioApiEnvironmentKt.TWILIO_API_STAGE_ENV;
 
 public class EnvUtil {
     private static final String TWILIO_DEV_ENV = "Development";

@@ -1,4 +1,4 @@
-package com.twilio.video.app.android
+package src.cordova.plugin.videocall.SharedPreferencesWrapper
 
 import android.content.SharedPreferences
 import androidx.core.content.edit

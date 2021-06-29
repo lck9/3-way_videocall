@@ -1,4 +1,4 @@
-/*
+package cordova.plugin.videocall.SettingsActivitySubcomponent;/*
  * Copyright (C) 2019 Twilio, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-package com.twilio.video.app.ui.settings;
 
 import dagger.Subcomponent;
 import dagger.android.AndroidInjector;
+import src.cordova.plugin.videocall.SettingsActivity.SettingsActivity;
 
 @Subcomponent
 public interface SettingsActivitySubcomponent extends AndroidInjector<SettingsActivity> {

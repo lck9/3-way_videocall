@@ -1,15 +1,13 @@
-package cordova.plugin.videocall;
+package cordova.plugin.videocall.videocall;
 
 import android.content.Intent;
 
-import com.twilio.video.app.ui.room.RoomActivity;
-
-import org.apache.cordova.CordovaPlugin;
 import org.apache.cordova.CallbackContext;
-
+import org.apache.cordova.CordovaPlugin;
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
+
+import src.cordova.plugin.videocall.RoomActivity.RoomActivity;
 
 /**
  * This class echoes a string called from JavaScript.
@@ -22,7 +20,7 @@ public class videocall extends CordovaPlugin {
             String message = args.getString(0);
             this.coolMethod(message, callbackContext);
             return true;
-        }else{
+        }else if(action.equals("retriveData")){
             String dataReceived = args.getString(0);
             return true;
         }

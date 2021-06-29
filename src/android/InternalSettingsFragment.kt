@@ -1,11 +1,13 @@
-package com.twilio.video.app.ui.settings
+package src.cordova.plugin.videocall.InternalSettingsFragment
 
 import android.os.Bundle
 import androidx.preference.ListPreference
 
-import com.twilio.video.app.data.Preferences
-import com.twilio.video.app.data.api.model.Topology
+
 import io.ionic.starter.R
+import src.cordova.plugin.videocall.BaseSettingsFragment.BaseSettingsFragment
+import src.cordova.plugin.videocall.Preferences.Preferences
+import src.cordova.plugin.videocall.Topology.Topology
 
 class InternalSettingsFragment : BaseSettingsFragment() {
 

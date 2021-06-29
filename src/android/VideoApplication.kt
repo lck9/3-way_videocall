@@ -14,17 +14,19 @@
  * limitations under the License.
  */
 
-package com.twilio.video.app
+package src.cordova.plugin.videocall.VideoApplication
 
 import android.app.Application
 import android.content.Context
 import androidx.multidex.MultiDex
+import cordova.plugin.videocall.ApplicationModule.ApplicationModule
+import cordova.plugin.videocall.VideoApplicationComponent.DaggerVideoApplicationComponent
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasAndroidInjector
-import dagger.com.twilio.video.app.DaggerVideoApplicationComponent
-import javax.inject.Inject
 import timber.log.Timber
+import javax.inject.Inject
+
 
 class VideoApplication : Application(), HasAndroidInjector {
     @Inject

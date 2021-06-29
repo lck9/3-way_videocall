@@ -1,4 +1,4 @@
-/*
+package cordova.plugin.videocall.ParticipantThumbView;/*
  * Copyright (C) 2019 Twilio, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,7 +14,6 @@
  * limitations under the License.
  */
 
-package com.twilio.video.app.ui.room;
 
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -25,8 +24,10 @@ import android.view.View;
 
 import androidx.core.content.ContextCompat;
 
+import cordova.plugin.videocall.ParticipantView.ParticipantView;
 import io.ionic.starter.R;
 import io.ionic.starter.databinding.ParticipantViewBinding;
+
 
 public class ParticipantThumbView extends ParticipantView {
     private ParticipantViewBinding binding;

@@ -1,4 +1,4 @@
-package com.twilio.video.app.ui.room;
+package cordova.plugin.videocall.RetrofitAPi;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;

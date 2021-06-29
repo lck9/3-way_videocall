@@ -13,11 +13,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.twilio.video.app.data
+package src.cordova.plugin.videocall.Preferences
+
 
 import com.twilio.video.*
-import com.twilio.video.app.BuildConfig
-import com.twilio.video.app.data.api.model.Topology
+import cordova.plugin.videocall.BuildConfig.BuildConfig
+import cordova.plugin.videocall.BuildConfig.BuildConfig.ENVIRONMENT_DEFAULT
+import src.cordova.plugin.videocall.Preferences.Preferences.ENVIRONMENT_DEFAULT
+
+import src.cordova.plugin.videocall.Topology.Topology
+
 
 object Preferences {
     const val INTERNAL = "pref_internal"

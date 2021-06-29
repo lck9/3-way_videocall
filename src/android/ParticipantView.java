@@ -1,4 +1,4 @@
-/*
+package cordova.plugin.videocall.ParticipantView;/*
  * Copyright (C) 2019 Twilio, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.twilio.video.app.ui.room;
+
 
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -41,25 +41,25 @@ import io.ionic.starter.R;
 import tvi.webrtc.VideoFrame;
 import tvi.webrtc.VideoSink;
 
-abstract class ParticipantView extends FrameLayout implements VideoSink {
+public abstract class ParticipantView extends FrameLayout implements VideoSink {
 
     private static final VideoScaleType DEFAULT_VIDEO_SCALE_TYPE = VideoScaleType.ASPECT_FIT;
 
-    String identity = "";
-    int state = State.NO_VIDEO;
-    boolean mirror = false;
-    int scaleType = DEFAULT_VIDEO_SCALE_TYPE.ordinal();
+  public  String identity = "";
+  public  int state = State.NO_VIDEO;
+  public  boolean mirror = false;
+  public int scaleType = DEFAULT_VIDEO_SCALE_TYPE.ordinal();
 
-    VideoTrack videoTrack;
-    ConstraintLayout videoLayout;
-    TextView videoIdentity;
-    VideoTextureView videoView;
-    RelativeLayout selectedLayout;
-    ImageView stubImage;
-    @Nullable ImageView networkQualityLevelImg;
-    TextView selectedIdentity;
-    @Nullable ImageView audioToggle;
-    @Nullable ImageView pinImage;
+    public VideoTrack videoTrack;
+  public ConstraintLayout videoLayout;
+  public TextView videoIdentity;
+  public  VideoTextureView videoView;
+  public  RelativeLayout selectedLayout;
+  public  ImageView stubImage;
+  public  @Nullable ImageView networkQualityLevelImg;
+  public  TextView selectedIdentity;
+  public @Nullable ImageView audioToggle;
+  public  @Nullable ImageView pinImage;
 
     public ParticipantView(@NonNull Context context) {
         super(context);
@@ -78,11 +78,11 @@ abstract class ParticipantView extends FrameLayout implements VideoSink {
     }
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    ParticipantView(
-            @NonNull Context context,
-            @Nullable AttributeSet attrs,
-            @AttrRes int defStyleAttr,
-            @StyleRes int defStyleRes) {
+    public ParticipantView(
+      @NonNull Context context,
+      @Nullable AttributeSet attrs,
+      @AttrRes int defStyleAttr,
+      @StyleRes int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
         initParams(context, attrs);
     }
@@ -130,7 +130,7 @@ abstract class ParticipantView extends FrameLayout implements VideoSink {
         videoView.setMirror(this.mirror);
     }
 
-    void setScaleType(int scaleType) {
+    public void setScaleType(int scaleType) {
         this.scaleType = scaleType;
         videoView.setVideoScaleType(VideoScaleType.values()[this.scaleType]);
     }
@@ -182,7 +182,7 @@ abstract class ParticipantView extends FrameLayout implements VideoSink {
         State.SWITCHED_OFF
     })
     @Retention(RetentionPolicy.SOURCE)
-    @interface State {
+    public @interface State {
         int VIDEO = 0;
         int NO_VIDEO = 1;
         int SELECTED = 2;

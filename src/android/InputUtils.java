@@ -1,4 +1,4 @@
-/*
+package cordova.plugin.videocall.InputUtils;/*
  * Copyright (C) 2019 Twilio, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.twilio.video.app.util;
+
 
 import android.app.Activity;
 import android.content.Context;

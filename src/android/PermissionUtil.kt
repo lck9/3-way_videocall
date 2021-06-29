@@ -1,4 +1,4 @@
-package com.twilio.video.app.util
+package src.cordova.plugin.videocall.PermissionUtil
 
 import android.content.Context
 import android.content.pm.PackageManager.PERMISSION_GRANTED

@@ -1,4 +1,4 @@
-package dagger.com.twilio.video.app
+package src.cordova.plugin.videocall.AppCenterWrapper
 
 import android.app.Application
 

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.twilio.video.app.adapter
+package src.cordova.plugin.videocall.StatsListAdapter
 
 import android.content.Context
 import android.os.Handler
@@ -26,10 +26,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.twilio.video.RemoteAudioTrack
 import com.twilio.video.RemoteParticipant
 import com.twilio.video.RemoteVideoTrack
-import com.twilio.video.app.model.StatsListItem
-import com.twilio.video.app.sdk.RoomStats
+
+import cordova.plugin.videocall.StatsListItem.StatsListItem
 import io.ionic.starter.R
 import io.ionic.starter.databinding.StatsViewBinding
+import src.cordova.plugin.videocall.RoomStats.RoomStats
 
 class StatsListAdapter(private val context: Context) : RecyclerView.Adapter<StatsListAdapter.ViewHolder>() {
 

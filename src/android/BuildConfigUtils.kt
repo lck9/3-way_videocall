@@ -13,9 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.twilio.video.app.util
+package src.cordova.plugin.videocall.BuildConfigUtils
 
-import com.twilio.video.app.BuildConfig
+import cordova.plugin.videocall.BuildConfig.BuildConfig
 
 
 val isCommunityFlavor: Boolean get() = BuildConfig.FLAVOR == "community"

@@ -1,4 +1,4 @@
-package com.twilio.video.app.ui.room
+package src.cordova.plugin.videocall.RoomViewEvent
 
 import android.content.Intent
 import com.twilio.audioswitch.AudioDevice

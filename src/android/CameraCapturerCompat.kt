@@ -1,4 +1,4 @@
-package com.twilio.video.app.util
+package src.cordova.plugin.videocall.CameraCapturerCompat
 
 import android.content.Context
 import android.graphics.ImageFormat

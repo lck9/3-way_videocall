@@ -13,10 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.twilio.video.app.ui.room
+package src.cordova.plugin.videocall.PrimaryParticipantController
 
 import com.twilio.video.VideoTrack
-import com.twilio.video.app.sdk.VideoTrackViewState
+import cordova.plugin.videocall.ParticipantView.ParticipantView
+import src.cordova.plugin.videocall.ParticipantPrimaryView.ParticipantPrimaryView
+import src.cordova.plugin.videocall.VideoTrackViewState.VideoTrackViewState
+
 
 internal class PrimaryParticipantController(
     private val primaryView: ParticipantPrimaryView
@@ -24,11 +27,11 @@ internal class PrimaryParticipantController(
     private var primaryItem: Item? = null
 
     fun renderAsPrimary(
-        identity: String?,
-        screenTrack: VideoTrackViewState?,
-        videoTrack: VideoTrackViewState?,
-        muted: Boolean,
-        mirror: Boolean
+      identity: String?,
+      screenTrack: VideoTrackViewState?,
+      videoTrack: VideoTrackViewState?,
+      muted: Boolean,
+      mirror: Boolean
     ) {
 
         val old = primaryItem

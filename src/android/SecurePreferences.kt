@@ -1,4 +1,4 @@
-package dagger.com.twilio.video.app.security
+package src.cordova.plugin.videocall.SecurePreferences
 
 interface SecurePreferences {
 

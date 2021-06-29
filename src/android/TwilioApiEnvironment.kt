@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.twilio.video.app.data.api
+package src.cordova.plugin.videocall.TwilioApiEnvironment
 
 const val TWILIO_API_DEV_ENV = "dev"
 const val TWILIO_API_STAGE_ENV = "stage"

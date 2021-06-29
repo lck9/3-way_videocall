@@ -1,4 +1,4 @@
-package dagger.com.twilio.video.app.security
+package src.cordova.plugin.videocall.SecurePreferencesImpl
 
 import android.content.Context
 import android.content.SharedPreferences
@@ -9,6 +9,7 @@ import com.facebook.crypto.Crypto
 import com.facebook.crypto.CryptoConfig
 import com.facebook.crypto.Entity
 import com.facebook.soloader.SoLoader
+import src.cordova.plugin.videocall.SecurePreferences.SecurePreferences
 
 class SecurePreferencesImpl(
     context: Context,

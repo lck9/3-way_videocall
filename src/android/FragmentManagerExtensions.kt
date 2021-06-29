@@ -1,4 +1,4 @@
-package com.twilio.video.app.util
+package src.cordova.plugin.videocall.FragmentManagerExtensions
 
 import androidx.annotation.IdRes
 import androidx.fragment.app.Fragment

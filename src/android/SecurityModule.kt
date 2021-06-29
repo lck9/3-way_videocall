@@ -1,12 +1,15 @@
-package dagger.com.twilio.video.app.security
+package src.cordova.plugin.videocall.SecurityModule
 
 import android.app.Application
 import android.content.SharedPreferences
-import com.twilio.video.app.ApplicationModule
-import com.twilio.video.app.ApplicationScope
-import com.twilio.video.app.data.DataModule
+import cordova.plugin.videocall.ApplicationModule.ApplicationModule
+import cordova.plugin.videocall.ApplicationScope.ApplicationScope
+
 import dagger.Module
 import dagger.Provides
+import src.cordova.plugin.videocall.DataModule.DataModule
+import src.cordova.plugin.videocall.SecurePreferences.SecurePreferences
+import src.cordova.plugin.videocall.SecurePreferencesImpl.SecurePreferencesImpl
 
 @Module(includes = [
     ApplicationModule::class,

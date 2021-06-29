@@ -1,7 +1,8 @@
-package com.twilio.video.app.ui.settings
+package src.cordova.plugin.videocall.AudioSettingsFragment
 
 import android.os.Bundle
 import io.ionic.starter.R
+import src.cordova.plugin.videocall.BaseSettingsFragment.BaseSettingsFragment
 
 
 class AudioSettingsFragment : BaseSettingsFragment() {

@@ -1,4 +1,4 @@
-package com.twilio.video.app;
+package cordova.plugin.videocall.ApplicationModule;
 
 /*
  * Copyright (C) 2019 Twilio, Inc.
@@ -17,6 +17,8 @@ package com.twilio.video.app;
  */
 
 import android.app.Application;
+
+import cordova.plugin.videocall.ApplicationScope.ApplicationScope;
 import dagger.Module;
 import dagger.Provides;
 

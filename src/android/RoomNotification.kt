@@ -1,4 +1,4 @@
-package com.twilio.video.app.ui.room
+package src.cordova.plugin.videocall.RoomNotification
 
 import android.app.Notification
 import android.app.NotificationChannel
@@ -9,6 +9,7 @@ import android.content.Intent
 import android.os.Build
 import androidx.core.app.NotificationCompat
 import io.ionic.starter.R
+import src.cordova.plugin.videocall.RoomActivity.RoomActivity
 
 
 private const val VIDEO_SERVICE_CHANNEL = "VIDEO_SERVICE_CHANNEL"

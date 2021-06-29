@@ -1,4 +1,4 @@
-/*
+package cordova.plugin.videocall.CrashlyticsTreeRanger;/*
  * Copyright (C) 2019 Twilio, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,10 +14,13 @@
  * limitations under the License.
  */
 
-package com.twilio.video.app.util;
 
 import com.google.firebase.crashlytics.FirebaseCrashlytics;
+
 import javax.inject.Inject;
+
+import cordova.plugin.videocall.TreeRanger.TreeRanger;
+
 
 public class CrashlyticsTreeRanger implements TreeRanger {
 

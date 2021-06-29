@@ -1,4 +1,4 @@
-package com.twilio.video.app;
+package cordova.plugin.videocall.BuildConfig;
 
 public final class BuildConfig {
   public static final boolean DEBUG = Boolean.parseBoolean("true");

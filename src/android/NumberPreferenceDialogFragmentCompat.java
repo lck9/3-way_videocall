@@ -1,4 +1,4 @@
-/*
+package cordova.plugin.videocall.NumberPreferenceDialogFragmentCompat;/*
  * Copyright (C) 2019 Twilio, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,23 +14,21 @@
  * limitations under the License.
  */
 
-package com.twilio.video.app.data;
 
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+
 import androidx.preference.DialogPreference;
 import androidx.preference.PreferenceDialogFragmentCompat;
 
 import java.util.Locale;
 
+import cordova.plugin.videocall.NumberPreference.NumberPreference;
 import io.ionic.starter.R;
 import timber.log.Timber;
 
-/**
- * NumberPreferenceDialogFragmentCompat allows to instantiate custom {@link NumberPreference} dialog
- * and modify preference values.
- */
+
 public class NumberPreferenceDialogFragmentCompat extends PreferenceDialogFragmentCompat {
 
     /** Input field. */

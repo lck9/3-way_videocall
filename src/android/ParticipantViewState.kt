@@ -1,22 +1,23 @@
-package com.twilio.video.app.participant
+package src.cordova.plugin.videocall.ParticipantViewState
 
 import com.twilio.video.NetworkQualityLevel
 import com.twilio.video.NetworkQualityLevel.NETWORK_QUALITY_LEVEL_UNKNOWN
 import com.twilio.video.Participant
 import com.twilio.video.RemoteVideoTrack
-import com.twilio.video.app.sdk.VideoTrackViewState
+import src.cordova.plugin.videocall.VideoTrackViewState.VideoTrackViewState
+
 
 data class ParticipantViewState(
-    val sid: String? = null,
-    val identity: String? = null,
-    val videoTrack: VideoTrackViewState? = null,
-    val screenTrack: VideoTrackViewState? = null,
-    val isMuted: Boolean = false,
-    val isMirrored: Boolean = false,
-    val isPinned: Boolean = false,
-    val isDominantSpeaker: Boolean = false,
-    val isLocalParticipant: Boolean = false,
-    val networkQualityLevel: NetworkQualityLevel = NETWORK_QUALITY_LEVEL_UNKNOWN
+  val sid: String? = null,
+  val identity: String? = null,
+  val videoTrack: VideoTrackViewState? = null,
+  val screenTrack: VideoTrackViewState? = null,
+  val isMuted: Boolean = false,
+  val isMirrored: Boolean = false,
+  val isPinned: Boolean = false,
+  val isDominantSpeaker: Boolean = false,
+  val isLocalParticipant: Boolean = false,
+  val networkQualityLevel: NetworkQualityLevel = NETWORK_QUALITY_LEVEL_UNKNOWN
 ) {
     val isScreenSharing: Boolean get() = screenTrack != null
 

@@ -1,7 +1,8 @@
-package com.twilio.video.app.ui.settings;
+package cordova.plugin.videocall.SettingsFragmentSubcomponent;
 
 import dagger.Subcomponent;
 import dagger.android.AndroidInjector;
+import src.cordova.plugin.videocall.SettingsFragment.SettingsFragment;
 
 @Subcomponent
 public interface SettingsFragmentSubcomponent extends AndroidInjector<SettingsFragment> {

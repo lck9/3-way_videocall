@@ -1,4 +1,4 @@
-package com.twilio.video.app.sdk
+package src.cordova.plugin.videocall.LocalParticipantListener
 
 import com.twilio.video.LocalAudioTrack
 import com.twilio.video.LocalAudioTrackPublication
@@ -9,7 +9,8 @@ import com.twilio.video.LocalVideoTrack
 import com.twilio.video.LocalVideoTrackPublication
 import com.twilio.video.NetworkQualityLevel
 import com.twilio.video.TwilioException
-import com.twilio.video.app.ui.room.RoomEvent.RemoteParticipantEvent.NetworkQualityLevelChange
+import src.cordova.plugin.videocall.RoomEvent.RoomEvent
+import src.cordova.plugin.videocall.RoomManager.RoomManager
 import timber.log.Timber
 
 class LocalParticipantListener(private val roomManager: RoomManager) : LocalParticipant.Listener {
@@ -18,7 +19,12 @@ class LocalParticipantListener(private val roomManager: RoomManager) : LocalPart
         Timber.i("LocalParticipant NetworkQualityLevel changed for LocalParticipant sid: %s, NetworkQualityLevel: %s",
                 localParticipant.sid, networkQualityLevel)
 
-        roomManager.sendRoomEvent(NetworkQualityLevelChange(localParticipant.sid, networkQualityLevel))
+        roomManager.sendRoomEvent(
+          RoomEvent.RemoteParticipantEvent.NetworkQualityLevelChange(
+            localParticipant.sid,
+            networkQualityLevel
+          )
+        )
     }
 
     override fun onVideoTrackPublished(localParticipant: LocalParticipant, localVideoTrackPublication: LocalVideoTrackPublication) {}

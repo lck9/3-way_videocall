@@ -1,10 +1,11 @@
-package com.twilio.video.app.ui.room
+package src.cordova.plugin.videocall.RoomEvent
 
 import com.twilio.video.NetworkQualityLevel
 import com.twilio.video.Participant
 import com.twilio.video.Room
 import com.twilio.video.VideoTrack
-import com.twilio.video.app.sdk.RoomStats
+import src.cordova.plugin.videocall.RoomStats.RoomStats
+
 
 sealed class RoomEvent {
 

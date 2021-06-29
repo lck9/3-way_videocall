@@ -1,7 +1,9 @@
-package com.twilio.video.app.ui.room;
+package cordova.plugin.videocall.MyResponse;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+
+import cordova.plugin.videocall.Data.Data;
 
 public class MyResponse {
 

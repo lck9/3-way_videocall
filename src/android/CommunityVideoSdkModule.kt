@@ -1,15 +1,16 @@
-package dagger.com.twilio.video.app.sdk
+package src.cordova.plugin.videocall.CommunityVideoSdkModule
 
 import android.app.Application
 import android.content.SharedPreferences
-import com.twilio.video.app.ApplicationModule
-import com.twilio.video.app.ApplicationScope
-import com.twilio.video.app.data.DataModule
-import com.twilio.video.app.sdk.ConnectOptionsFactory
-import com.twilio.video.app.sdk.RoomManager
-import com.twilio.video.app.sdk.VideoClient
+import cordova.plugin.videocall.ApplicationModule.ApplicationModule
+import cordova.plugin.videocall.ApplicationScope.ApplicationScope
+
 import dagger.Module
 import dagger.Provides
+import src.cordova.plugin.videocall.ConnectOptionsFactory.ConnectOptionsFactory
+import src.cordova.plugin.videocall.DataModule.DataModule
+import src.cordova.plugin.videocall.RoomManager.RoomManager
+import src.cordova.plugin.videocall.VideoClient.VideoClient
 
 @Module(includes = [
     ApplicationModule::class,

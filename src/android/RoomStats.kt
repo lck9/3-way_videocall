@@ -1,4 +1,4 @@
-package com.twilio.video.app.sdk
+package src.cordova.plugin.videocall.RoomStats
 
 import com.twilio.video.RemoteParticipant
 import com.twilio.video.StatsReport
