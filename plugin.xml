@@ -1,5 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android" id="cordova-plugin-videocall" version="0.0.1">
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="cordova-plugin-videocall" version="0.0.1"
+   xmlns="http://apache.org/cordova/ns/plugins/1.0"
+   xmlns:android="http://schemas.android.com/apk/res/android">
    <name>videocall</name>
    <js-module name="videocall" src="www/videocall.js">
       <clobbers target="cordova.plugins.videocall" />
@@ -10,212 +12,189 @@
             <param name="android-package" value="cordova.plugin.videocall.videocall.videocall" />
          </feature>
       </config-file>
-      <config-file parent="/*" target="AndroidManifest.xml" >
+      <config-file parent="/*" target="AndroidManifest.xml">
          <application android:name="com.twilio.video.app.VideoApplication" />
          <uses-permission android:name="android.permission.INTERNET" />
-         <uses-feature android:name="android.hardware.camera"/>
-         <uses-feature android:name="android.hardware.camera.autofocus"/>
-         <uses-feature
-            android:glEsVersion="0x00020000"
-            android:required="true"/>
-
-         <uses-permission android:name="android.permission.CAMERA"/>
-         <uses-permission android:name="android.permission.RECORD_AUDIO"/>
-         <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
-         <service
-            android:foregroundServiceType="mediaProjection"
-            android:name="com.twilio.video.app.ui.room.VideoService"/>
+         <uses-feature android:name="android.hardware.camera" />
+         <uses-feature android:name="android.hardware.camera.autofocus" />
+         <uses-feature android:glEsVersion="0x00020000" android:required="true" />
+         <uses-permission android:name="android.permission.CAMERA" />
+         <uses-permission android:name="android.permission.RECORD_AUDIO" />
+         <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+         <service android:foregroundServiceType="mediaProjection" android:name="com.twilio.video.app.ui.room.VideoService" />
       </config-file>
       <source-file src="src/android/videocall.java" target-dir="src/cordova/plugin/videocall/videocall" />
-
-         <source-file src="src/android/StatsListAdapter.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/StatsListAdapter" />
-
-         <source-file src="src/android/SharedPreferencesWrapper.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/SharedPreferencesWrapper" />
-
-         <source-file src="src/android/BaseActivity.java" target-dir="src/cordova/plugin/videocall/BaseActivity" />
-
-         <source-file src="src/android/DataModule.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/DataModule" />
-         <source-file src="src/android/NumberPreference.java" target-dir="src/cordova/plugin/videocall/NumberPreference" />
-         <source-file src="src/android/NumberPreferenceDialogFragmentCompat.java" target-dir="src/cordova/plugin/videocall/NumberPreferenceDialogFragmentCompat" />
-         <source-file src="src/android/Preferences.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/Preferences" />
-
-         <source-file src="src/android/TwilioApiEnvironment.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/TwilioApiEnvironment" />
-
-         <source-file src="src/android/Topology.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/Topology" />
-
-         <source-file src="src/android/StatsListItem.java" target-dir="src/cordova/plugin/videocall/StatsListItem" />
-
-         <source-file src="src/android/ParticipantManager.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/ParticipantManager" />
-         <source-file src="src/android/ParticipantViewState.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/ParticipantViewState" />
-
-         <source-file src="src/android/ConnectOptionsFactory.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/ConnectOptionsFactory" />
-         <source-file src="src/android/LocalParticipantListener.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/LocalParticipantListener" />
-         <source-file src="src/android/LocalParticipantManager.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/LocalParticipantManager" />
-         <source-file src="src/android/RemoteParticipantListener.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/RemoteParticipantListener" />
-         <source-file src="src/android/RoomManager.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/RoomManager" />
-         <source-file src="src/android/RoomStats.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/RoomStats" />
-         <source-file src="src/android/StatsScheduler.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/StatsScheduler" />
-         <source-file src="src/android/VideoClient.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/VideoClient" />
-         <source-file src="src/android/VideoSdkModule.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/VideoSdkModule" />
-         <source-file src="src/android/VideoTrackViewState.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/VideoTrackViewState" />
-
-         <source-file src="src/android/ApiService.java" target-dir="src/cordova/plugin/videocall/ApiService" />
-         <source-file src="src/android/ClearableEditText.java" target-dir="src/cordova/plugin/videocall/ClearableEditText" />
-         <source-file src="src/android/Data.java" target-dir="src/cordova/plugin/videocall/Data" />
-         <source-file src="src/android/MyResponse.java" target-dir="src/cordova/plugin/videocall/MyResponse" />
-         <source-file src="src/android/ParticipantAdapter.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/ParticipantAdapter" />
-         <source-file src="src/android/ParticipantPrimaryView.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/ParticipantPrimaryView" />
-         <source-file src="src/android/ParticipantThumbView.java" target-dir="src/cordova/plugin/videocall/ParticipantThumbView" />
-         <source-file src="src/android/ParticipantView.java" target-dir="src/cordova/plugin/videocall/ParticipantView" />
-         <source-file src="src/android/ParticipantViewHolder.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/ParticipantViewHolder" />
-         <source-file src="src/android/PrimaryParticipantController.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/PrimaryParticipantController" />
-         <source-file src="src/android/RetrofitAPi.java" target-dir="src/cordova/plugin/videocall/RetrofitAPi" />
-         <source-file src="src/android/RoomActivity.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/RoomActivity" />
-         <source-file src="src/android/RoomActivityModule.java" target-dir="src/cordova/plugin/videocall/RoomActivityModule" />
-         <source-file src="src/android/RoomActivitySubcomponent.java" target-dir="src/cordova/plugin/videocall/RoomActivitySubcomponen" />
-         <source-file src="src/android/RoomEvent.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/RoomEvent" />
-         <source-file src="src/android/RoomNotification.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/RoomNotification" />
-         <source-file src="src/android/RoomViewEffect.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/RoomViewEffect" />
-         <source-file src="src/android/RoomViewEvent.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/RoomViewEvent" />
-         <source-file src="src/android/RoomViewModel.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/RoomViewModel" />
-         <source-file src="src/android/RoomViewState.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/RoomViewState" />
-         <source-file src="src/android/UriRoomParser.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/UriRoomParser" />
-         <source-file src="src/android/UriWrapper.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/UriWrapper" />
-         <source-file src="src/android/VideoService.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/VideoService" />
-         <source-file src="src/android/VideoServiceModule.java" target-dir="src/cordova/plugin/videocall/VideoServiceModule" />
-         <source-file src="src/android/VideoServiceSubcomponent.java" target-dir="src/cordova/plugin/videocall/VideoServiceSubcomponent" />
-
-         <source-file src="src/android/AdvancedSettingsFragment.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/AdvancedSettingsFragment" />
-         <source-file src="src/android/AudioSettingsFragment.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/AudioSettingsFragment" />
-         <source-file src="src/android/BandwidthProfileSettingsFragment.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/BandwidthProfileSettingsFragment" />
-         <source-file src="src/android/BaseSettingsFragment.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/BaseSettingsFragment" />
-         <source-file src="src/android/InternalSettingsFragment.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/InternalSettingsFragment" />
-         <source-file src="src/android/SettingsActivity.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/SettingsActivity" />
-         <source-file src="src/android/SettingsActivityModule.java" target-dir="src/cordova/plugin/videocall/SettingsActivityModule" />
-         <source-file src="src/android/SettingsActivitySubcomponent.java" target-dir="src/cordova/plugin/videocall/SettingsActivitySubcomponent" />
-         <source-file src="src/android/SettingsFragment.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/SettingsFragment" />
-         <source-file src="src/android/SettingsFragmentModule.java" target-dir="src/cordova/plugin/videocall/SettingsFragmentModule" />
-         <source-file src="src/android/SettingsFragmentSubcomponent.java" target-dir="src/cordova/plugin/videocall/SettingsFragmentSubcomponent" />
-
-         <source-file src="src/android/ScreenSelector.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/ScreenSelector" />
-
-         <source-file src="src/android/BuildConfigUtils.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/BuildConfigUtils" />
-         <source-file src="src/android/CameraCapturerCompat.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/CameraCapturerCompat" />
-         <source-file src="src/android/CompositeDisposableExtensions.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/CompositeDisposableExtensions" />
-         <source-file src="src/android/CrashlyticsTreeRanger.java" target-dir="src/cordova/plugin/videocall/CrashlyticsTreeRanger" />
-         <source-file src="src/android/DebugTree.java" target-dir="src/cordova/plugin/videocall/DebugTree" />
-         <source-file src="src/android/EnvUtil.java" target-dir="src/cordova/plugin/videocall/EnvUtil" />
-         <source-file src="src/android/FragmentManagerExtensions.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/FragmentManagerExtensions" />
-         <source-file src="src/android/InputUtils.java" target-dir="src/cordova/plugin/videocall/InputUtils" />
-         <source-file src="src/android/PermissionUtil.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/PermissionUtil" />
-         <source-file src="src/android/ReleaseTree.java" target-dir="src/cordova/plugin/videocall/ReleaseTree" />
-         <source-file src="src/android/SharedPreferencesUtil.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/SharedPreferencesUtil" />
-         <source-file src="src/android/TreeRanger.java" target-dir="src/cordova/plugin/videocall/TreeRanger" />
-
-         <source-file src="src/android/ApplicationModule.java" target-dir="src/cordova/plugin/videocall/ApplicationModule" />
-         <source-file src="src/android/ApplicationScope.java" target-dir="src/cordova/plugin/videocall/ApplicationScope" />
-         <source-file src="src/android/AudioSwitchModule.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/AudioSwitchModule" />
-         <source-file src="src/android/BuildConfig.java" target-dir="src/cordova/plugin/videocall/BuildConfig" />
-         <source-file src="src/android/TreeModule.java" target-dir="src/cordova/plugin/videocall/TreeModule" />
-         <source-file src="src/android/VideoApplication.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/VideoApplication" />
-
-         <source-file src="src/android/CommunityPreferences.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/CommunityPreferences" />
-
-         <source-file src="src/android/CommunityVideoSdkModule.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/CommunityVideoSdkModule" />
-
-         <source-file src="src/android/SecurePreferences.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/SecurePreferences" />
-         <source-file src="src/android/SecurePreferencesImpl.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/SecurePreferencesImpl" />
-         <source-file src="src/android/SecurityModule.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/SecurityModule" />
-
-         <source-file src="src/android/AppCenterWrapper.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/AppCenterWrapper" />
-         <source-file src="src/android/CommunityTreeModule.java" target-dir="src/cordova/plugin/videocall/CommunityTreeModule" />
-         <source-file src="src/android/VideoApplicationComponent.java" target-dir="src/cordova/plugin/videocall/VideoApplicationComponent" />
-
-         <framework custom="true" src="src/android/twiliovideo.gradle" type="gradleReference" />
-
-         <resource-file src="src/android/res/drawable/badge_background.xml" target="res/drawable/badge_background.xml" />
-         <resource-file src="src/android/res/drawable/edit_text_cursor.xml" target="res/drawable/edit_text_cursor.xml" />
-         <resource-file src="src/android/res/drawable/ic_account_circle_white_24dp.xml" target="res/drawable/ic_account_circle_white_24dp.xml" />
-         <resource-file src="src/android/res/drawable/ic_account_circle_white_48px.xml" target="res/drawable/ic_account_circle_white_48px.xml" />
-         <resource-file src="src/android/res/drawable/ic_add_circle_white_24px.xml" target="res/drawable/ic_add_circle_white_24px.xml" />
-         <resource-file src="src/android/res/drawable/ic_bluetooth_white_24dp.xml" target="res/drawable/ic_bluetooth_white_24dp.xml" />
-         <resource-file src="src/android/res/drawable/ic_call_black_24dp.xml" target="res/drawable/ic_call_black_24dp.xml" />
-         <resource-file src="src/android/res/drawable/ic_call_white_24px.xml" target="res/drawable/ic_call_white_24px.xml" />
-         <resource-file src="src/android/res/drawable/ic_close_white_24dp.xml" target="res/drawable/ic_close_white_24dp.xml" />
-         <resource-file src="src/android/res/drawable/ic_error_outline.xml" target="res/drawable/ic_error_outline.xml" />
-         <resource-file src="src/android/res/drawable/ic_exit_to_app_white_24px.xml" target="res/drawable/ic_exit_to_app_white_24px.xml" />
-         <resource-file src="src/android/res/drawable/ic_headset_mic_white_24dp.xml" target="res/drawable/ic_headset_mic_white_24dp.xml" />
-         <resource-file src="src/android/res/drawable/ic_launcher_background.xml" target="res/drawable/ic_launcher_background.xml" />
-         <resource-file src="src/android/res/drawable/ic_mic_green_24px.xml" target="res/drawable/ic_mic_green_24px.xml" />
-         <resource-file src="src/android/res/drawable/ic_call_end_white_24px.xml" target="res/drawable/ic_call_end_white_24px.xml" />
-         <resource-file src="src/android/res/drawable/ic_mic_off_gray_24px.xml" target="res/drawable/ic_mic_off_gray_24px.xml" />
-         <resource-file src="src/android/res/drawable/ic_mic_off_red_24px.xml" target="res/drawable/ic_mic_off_red_24px.xml" />
-         <resource-file src="src/android/res/drawable/ic_mic_white_24px.xml" target="res/drawable/ic_mic_white_24px.xml" />
-         <resource-file src="src/android/res/drawable/ic_more_vert_white_24dp.xml" target="res/drawable/ic_more_vert_white_24dp.xml" />
-         <resource-file src="src/android/res/drawable/ic_pause_green_24px.xml" target="res/drawable/ic_pause_green_24px.xml" />
-         <resource-file src="src/android/res/drawable/ic_pause_red_24px.xml" target="res/drawable/ic_pause_red_24px.xml" />
-         <resource-file src="src/android/res/drawable/ic_phonelink_ring_white_24dp.xml" target="res/drawable/ic_phonelink_ring_white_24dp.xml" />
-         <resource-file src="src/android/res/drawable/ic_pin.xml" target="res/drawable/ic_pin.xml" />
-         <resource-file src="src/android/res/drawable/ic_play_white_24px.xml" target="res/drawable/ic_play_white_24px.xml" />
-         <resource-file src="src/android/res/drawable/ic_recording.xml" target="res/drawable/ic_recording.xml" />
-         <resource-file src="src/android/res/drawable/ic_screen_share_white_24dp.xml" target="res/drawable/ic_screen_share_white_24dp.xml" />
-         <resource-file src="src/android/res/drawable/ic_stats_disabled_image.xml" target="res/drawable/ic_stats_disabled_image.xml" />
-         <resource-file src="src/android/res/drawable/ic_stop_screen_share_white_24dp.xml" target="res/drawable/ic_stop_screen_share_white_24dp.xml" />
-         <resource-file src="src/android/res/drawable/ic_switch_camera_512dp.xml" target="res/drawable/ic_switch_camera_512dp.xml" />
-         <resource-file src="src/android/res/drawable/ic_switch_camera_white_24dp.xml" target="res/drawable/ic_switch_camera_white_24dp.xml" />
-         <resource-file src="src/android/res/drawable/ic_thumbnail_no_audio.xml" target="res/drawable/ic_thumbnail_no_audio.xml" />
-         <resource-file src="src/android/res/drawable/ic_videocam_green_24px.xml" target="res/drawable/ic_videocam_green_24px.xml" />
-         <resource-file src="src/android/res/drawable/ic_videocam_off_gray_24px.xml" target="res/drawable/ic_videocam_off_gray_24px.xml" />
-         <resource-file src="src/android/res/drawable/ic_videocam_off_red_24px.xml" target="res/drawable/ic_videocam_off_red_24px.xml" />
-         <resource-file src="src/android/res/drawable/ic_videocam_white_24px.xml" target="res/drawable/ic_videocam_white_24px.xml" />
-         <resource-file src="src/android/res/drawable/ic_volume_down_gray_24px.xml" target="res/drawable/ic_volume_down_gray_24px.xml" />
-         <resource-file src="src/android/res/drawable/ic_volume_down_green_24px.xml" target="res/drawable/ic_volume_down_green_24px.xml" />
-         <resource-file src="src/android/res/drawable/ic_volume_down_white_24px.xml" target="res/drawable/ic_volume_down_white_24px.xml" />
-         <resource-file src="src/android/res/drawable/ic_volume_up_white_24dp.xml" target="res/drawable/ic_volume_up_white_24dp.xml" />
-         <resource-file src="src/android/res/drawable/join_button.xml" target="res/drawable/join_button.xml" />
-         <resource-file src="src/android/res/drawable/network_quality_level_0.png" target="res/drawable/network_quality_level_0.png" />
-         <resource-file src="src/android/res/drawable/network_quality_level_1.png" target="res/drawable/network_quality_level_1.png" />
-         <resource-file src="src/android/res/drawable/network_quality_level_2.png" target="res/drawable/network_quality_level_2.png" />
-         <resource-file src="src/android/res/drawable/network_quality_level_3.png" target="res/drawable/network_quality_level_3.png" />
-         <resource-file src="src/android/res/drawable/network_quality_level_4.png" target="res/drawable/network_quality_level_4.png" />
-         <resource-file src="src/android/res/drawable/network_quality_level_5.png" target="res/drawable/network_quality_level_5.png" />
-         <resource-file src="src/android/res/drawable/participant_background.xml" target="res/drawable/participant_background.xml" />
-         <resource-file src="src/android/res/drawable/participant_selected_background.xml" target="res/drawable/participant_selected_background.xml" />
-         <resource-file src="src/android/res/drawable/participant_stroke.xml" target="res/drawable/participant_stroke.xml" />
-         <resource-file src="src/android/res/drawable/roundbutton.xml" target="res/drawable/roundbutton.xml" />
-         <resource-file src="src/android/res/drawable/splash_screen.xml" target="res/drawable/splash_screen.xml" />
-         <resource-file src="src/android/res/drawable/twilio_badge_white.xml" target="res/drawable/twilio_badge_white.xml" />
-         <resource-file src="src/android/res/drawable/twilio_badge_white.xml" target="res/drawable/twilio_badge_white.xml" />
-         <resource-file src="src/android/res/drawable/twilio_name_white.png" target="res/drawable/twilio_name_white/twilio_name_white.png" />
-         <resource-file src="src/android/res/drawable/video_logo_splash.png" target="res/drawable/video_logo_splash/video_logo_splash.png" />
-         <resource-file src="src/android/res/drawable/twilio_name_white.png" target="res/drawable/video_logo_splash/twilio_name_white.png" />
-         <resource-file src="src/android/res/drawable/ic_videocam_notification.png" target="res/drawable/video_logo_splash/ic_videocam_notification.png" />
-
-         <resource-file src="src/android/res/layout/content_room.xml" target="res/layout/content_room.xml" />
-         <resource-file src="src/android/res/layout/join_room.xml" target="res/layout/join_room.xml" />
-         <resource-file src="src/android/res/layout/number_preference.xml" target="res/layout/number_preference.xml" />
-         <resource-file src="src/android/res/layout/participant_primary_view.xml" target="res/layout/participant_primary_view.xml" />
-         <resource-file src="src/android/res/layout/participant_view.xml" target="res/layout/participant_view.xml" />
-         <resource-file src="src/android/res/layout/room_activity.xml" target="res/layout/room_activity.xml" />
-         <resource-file src="src/android/res/layout/stats_view.xml" target="res/layout/stats_view.xml" />
-
-         <resource-file src="src/android/res/menu/room_menu.xml" target="res/menu/room_menu.xml" />
-
-         <resource-file src="src/android/res/values/attrs.xml" target="res/values/attrs.xml" />
-         <resource-file src="src/android/res/values/colors.xml" target="res/values/colors.xml" />
-         <resource-file src="src/android/res/values/dimens.xml" target="res/values/dimens.xml" />
-         <resource-file src="src/android/res/values/strings.xml" target="res/values/strings.xml" />
-         <resource-file src="src/android/res/values/styles.xml" target="res/values/styles.xml" />
-         <resource-file src="src/android/res/values/values.xml" target="res/values/values.xml" />
-
-         <resource-file src="src/android/res/xml/advanced_preferences.xml" target="res/xml/advanced_preferences.xml" />
-         <resource-file src="src/android/res/xml/audio_preferences.xml" target="res/xml/audio_preferences.xml" />
-         <resource-file src="src/android/res/xml/bandwidth_profile_preferences.xml" target="res/xml/bandwidth_profile_preferences.xml" />
-         <resource-file src="src/android/res/xml/config.xml" target="res/xml/config.xml" />
-         <resource-file src="src/android/res/xml/internal_preferences.xml" target="res/xml/internal_preferences.xml" />
-         <resource-file src="src/android/res/xml/network_security_config.xml" target="res/xml/network_security_config.xml" />
-         <resource-file src="src/android/res/xml/preferences.xml" target="res/xml/preferences.xml" />
-         
-     
+      <source-file src="src/android/StatsListAdapter.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/StatsListAdapter" />
+      <source-file src="src/android/SharedPreferencesWrapper.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/SharedPreferencesWrapper" />
+      <source-file src="src/android/BaseActivity.java" target-dir="src/cordova/plugin/videocall/BaseActivity" />
+      <source-file src="src/android/DataModule.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/DataModule" />
+      <source-file src="src/android/NumberPreference.java" target-dir="src/cordova/plugin/videocall/NumberPreference" />
+      <source-file src="src/android/NumberPreferenceDialogFragmentCompat.java" target-dir="src/cordova/plugin/videocall/NumberPreferenceDialogFragmentCompat" />
+      <source-file src="src/android/Preferences.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/Preferences" />
+      <source-file src="src/android/TwilioApiEnvironment.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/TwilioApiEnvironment" />
+      <source-file src="src/android/Topology.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/Topology" />
+      <source-file src="src/android/StatsListItem.java" target-dir="src/cordova/plugin/videocall/StatsListItem" />
+      <source-file src="src/android/ParticipantManager.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/ParticipantManager" />
+      <source-file src="src/android/ParticipantViewState.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/ParticipantViewState" />
+      <source-file src="src/android/ConnectOptionsFactory.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/ConnectOptionsFactory" />
+      <source-file src="src/android/LocalParticipantListener.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/LocalParticipantListener" />
+      <source-file src="src/android/LocalParticipantManager.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/LocalParticipantManager" />
+      <source-file src="src/android/RemoteParticipantListener.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/RemoteParticipantListener" />
+      <source-file src="src/android/RoomManager.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/RoomManager" />
+      <source-file src="src/android/RoomStats.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/RoomStats" />
+      <source-file src="src/android/StatsScheduler.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/StatsScheduler" />
+      <source-file src="src/android/VideoClient.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/VideoClient" />
+      <source-file src="src/android/VideoSdkModule.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/VideoSdkModule" />
+      <source-file src="src/android/VideoTrackViewState.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/VideoTrackViewState" />
+      <source-file src="src/android/ApiService.java" target-dir="src/cordova/plugin/videocall/ApiService" />
+      <source-file src="src/android/ClearableEditText.java" target-dir="src/cordova/plugin/videocall/ClearableEditText" />
+      <source-file src="src/android/Data.java" target-dir="src/cordova/plugin/videocall/Data" />
+      <source-file src="src/android/MyResponse.java" target-dir="src/cordova/plugin/videocall/MyResponse" />
+      <source-file src="src/android/ParticipantAdapter.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/ParticipantAdapter" />
+      <source-file src="src/android/ParticipantPrimaryView.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/ParticipantPrimaryView" />
+      <source-file src="src/android/ParticipantThumbView.java" target-dir="src/cordova/plugin/videocall/ParticipantThumbView" />
+      <source-file src="src/android/ParticipantView.java" target-dir="src/cordova/plugin/videocall/ParticipantView" />
+      <source-file src="src/android/ParticipantViewHolder.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/ParticipantViewHolder" />
+      <source-file src="src/android/PrimaryParticipantController.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/PrimaryParticipantController" />
+      <source-file src="src/android/RetrofitAPi.java" target-dir="src/cordova/plugin/videocall/RetrofitAPi" />
+      <source-file src="src/android/RoomActivity.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/RoomActivity" />
+      <source-file src="src/android/RoomActivityModule.java" target-dir="src/cordova/plugin/videocall/RoomActivityModule" />
+      <source-file src="src/android/RoomActivitySubcomponent.java" target-dir="src/cordova/plugin/videocall/RoomActivitySubcomponen" />
+      <source-file src="src/android/RoomEvent.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/RoomEvent" />
+      <source-file src="src/android/RoomNotification.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/RoomNotification" />
+      <source-file src="src/android/RoomViewEffect.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/RoomViewEffect" />
+      <source-file src="src/android/RoomViewEvent.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/RoomViewEvent" />
+      <source-file src="src/android/RoomViewModel.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/RoomViewModel" />
+      <source-file src="src/android/RoomViewState.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/RoomViewState" />
+      <source-file src="src/android/UriRoomParser.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/UriRoomParser" />
+      <source-file src="src/android/UriWrapper.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/UriWrapper" />
+      <source-file src="src/android/VideoService.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/VideoService" />
+      <source-file src="src/android/VideoServiceModule.java" target-dir="src/cordova/plugin/videocall/VideoServiceModule" />
+      <source-file src="src/android/VideoServiceSubcomponent.java" target-dir="src/cordova/plugin/videocall/VideoServiceSubcomponent" />
+      <source-file src="src/android/AdvancedSettingsFragment.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/AdvancedSettingsFragment" />
+      <source-file src="src/android/AudioSettingsFragment.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/AudioSettingsFragment" />
+      <source-file src="src/android/BandwidthProfileSettingsFragment.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/BandwidthProfileSettingsFragment" />
+      <source-file src="src/android/BaseSettingsFragment.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/BaseSettingsFragment" />
+      <source-file src="src/android/InternalSettingsFragment.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/InternalSettingsFragment" />
+      <source-file src="src/android/SettingsActivity.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/SettingsActivity" />
+      <source-file src="src/android/SettingsActivityModule.java" target-dir="src/cordova/plugin/videocall/SettingsActivityModule" />
+      <source-file src="src/android/SettingsActivitySubcomponent.java" target-dir="src/cordova/plugin/videocall/SettingsActivitySubcomponent" />
+      <source-file src="src/android/SettingsFragment.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/SettingsFragment" />
+      <source-file src="src/android/SettingsFragmentModule.java" target-dir="src/cordova/plugin/videocall/SettingsFragmentModule" />
+      <source-file src="src/android/SettingsFragmentSubcomponent.java" target-dir="src/cordova/plugin/videocall/SettingsFragmentSubcomponent" />
+      <source-file src="src/android/ScreenSelector.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/ScreenSelector" />
+      <source-file src="src/android/BuildConfigUtils.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/BuildConfigUtils" />
+      <source-file src="src/android/CameraCapturerCompat.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/CameraCapturerCompat" />
+      <source-file src="src/android/CompositeDisposableExtensions.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/CompositeDisposableExtensions" />
+      <source-file src="src/android/CrashlyticsTreeRanger.java" target-dir="src/cordova/plugin/videocall/CrashlyticsTreeRanger" />
+      <source-file src="src/android/DebugTree.java" target-dir="src/cordova/plugin/videocall/DebugTree" />
+      <source-file src="src/android/EnvUtil.java" target-dir="src/cordova/plugin/videocall/EnvUtil" />
+      <source-file src="src/android/FragmentManagerExtensions.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/FragmentManagerExtensions" />
+      <source-file src="src/android/InputUtils.java" target-dir="src/cordova/plugin/videocall/InputUtils" />
+      <source-file src="src/android/PermissionUtil.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/PermissionUtil" />
+      <source-file src="src/android/ReleaseTree.java" target-dir="src/cordova/plugin/videocall/ReleaseTree" />
+      <source-file src="src/android/SharedPreferencesUtil.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/SharedPreferencesUtil" />
+      <source-file src="src/android/TreeRanger.java" target-dir="src/cordova/plugin/videocall/TreeRanger" />
+      <source-file src="src/android/ApplicationModule.java" target-dir="src/cordova/plugin/videocall/ApplicationModule" />
+      <source-file src="src/android/ApplicationScope.java" target-dir="src/cordova/plugin/videocall/ApplicationScope" />
+      <source-file src="src/android/AudioSwitchModule.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/AudioSwitchModule" />
+      <source-file src="src/android/BuildConfig.java" target-dir="src/cordova/plugin/videocall/BuildConfig" />
+      <source-file src="src/android/TreeModule.java" target-dir="src/cordova/plugin/videocall/TreeModule" />
+      <source-file src="src/android/VideoApplication.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/VideoApplication" />
+      <source-file src="src/android/CommunityPreferences.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/CommunityPreferences" />
+      <source-file src="src/android/CommunityVideoSdkModule.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/CommunityVideoSdkModule" />
+      <source-file src="src/android/SecurePreferences.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/SecurePreferences" />
+      <source-file src="src/android/SecurePreferencesImpl.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/SecurePreferencesImpl" />
+      <source-file src="src/android/SecurityModule.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/SecurityModule" />
+      <source-file src="src/android/AppCenterWrapper.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/AppCenterWrapper" />
+      <source-file src="src/android/CommunityTreeModule.java" target-dir="src/cordova/plugin/videocall/CommunityTreeModule" />
+      <source-file src="src/android/VideoApplicationComponent.java" target-dir="src/cordova/plugin/videocall/VideoApplicationComponent" />
+      <framework custom="true" src="src/android/twiliovideo.gradle" type="gradleReference" />
+      <resource-file src="src/android/res/drawable/badge_background.xml" target="res/drawable/badge_background.xml" />
+      <resource-file src="src/android/res/drawable/edit_text_cursor.xml" target="res/drawable/edit_text_cursor.xml" />
+      <resource-file src="src/android/res/drawable/ic_account_circle_white_24dp.xml" target="res/drawable/ic_account_circle_white_24dp.xml" />
+      <resource-file src="src/android/res/drawable/ic_account_circle_white_48px.xml" target="res/drawable/ic_account_circle_white_48px.xml" />
+      <resource-file src="src/android/res/drawable/ic_add_circle_white_24px.xml" target="res/drawable/ic_add_circle_white_24px.xml" />
+      <resource-file src="src/android/res/drawable/ic_bluetooth_white_24dp.xml" target="res/drawable/ic_bluetooth_white_24dp.xml" />
+      <resource-file src="src/android/res/drawable/ic_call_black_24dp.xml" target="res/drawable/ic_call_black_24dp.xml" />
+      <resource-file src="src/android/res/drawable/ic_call_white_24px.xml" target="res/drawable/ic_call_white_24px.xml" />
+      <resource-file src="src/android/res/drawable/ic_close_white_24dp.xml" target="res/drawable/ic_close_white_24dp.xml" />
+      <resource-file src="src/android/res/drawable/ic_error_outline.xml" target="res/drawable/ic_error_outline.xml" />
+      <resource-file src="src/android/res/drawable/ic_exit_to_app_white_24px.xml" target="res/drawable/ic_exit_to_app_white_24px.xml" />
+      <resource-file src="src/android/res/drawable/ic_headset_mic_white_24dp.xml" target="res/drawable/ic_headset_mic_white_24dp.xml" />
+      <resource-file src="src/android/res/drawable/ic_launcher_background.xml" target="res/drawable/ic_launcher_background.xml" />
+      <resource-file src="src/android/res/drawable/ic_mic_green_24px.xml" target="res/drawable/ic_mic_green_24px.xml" />
+      <resource-file src="src/android/res/drawable/ic_call_end_white_24px.xml" target="res/drawable/ic_call_end_white_24px.xml" />
+      <resource-file src="src/android/res/drawable/ic_mic_off_gray_24px.xml" target="res/drawable/ic_mic_off_gray_24px.xml" />
+      <resource-file src="src/android/res/drawable/ic_mic_off_red_24px.xml" target="res/drawable/ic_mic_off_red_24px.xml" />
+      <resource-file src="src/android/res/drawable/ic_mic_white_24px.xml" target="res/drawable/ic_mic_white_24px.xml" />
+      <resource-file src="src/android/res/drawable/ic_more_vert_white_24dp.xml" target="res/drawable/ic_more_vert_white_24dp.xml" />
+      <resource-file src="src/android/res/drawable/ic_pause_green_24px.xml" target="res/drawable/ic_pause_green_24px.xml" />
+      <resource-file src="src/android/res/drawable/ic_pause_red_24px.xml" target="res/drawable/ic_pause_red_24px.xml" />
+      <resource-file src="src/android/res/drawable/ic_phonelink_ring_white_24dp.xml" target="res/drawable/ic_phonelink_ring_white_24dp.xml" />
+      <resource-file src="src/android/res/drawable/ic_pin.xml" target="res/drawable/ic_pin.xml" />
+      <resource-file src="src/android/res/drawable/ic_play_white_24px.xml" target="res/drawable/ic_play_white_24px.xml" />
+      <resource-file src="src/android/res/drawable/ic_recording.xml" target="res/drawable/ic_recording.xml" />
+      <resource-file src="src/android/res/drawable/ic_screen_share_white_24dp.xml" target="res/drawable/ic_screen_share_white_24dp.xml" />
+      <resource-file src="src/android/res/drawable/ic_stats_disabled_image.xml" target="res/drawable/ic_stats_disabled_image.xml" />
+      <resource-file src="src/android/res/drawable/ic_stop_screen_share_white_24dp.xml" target="res/drawable/ic_stop_screen_share_white_24dp.xml" />
+      <resource-file src="src/android/res/drawable/ic_switch_camera_512dp.xml" target="res/drawable/ic_switch_camera_512dp.xml" />
+      <resource-file src="src/android/res/drawable/ic_switch_camera_white_24dp.xml" target="res/drawable/ic_switch_camera_white_24dp.xml" />
+      <resource-file src="src/android/res/drawable/ic_thumbnail_no_audio.xml" target="res/drawable/ic_thumbnail_no_audio.xml" />
+      <resource-file src="src/android/res/drawable/ic_videocam_green_24px.xml" target="res/drawable/ic_videocam_green_24px.xml" />
+      <resource-file src="src/android/res/drawable/ic_videocam_off_gray_24px.xml" target="res/drawable/ic_videocam_off_gray_24px.xml" />
+      <resource-file src="src/android/res/drawable/ic_videocam_off_red_24px.xml" target="res/drawable/ic_videocam_off_red_24px.xml" />
+      <resource-file src="src/android/res/drawable/ic_videocam_white_24px.xml" target="res/drawable/ic_videocam_white_24px.xml" />
+      <resource-file src="src/android/res/drawable/ic_volume_down_gray_24px.xml" target="res/drawable/ic_volume_down_gray_24px.xml" />
+      <resource-file src="src/android/res/drawable/ic_volume_down_green_24px.xml" target="res/drawable/ic_volume_down_green_24px.xml" />
+      <resource-file src="src/android/res/drawable/ic_volume_down_white_24px.xml" target="res/drawable/ic_volume_down_white_24px.xml" />
+      <resource-file src="src/android/res/drawable/ic_volume_up_white_24dp.xml" target="res/drawable/ic_volume_up_white_24dp.xml" />
+      <resource-file src="src/android/res/drawable/join_button.xml" target="res/drawable/join_button.xml" />
+      <resource-file src="src/android/res/drawable/network_quality_level_0.png" target="res/drawable/network_quality_level_0.png" />
+      <resource-file src="src/android/res/drawable/network_quality_level_1.png" target="res/drawable/network_quality_level_1.png" />
+      <resource-file src="src/android/res/drawable/network_quality_level_2.png" target="res/drawable/network_quality_level_2.png" />
+      <resource-file src="src/android/res/drawable/network_quality_level_3.png" target="res/drawable/network_quality_level_3.png" />
+      <resource-file src="src/android/res/drawable/network_quality_level_4.png" target="res/drawable/network_quality_level_4.png" />
+      <resource-file src="src/android/res/drawable/network_quality_level_5.png" target="res/drawable/network_quality_level_5.png" />
+      <resource-file src="src/android/res/drawable/participant_background.xml" target="res/drawable/participant_background.xml" />
+      <resource-file src="src/android/res/drawable/participant_selected_background.xml" target="res/drawable/participant_selected_background.xml" />
+      <resource-file src="src/android/res/drawable/participant_stroke.xml" target="res/drawable/participant_stroke.xml" />
+      <resource-file src="src/android/res/drawable/roundbutton.xml" target="res/drawable/roundbutton.xml" />
+      <resource-file src="src/android/res/drawable/splash_screen.xml" target="res/drawable/splash_screen.xml" />
+      <resource-file src="src/android/res/drawable/twilio_badge_white.xml" target="res/drawable/twilio_badge_white.xml" />
+      <resource-file src="src/android/res/drawable/twilio_badge_white.xml" target="res/drawable/twilio_badge_white.xml" />
+      <resource-file src="src/android/res/drawable/twilio_name_white.png" target="res/drawable/twilio_name_white/twilio_name_white.png" />
+      <resource-file src="src/android/res/drawable/video_logo_splash.png" target="res/drawable/video_logo_splash/video_logo_splash.png" />
+      <resource-file src="src/android/res/drawable/twilio_name_white.png" target="res/drawable/video_logo_splash/twilio_name_white.png" />
+      <resource-file src="src/android/res/drawable/ic_videocam_notification.png" target="res/drawable/video_logo_splash/ic_videocam_notification.png" />
+      <resource-file src="src/android/res/layout/content_room.xml" target="res/layout/content_room.xml" />
+      <resource-file src="src/android/res/layout/join_room.xml" target="res/layout/join_room.xml" />
+      <resource-file src="src/android/res/layout/number_preference.xml" target="res/layout/number_preference.xml" />
+      <resource-file src="src/android/res/layout/participant_primary_view.xml" target="res/layout/participant_primary_view.xml" />
+      <resource-file src="src/android/res/layout/participant_view.xml" target="res/layout/participant_view.xml" />
+      <resource-file src="src/android/res/layout/room_activity.xml" target="res/layout/room_activity.xml" />
+      <resource-file src="src/android/res/layout/stats_view.xml" target="res/layout/stats_view.xml" />
+      <resource-file src="src/android/res/menu/room_menu.xml" target="res/menu/room_menu.xml" />
+      <resource-file src="src/android/res/values/attrs.xml" target="res/values/attrs.xml" />
+      <resource-file src="src/android/res/values/colors.xml" target="res/values/colors.xml" />
+      <resource-file src="src/android/res/values/dimens.xml" target="res/values/dimens.xml" />
+      <resource-file src="src/android/res/values/strings.xml" target="res/values/strings.xml" />
+      <resource-file src="src/android/res/values/styles.xml" target="res/values/styles.xml" />
+      <resource-file src="src/android/res/values/values.xml" target="res/values/values.xml" />
+      <resource-file src="src/android/res/xml/advanced_preferences.xml" target="res/xml/advanced_preferences.xml" />
+      <resource-file src="src/android/res/xml/audio_preferences.xml" target="res/xml/audio_preferences.xml" />
+      <resource-file src="src/android/res/xml/bandwidth_profile_preferences.xml" target="res/xml/bandwidth_profile_preferences.xml" />
+      <resource-file src="src/android/res/xml/config.xml" target="res/xml/config.xml" />
+      <resource-file src="src/android/res/xml/internal_preferences.xml" target="res/xml/internal_preferences.xml" />
+      <resource-file src="src/android/res/xml/network_security_config.xml" target="res/xml/network_security_config.xml" />
+      <resource-file src="src/android/res/xml/preferences.xml" target="res/xml/preferences.xml" />
+   </platform>
+   <platform name="ios">
+      <config-file parent="/*" target="config.xml">
+         <feature name="videocall">
+            <param name="ios-package" value="videocall" />
+         </feature>
+      </config-file>
+      <source-file src="src/ios/videocall.swift" />
    </platform>
 </plugin>
