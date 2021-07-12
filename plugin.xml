@@ -197,5 +197,6 @@
       </config-file>
       <source-file src="src/ios/videocall.swift" />
       <framework src="TwilioVideo" type="podspec" spec="~> 4.4" />
+      <framework src="IGListDiffKit" type="podspec" spec="~> 4" />
    </platform>
 </plugin>
