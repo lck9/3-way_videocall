@@ -204,9 +204,7 @@
         </config>
         <pods use-frameworks="true">
             <pod name="TwilioVideo" spec="~> 4.4.0" />
-        </pods>
-        <pods use-frameworks="true">
-            <pod name="IGListDiffKit" spec="~> 4.0.0" />
+             <pod name="IGListDiffKit" spec="~> 4.0.0" />
         </pods>
     </podspec>
    </platform>
