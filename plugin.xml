@@ -209,6 +209,122 @@
          </feature>
       </config-file>
       <source-file src="src/ios/videocall.swift" />
+       <source-file src="src/ios/AppInfo.swift" />
+       <source-file src="src/ios/AppInfoStore.swift" />
+       <source-file src="src/ios/AppInfoStoreFactory.swift" />
+       <source-file src="src/ios/AppSettingsStore.swift" />
+       <source-file src="src/ios/BandwidthProfileMode.swift" />
+       <source-file src="src/ios/BundleProtocol.swift" />
+       <source-file src="src/ios/CameraConfigFactory.swift" />
+       <source-file src="src/ios/CameraManager.swift" />
+       <source-file src="src/ios/CameraManagerFactory.swift" />
+       <source-file src="src/ios/CameraTrackFactory.swift" />
+       <source-file src="src/ios/CameraSourceFactory.swift" />
+       <source-file src="src/ios/CircleButton.swift" />
+       <source-file src="src/ios/CircleView.swift" />
+       <source-file src="src/ios/CommunityCreateTwilioAccessTokenResponse.swift" />
+       <source-file src="src/ios/ConnectOptionsFactory.swift" />
+       <source-file src="src/ios/DispatchQueueProtocol.swift" />
+       <source-file src="src/ios/Environment.swift" />
+       <source-file src="src/ios/IndexSetHelpers.swift" />
+      <source-file src="src/ios/JSONContainer.swift" />
+      <source-file src="src/ios/LaunchStore.swift" />
+      <source-file src="src/ios/LobbyViewController.swift" />
+      <source-file src="src/ios/LocalParticipant.swift" />
+      <source-file src="src/ios/LocalVideoTrack.swift" />
+      <source-file src="src/ios/MainParticipantStore.swift" />
+      <source-file src="src/ios/MicTrackFactory.swift" />
+      <source-file src="src/ios/NibView.swift" />
+      <source-file src="src/ios/NotificationCenterProtocol.swift" />
+      <source-file src="src/ios/Notifications.swift" />
+      <source-file src="src/ios/Participant.swift" />
+      <source-file src="src/ios/ParticipantCell.swift" />
+      <source-file src="src/ios/ParticipantDelegate.swift" />
+      <source-file src="src/ios/ParticipantsStore.swift" />
+      <source-file src="src/ios/RemoteConfigStore.swift" />
+      <source-file src="src/ios/RemoteConfigStoreFactory.swift" />
+      <source-file src="src/ios/RemoteParticipant.swift" />
+      <source-file src="src/ios/RemoteVideoTrack.swift" />
+      <source-file src="src/ios/Room.swift" />
+      <source-file src="src/ios/RoomFactory.swift" />
+      <source-file src="src/ios/RoomState.swift" />
+      <source-file src="src/ios/RoomViewController.swift" />
+      <source-file src="src/ios/RoomViewModel.swift" />
+      <source-file src="src/ios/RoomViewModelData.swift" />
+      <source-file src="src/ios/RoomViewModelFactory.swift" />
+      <source-file src="src/ios/SDKLogLevel.swift" />
+      <source-file src="src/ios/SettingOptions.swift" />
+      <source-file src="src/ios/ShowError.swift" />
+      <source-file src="src/ios/Storage.swift" />
+      <source-file src="src/ios/StringHelpers.swift" />
+      <source-file src="src/ios/SwiftToObjc.swift" />
+      <source-file src="src/ios/ToggleButton.swift" />
+      <source-file src="src/ios/Topology.swift" />
+      <source-file src="src/ios/TrackName.swift" />
+      <source-file src="src/ios/TrackPriority.swift" />
+      <source-file src="src/ios/TrackSwitchOffMode.swift" />
+      <source-file src="src/ios/UICollectionViewHelpers.swift" />
+      <source-file src="src/ios/UIColorHelpers.swift" />
+      <source-file src="src/ios/UITableViewCellHelpers.swift" />
+      <source-file src="src/ios/UITableViewHelpers.swift" />
+      <source-file src="src/ios/UserDefaultsProtocol.swift" />
+      <source-file src="src/ios/VideoCodec.swift" />
+      <source-file src="src/ios/VideoDimensionsName.swift" />
+      <source-file src="src/ios/VideoSource.swift" />
+      <source-file src="src/ios/VideoTrack.swift" />
+      <source-file src="src/ios/VideoView.swift" />
+
+       <resource-file src="src/ios/Resources/Error.png" target="Resources/Error.png" />
+       <resource-file src="src/ios/Resources/hangup icon.png" target="Resources/hangup icon.png" />  
+       <resource-file src="src/ios/Resources/hangup icon@2x.png" target="Resources/hangup icon@2x.png" />
+       <resource-file src="src/ios/Resources/hangup icon@3x.png" target="Resources/hangup icon@3x.png" />
+       <resource-file src="src/ios/Resources/ic_mic_off_white_2x.png" target="Resources/ic_mic_off_white_2x.png" />
+       <resource-file src="src/ios/Resources/ic_mic_off_white_3x.png" target="Resources/ic_mic_off_white_3x.png" />
+       <resource-file src="src/ios/Resources/ic_mic_off_white.png" target="Resources/ic_mic_off_white.png" />
+       <resource-file src="src/ios/Resources/ic_mic_white_2x.png" target="Resources/ic_mic_white_2x.png" />
+       <resource-file src="src/ios/Resources/ic_mic_white_3x.png" target="Resources/ic_mic_white_3x.png" />
+        <resource-file src="src/ios/Resources/ic_mic_white.png" target="Resources/ic_mic_white.png" />
+         <resource-file src="src/ios/Resources/ic_settings_white.png" target="Resources/ic_settings_white.png" />
+         <resource-file src="src/ios/Resources/ic_settings_white_2x.png" target="Resources/ic_settings_white_2x.png" />
+          <resource-file src="src/ios/Resources/ic_settings_white_3x.png" target="Resources/ic_settings_white_3x.png" />
+       <resource-file src="src/ios/Resources/ic_switch_camera_white_2x.png" target="Resources/ic_switch_camera_white_2x.png" />
+       <resource-file src="src/ios/Resources/ic_switch_camera_white_3x.png" target="Resources/ic_switch_camera_white_3x.png" />
+       <resource-file src="src/ios/Resources/ic_switch_camera_white.png" target="Resources/ic_switch_camera_white.png" />
+      <resource-file src="src/ios/Resources/Pin.png" target="Resources/Pin.png" />
+       <resource-file src="src/ios/Resources/stats disabled image.png" target="Resources/stats disabled image.png" />
+      <resource-file src="src/ios/Resources/stats disabled image@2x.png" target="Resources/stats disabled image@2x.png" />
+      <resource-file src="src/ios/Resources/stats disabled image@3x.png" target="Resources/stats disabled image@3x.png" />
+      <resource-file src="src/ios/Resources/Vector-1.png" target="Resources/Vector-1.png" />
+      <resource-file src="src/ios/Resources/Vector-2.png" target="Resources/Vector-2.png" />
+       <resource-file src="src/ios/Resources/ParticipantCell.xib" target="Resources/ParticipantCell.xib" />
+      <resource-file src="src/ios/Resources/Video.storyboard" target="Resources/Video.storyboard" />
+      <resource-file src="src/ios/Resources/videocam_off-24px 1.png" target="Resources/videocam_off-24px 1.png" />
+      <resource-file src="src/ios/Resources/videocam-24px 1.png" target="Resources/videocam-24px 1.png" />
+      <resource-file src="src/ios/Resources/network-quality-level-0~universal@1x.png" target="Resources/network-quality-level-0~universal@1x.png" />
+       <resource-file src="src/ios/Resources/network-quality-level-0~universal@2x.png" target="Resources/network-quality-level-0~universal@2x.png" />
+       <resource-file src="src/ios/Resources/network-quality-level-0~universal@3x.png" target="Resources/network-quality-level-0~universal@3x.png" />
+
+       <resource-file src="src/ios/Resources/network-quality-level-1~universal@1x.png" target="Resources/network-quality-level-1~universal@1x.png" />
+       <resource-file src="src/ios/Resources/network-quality-level-1~universal@2x.png" target="Resources/network-quality-level-1~universal@2x.png" />
+       <resource-file src="src/ios/Resources/network-quality-level-1~universal@3x.png" target="Resources/network-quality-level-1~universal@3x.png" />
+
+       <resource-file src="src/ios/Resources/network-quality-level-2~universal@1x.png" target="Resources/network-quality-level-2~universal@1x.png" />
+       <resource-file src="src/ios/Resources/network-quality-level-2~universal@2x.png" target="Resources/network-quality-level-2~universal@2x.png" />
+       <resource-file src="src/ios/Resources/network-quality-level-2~universal@3x.png" target="Resources/network-quality-level-2~universal@3x.png" />
+
+       <resource-file src="src/ios/Resources/network-quality-level-3~universal@1x.png" target="Resources/network-quality-level-3~universal@1x.png" />
+       <resource-file src="src/ios/Resources/network-quality-level-3~universal@2x.png" target="Resources/network-quality-level-3~universal@2x.png" />
+       <resource-file src="src/ios/Resources/network-quality-level-3~universal@3x.png" target="Resources/network-quality-level-3~universal@3x.png" />
+
+       <resource-file src="src/ios/Resources/network-quality-level-4~universal@1x.png" target="Resources/network-quality-level-4~universal@1x.png" />
+       <resource-file src="src/ios/Resources/network-quality-level-4~universal@2x.png" target="Resources/network-quality-level-4~universal@2x.png" />
+       <resource-file src="src/ios/Resources/network-quality-level-4~universal@3x.png" target="Resources/network-quality-level-4~universal@3x.png" />
+
+       <resource-file src="src/ios/Resources/network-quality-level-5~universal@1x.png" target="Resources/network-quality-level-5~universal@1x.png" />
+       <resource-file src="src/ios/Resources/network-quality-level-5~universal@2x.png" target="Resources/network-quality-level-5~universal@2x.png" />
+       <resource-file src="src/ios/Resources/network-quality-level-5~universal@3x.png" target="Resources/network-quality-level-5~universal@3x.png" />
+      <resource-file src="src/ios/Resources/videocam-24px 1.png" target="Resources/videocam-24px 1.png" />
+      <resource-file src="src/ios/Resources/VideoView.xib" target="Resources/VideoView.xib" />
       <!-- <framework src="TwilioVideo" type="podspec" spec="~> 4.4.0" />
       <framework src="IGListDiffKit" type="podspec" spec="~>4.0.0" /> -->
       <podspec>
