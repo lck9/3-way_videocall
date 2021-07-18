@@ -109,7 +109,13 @@
       <source-file src="src/android/AppCenterWrapper.kt" target-dir="app/src/main/kotlin/src/cordova/plugin/videocall/AppCenterWrapper" />
       <source-file src="src/android/CommunityTreeModule.java" target-dir="src/cordova/plugin/videocall/CommunityTreeModule" />
       <source-file src="src/android/VideoApplicationComponent.java" target-dir="src/cordova/plugin/videocall/VideoApplicationComponent" />
+
+      <source-file src="src/android/CustomDialog.kt" target-dir="src/cordova/plugin/videocall" />
+      <source-file src="src/android/ParticipantDetails.kt" target-dir="src/cordova/plugin/videocall" />
+      <source-file src="src/android/SelectParticipantRecycler.kt" target-dir="src/cordova/plugin/videocall" />
+      
       <framework custom="true" src="src/android/twiliovideo.gradle" type="gradleReference" />
+      
       <resource-file src="src/android/res/drawable/badge_background.xml" target="res/drawable/badge_background.xml" />
       <resource-file src="src/android/res/drawable/edit_text_cursor.xml" target="res/drawable/edit_text_cursor.xml" />
       <resource-file src="src/android/res/drawable/ic_account_circle_white_24dp.xml" target="res/drawable/ic_account_circle_white_24dp.xml" />
@@ -174,6 +180,13 @@
       <resource-file src="src/android/res/layout/participant_view.xml" target="res/layout/participant_view.xml" />
       <resource-file src="src/android/res/layout/room_activity.xml" target="res/layout/room_activity.xml" />
       <resource-file src="src/android/res/layout/stats_view.xml" target="res/layout/stats_view.xml" />
+
+      <resource-file src="src/android/res/layout/participant_recycler.xml" target="res/layout/participant_recycler.xml" />
+      <resource-file src="src/android/res/layout/select_participant.xml" target="res/layout/select_participant.xml" />
+      <resource-file src="src/android/res/layout/select_participant_dialog.xml" target="res/layout/select_participant_dialog.xml" />
+      <resource-file src="src/android/res/layout/simple_spinner_drop_down.xml" target="res/layout/simple_spinner_drop_down.xml" />
+      <resource-file src="src/android/res/layout/simple_spinner_item.xml" target="res/layout/simple_spinner_item.xml" />
+
       <resource-file src="src/android/res/menu/room_menu.xml" target="res/menu/room_menu.xml" />
       <resource-file src="src/android/res/values/attrs.xml" target="res/values/attrs.xml" />
       <resource-file src="src/android/res/values/colors.xml" target="res/values/colors.xml" />

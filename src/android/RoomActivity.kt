@@ -23,10 +23,8 @@ import android.animation.ValueAnimator
 import android.annotation.TargetApi
 import android.app.Activity
 import android.app.AlertDialog
-import android.content.Context
-import android.content.DialogInterface
-import android.content.Intent
-import android.content.SharedPreferences
+import android.app.ProgressDialog
+import android.content.*
 import android.content.pm.PackageManager
 import android.media.AudioManager
 import android.media.projection.MediaProjectionManager
@@ -34,21 +32,21 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.text.TextUtils
-import android.view.Menu
-import android.view.MenuItem
-import android.view.View
-import android.view.WindowManager
+import android.view.*
 import androidx.core.content.ContextCompat
 import androidx.core.widget.doOnTextChanged
+import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import com.twilio.audioswitch.AudioDevice
 import com.twilio.audioswitch.AudioDevice.*
 import com.twilio.audioswitch.AudioSwitch
-
 import cordova.plugin.videocall.ApiService.ApiService
 import cordova.plugin.videocall.BaseActivity.BaseActivity
 import cordova.plugin.videocall.InputUtils.InputUtils
@@ -56,15 +54,18 @@ import cordova.plugin.videocall.MyResponse.MyResponse
 import cordova.plugin.videocall.RetrofitAPi.RetrofitAPi
 import io.ionic.starter.R
 import io.ionic.starter.databinding.RoomActivityBinding
-
 import io.reactivex.SingleObserver
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import io.uniflow.android.livedata.onEvents
 import io.uniflow.android.livedata.onStates
+import kotlinx.android.synthetic.main.select_participant.view.*
+import kotlinx.android.synthetic.main.select_participant_dialog.view.*
 import org.jetbrains.annotations.NotNull
+import src.cordova.plugin.videocall.CustomDialog
 import src.cordova.plugin.videocall.ParticipantAdapter.ParticipantAdapter
+import src.cordova.plugin.videocall.ParticipantDetails
 import src.cordova.plugin.videocall.ParticipantViewState.ParticipantViewState
 import src.cordova.plugin.videocall.PermissionUtil.PermissionUtil
 import src.cordova.plugin.videocall.Preferences.Preferences
@@ -80,6 +81,7 @@ import src.cordova.plugin.videocall.StatsListAdapter.StatsListAdapter
 import src.cordova.plugin.videocall.UriRoomParser.UriRoomParser
 import src.cordova.plugin.videocall.UriWrapper.UriWrapper
 import timber.log.Timber
+import java.util.*
 import javax.inject.Inject
 
 
@@ -111,23 +113,34 @@ class RoomActivity : BaseActivity() {
   private lateinit var participantAdapter: ParticipantAdapter
   private lateinit var roomViewModel: RoomViewModel
   private lateinit var recordingAnimation: ObjectAnimator
-  private val roomId: String = "chetan04"
-
-  private val identity: String = "chakri_hybrid"
+  private lateinit var roomId: String
+  private lateinit var id: String
+  private lateinit var loginUser: String
+  private lateinit var identity: String
+  private lateinit var progressDialog: ProgressDialog
 
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     activity = this
+    progressDialog = ProgressDialog(activity)
     binding = RoomActivityBinding.inflate(layoutInflater)
     setContentView(binding.root)
-    RetrofitAPi.getRetrofitService().create(ApiService::class.java).getData(roomId, identity)
+
+    roomId = intent.getStringExtra("room")
+    identity = intent.getStringExtra("identity")
+    loginUser = intent.getStringExtra("identity").split("@")[1]
+    accessToken = intent.getStringExtra("token")
+    id = intent.getStringExtra("id")
+//    connectButtonClick()
+    /*RetrofitAPi.getRetrofitService().create(ApiService::class.java).getData(roomId, identity)
       .observeOn(AndroidSchedulers.mainThread())
       .subscribeOn(Schedulers.io())
       .subscribe(object : SingleObserver<MyResponse> {
         override fun onSubscribe(d: Disposable) {
 
         }
+
         override fun onSuccess(@NotNull myResponse: MyResponse) {
           RoomActivity.accessToken = myResponse.data.token
           connectButtonClick()
@@ -138,12 +151,15 @@ class RoomActivity : BaseActivity() {
         }
 
 
-      })
+      })*/
     binding.joinRoom.roomName.doOnTextChanged { text: CharSequence?, _, _, _ ->
       roomNameTextChanged(text)
     }
     binding.joinRoom.connect.setOnClickListener { connectButtonClick() }
     binding.disconnect.setOnClickListener { disconnectButtonClick() }
+//    if (loginUser == "patient")
+
+    binding.add.setOnClickListener { addParticipant() }
     binding.localVideo.setOnClickListener { toggleLocalVideo() }
     binding.localAudio.setOnClickListener { toggleLocalAudio() }
     val factory = RoomViewModel.RoomViewModelFactory(roomManager, audioSwitch, PermissionUtil(this))
@@ -166,7 +182,131 @@ class RoomActivity : BaseActivity() {
     // Setup participant controller
     primaryParticipantController = PrimaryParticipantController(binding.room.primaryVideo)
 
+    listenBroadcast()
     setupRecordingAnimation()
+  }
+
+  fun listenBroadcast() {
+    var participantDetails: List<ParticipantDetails>
+    val receiver: BroadcastReceiver = object : BroadcastReceiver() {
+      override fun onReceive(context: Context?, intent: Intent) {
+        if (!intent.extras!!.isEmpty) {
+          progressDialog.dismiss()
+
+          val s3 = intent.extras!!.getString("thirdPartyList")
+
+          participantDetails = Gson().fromJson(
+            s3, object : TypeToken<List<ParticipantDetails>>() {}.type
+          )
+
+          val fm: FragmentManager = supportFragmentManager
+          val customDialog: CustomDialog =
+            CustomDialog.newInstance(participantDetails)
+          customDialog.show(fm, "")
+          /*val viewGroup = findViewById<ViewGroup>(android.R.id.content)
+          val dialogView: View =
+            LayoutInflater.from(this@RoomActivity)
+              .inflate(R.layout.select_participant_dialog, viewGroup, false)*/
+          /*val dialogView: View =
+            this@RoomActivity.layoutInflater.inflate(R.layout.select_participant_dialog, null)
+          val builder = AlertDialog.Builder(this@RoomActivity)
+          builder.setView(dialogView)
+          val alertDialog = builder.create()
+          dialogView.select_recycler.layoutManager = LinearLayoutManager(this@RoomActivity)
+//          if(newThumbnails.size == 1){
+//            dialogView.rb1.visibility = View.VISIBLE
+//            dialogView.rb2.visibility = View.VISIBLE
+//            if(loginUser == "cct")
+//              dialogView.rb1.text = "mht"
+//            else
+//              dialogView.rb1.text = "cct"
+//            dialogView.rb1.text = "patient"
+//          }else if(newThumbnails.size == 2){
+//            dialogView.rb1.visibility = View.VISIBLE
+//            dialogView.rb2.visibility = View.INVISIBLE
+//            if (loginUser == "cct")
+//              dialogView.rb1.text = "mht"
+//            else
+//              dialogView.rb1.text = "cct"
+//          }
+
+          alertDialog.show()
+
+          *//*val spinnerData = arrayListOf<String>()
+          for (participant in participantDetails)
+            spinnerData.add(participant.name)
+
+          val arrayAdapter =
+            ArrayAdapter(
+              this@RoomActivity,
+              R.layout.simple_spinner_item,
+              spinnerData
+            )
+          arrayAdapter.setDropDownViewResource(R.layout.simple_spinner_drop_down)
+          dialogView.select.adapter = arrayAdapter*//*
+
+          *//*dialogView.cancel.setOnClickListener(View.OnClickListener {
+            alertDialog.dismiss()
+
+          })
+          dialogView.ok.setOnClickListener(View.OnClickListener {
+            alertDialog.dismiss()
+
+          })*//*
+          var selectParticipantRecycler = SelectParticipantRecycler(participantDetails, object :
+            SelectParticipantRecycler.ParticipantSelectListener {
+            override fun onParticipantSelected(position: Int) {
+              alertDialog.dismiss()
+
+              Toast.makeText(
+                this@RoomActivity,
+                "Selected: ${participantDetails[position].name}",
+                Toast.LENGTH_LONG
+              ).show()
+              val intent = Intent("selectedParticipant")
+              val b = Bundle()
+              b.putString("identity", participantDetails[position].name)
+              intent.putExtras(b)
+              LocalBroadcastManager.getInstance(this@RoomActivity).sendBroadcastSync(intent)
+            }
+          })
+
+          dialogView.select_recycler.adapter = selectParticipantRecycler*/
+        }
+      }
+    }
+    LocalBroadcastManager.getInstance(this)
+      .registerReceiver(receiver, IntentFilter("receiveThirdPartyList"))
+  }
+
+  fun addParticipant() {
+
+    var isDoctor = false
+    var isPatient = false
+    var isResponder = false
+
+    progressDialog.show();
+    val intent = Intent("callingThirdParticipant");
+    var b = Bundle()
+    for (p in newThumbnails) {
+      when (p.identity?.split("@")?.get(1)) {
+        "cct" -> isDoctor = true
+        "mht" -> isResponder = true
+        else -> isPatient = true
+      }
+    }
+
+    when (false) {
+      isDoctor -> b.putString("requiredPartcipant", "doctor")
+      isResponder -> b.putString("requiredPartcipant", "responder")
+      isPatient -> b.putString("requiredPartcipant", "patient")
+    }
+
+
+    b.putString("presentParticipantID", id)
+    intent.putExtras(b);
+    LocalBroadcastManager.getInstance(this).sendBroadcastSync(intent);
+
   }
 
   override fun onDestroy() {
@@ -278,7 +418,8 @@ class RoomActivity : BaseActivity() {
         Snackbar.make(
           binding.room.primaryVideo,
           R.string.screen_capture_permission_not_granted,
-          BaseTransientBottomBar.LENGTH_LONG)
+          BaseTransientBottomBar.LENGTH_LONG
+        )
           .show()
         return
       }
@@ -295,8 +436,10 @@ class RoomActivity : BaseActivity() {
 
   private fun setupRecordingAnimation() {
     val recordingDrawable = ContextCompat.getDrawable(this, R.drawable.ic_recording)
-    recordingAnimation = ObjectAnimator.ofPropertyValuesHolder(recordingDrawable,
-      PropertyValuesHolder.ofInt("alpha", 100, 255)).apply {
+    recordingAnimation = ObjectAnimator.ofPropertyValuesHolder(
+      recordingDrawable,
+      PropertyValuesHolder.ofInt("alpha", 100, 255)
+    ).apply {
       target = recordingDrawable
       duration = 750
       repeatCount = ValueAnimator.INFINITE
@@ -304,7 +447,8 @@ class RoomActivity : BaseActivity() {
       start()
     }
     binding.recordingIndicator.setCompoundDrawablesWithIntrinsicBounds(
-      recordingDrawable, null, null, null)
+      recordingDrawable, null, null, null
+    )
   }
 
   private fun checkIntentURI(): Boolean {
@@ -360,11 +504,13 @@ class RoomActivity : BaseActivity() {
 
   private fun requestPermissions() {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-      requestPermissions(arrayOf(
-        Manifest.permission.RECORD_AUDIO,
-        Manifest.permission.CAMERA
-      ),
-        PERMISSIONS_REQUEST_CODE)
+      requestPermissions(
+        arrayOf(
+          Manifest.permission.RECORD_AUDIO,
+          Manifest.permission.CAMERA
+        ),
+        PERMISSIONS_REQUEST_CODE
+      )
     }
   }
 
@@ -418,8 +564,10 @@ class RoomActivity : BaseActivity() {
     val isLocalMediaEnabled = isMicEnabled && isCameraEnabled
     binding.localAudio.isEnabled = isLocalMediaEnabled
     binding.localVideo.isEnabled = isLocalMediaEnabled
-    val micDrawable = if (roomViewState.isAudioMuted || !isLocalMediaEnabled) R.drawable.ic_mic_off_gray_24px else R.drawable.ic_mic_white_24px
-    val videoDrawable = if (roomViewState.isVideoOff || !isLocalMediaEnabled) R.drawable.ic_videocam_off_gray_24px else R.drawable.ic_videocam_white_24px
+    val micDrawable =
+      if (roomViewState.isAudioMuted || !isLocalMediaEnabled) R.drawable.ic_mic_off_gray_24px else R.drawable.ic_mic_white_24px
+    val videoDrawable =
+      if (roomViewState.isVideoOff || !isLocalMediaEnabled) R.drawable.ic_videocam_off_gray_24px else R.drawable.ic_videocam_white_24px
     binding.localAudio.setImageResource(micDrawable)
     binding.localVideo.setImageResource(videoDrawable)
     statsListAdapter = StatsListAdapter(this)
@@ -433,8 +581,10 @@ class RoomActivity : BaseActivity() {
     binding.joinStatus.text = joinStatus
     binding.joinRoomName.text = roomName
     binding.recordingNotice.visibility = recordingWarningVisibility
-    val pauseAudioTitle = getString(if (roomViewState.isAudioEnabled) R.string.pause_audio else R.string.resume_audio)
-    val pauseVideoTitle = getString(if (roomViewState.isVideoEnabled) R.string.pause_video else R.string.resume_video)
+    val pauseAudioTitle =
+      getString(if (roomViewState.isAudioEnabled) R.string.pause_audio else R.string.resume_audio)
+    val pauseVideoTitle =
+      getString(if (roomViewState.isVideoEnabled) R.string.pause_video else R.string.resume_video)
     pauseAudioMenuItem.title = pauseAudioTitle
     pauseVideoMenuItem.title = pauseVideoTitle
 
@@ -447,10 +597,16 @@ class RoomActivity : BaseActivity() {
       } else {
         R.drawable.ic_screen_share_white_24dp to getString(R.string.share_screen)
       }
-      screenCaptureMenuItem.icon = ContextCompat.getDrawable(this,
-        screenCaptureResources.first)
+      screenCaptureMenuItem.icon = ContextCompat.getDrawable(
+        this,
+        screenCaptureResources.first
+      )
       screenCaptureMenuItem.title = screenCaptureResources.second
     }
+    if (loginUser != "patient" && newThumbnails.size == 2)
+      binding.add.visibility = View.VISIBLE
+    else
+      binding.add.visibility = View.GONE
   }
 
   private fun setTitle(toolbarTitle: String?) {
@@ -474,16 +630,19 @@ class RoomActivity : BaseActivity() {
   @TargetApi(21)
   private fun requestScreenCapturePermission() {
     Timber.d("Requesting permission to capture screen")
-    val mediaProjectionManager = getSystemService(MEDIA_PROJECTION_SERVICE) as MediaProjectionManager
+    val mediaProjectionManager =
+      getSystemService(MEDIA_PROJECTION_SERVICE) as MediaProjectionManager
 
     // This initiates a prompt dialog for the user to confirm screen projection.
     startActivityForResult(
-      mediaProjectionManager.createScreenCaptureIntent(), MEDIA_PROJECTION_REQUEST_CODE)
+      mediaProjectionManager.createScreenCaptureIntent(), MEDIA_PROJECTION_REQUEST_CODE
+    )
   }
 
   private fun updateStatsUI(roomViewState: RoomViewState) {
     val enableStats = sharedPreferences.getBoolean(
-      Preferences.ENABLE_STATS, Preferences.ENABLE_STATS_DEFAULT)
+      Preferences.ENABLE_STATS, Preferences.ENABLE_STATS_DEFAULT
+    )
     if (enableStats) {
       when (roomViewState.configuration) {
         RoomViewConfiguration.Connected -> {
@@ -497,14 +656,16 @@ class RoomActivity : BaseActivity() {
           } ?: false
           if (!isStreamingMedia) {
             binding.statsDisabledTitle.text = getString(R.string.stats_unavailable)
-            binding.statsDisabledDescription.text = getString(R.string.stats_description_media_not_shared)
+            binding.statsDisabledDescription.text =
+              getString(R.string.stats_description_media_not_shared)
             binding.statsRecyclerView.visibility = View.GONE
             binding.statsDisabled.visibility = View.VISIBLE
           }
         }
         else -> {
           binding.statsDisabledTitle.text = getString(R.string.stats_unavailable)
-          binding.statsDisabledDescription.text = getString(R.string.stats_description_join_room)
+          binding.statsDisabledDescription.text =
+            getString(R.string.stats_description_join_room)
           binding.statsRecyclerView.visibility = View.GONE
           binding.statsDisabled.visibility = View.VISIBLE
         }
@@ -519,7 +680,8 @@ class RoomActivity : BaseActivity() {
 
   private fun toggleAudioDevice(enableAudioDevice: Boolean) {
     setVolumeControl(enableAudioDevice)
-    val viewEvent = if (enableAudioDevice) RoomViewEvent.ActivateAudioDevice else RoomViewEvent.DeactivateAudioDevice
+    val viewEvent =
+      if (enableAudioDevice) RoomViewEvent.ActivateAudioDevice else RoomViewEvent.DeactivateAudioDevice
     roomViewModel.processInput(viewEvent)
   }
 
@@ -584,7 +746,8 @@ class RoomActivity : BaseActivity() {
         screenTrack,
         videoTrack,
         isMuted,
-        isMirrored)
+        isMirrored
+      )
       binding.room.primaryVideo.showIdentityBadge(!primaryParticipant.isLocalParticipant)
     }
   }
@@ -607,20 +770,21 @@ class RoomActivity : BaseActivity() {
         }
 
         createAudioDeviceDialog(this, index, audioDeviceNames,
-          DialogInterface.OnClickListener { dialogInterface, i ->  dialogInterface.dismiss()
+          DialogInterface.OnClickListener { dialogInterface, i ->
+            dialogInterface.dismiss()
             val viewEvent = RoomViewEvent.SelectAudioDevice(audioDevices[i])
             roomViewModel.processInput(viewEvent)
           })
-        /*createAudioDeviceDialog(
-          this,
-          index,
-          audioDeviceNames
-        ) {
-            dialogInterface: DialogInterface, i: Int ->
-          dialogInterface.dismiss()
-          val viewEvent = SelectAudioDevice(audioDevices[i])
-          roomViewModel.processInput(viewEvent)
-        }*/
+          /*createAudioDeviceDialog(
+            this,
+            index,
+            audioDeviceNames
+          ) {
+              dialogInterface: DialogInterface, i: Int ->
+            dialogInterface.dismiss()
+            val viewEvent = SelectAudioDevice(audioDevices[i])
+            roomViewModel.processInput(viewEvent)
+          }*/
           .show()
       }
     }
@@ -637,11 +801,10 @@ class RoomActivity : BaseActivity() {
     builder.setSingleChoiceItems(
       availableDevices.toTypedArray<CharSequence>(),
       currentDevice,
-      audioDeviceClickListener)
+      audioDeviceClickListener
+    )
     return builder.create()
   }
-
-
 
 
   companion object {

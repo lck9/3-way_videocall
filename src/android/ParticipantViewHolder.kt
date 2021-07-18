@@ -35,7 +35,7 @@ internal class ParticipantViewHolder(private val thumb: ParticipantThumbView) :
                 }
             }
             val identity = if (participantViewState.isLocalParticipant)
-                localParticipantIdentity else participantViewState.identity
+                localParticipantIdentity else participantViewState.identity!!.split("@")[0]
             setIdentity(identity)
             setMuted(participantViewState.isMuted)
             setPinned(participantViewState.isPinned)

@@ -42,7 +42,11 @@ internal class PrimaryParticipantController(
         old?.let { removeRender(it.videoTrack, primaryView) }
 
         primaryItem = newItem
-        primaryView.setIdentity(newItem.identity)
+        when(newItem.identity!!.contains("@")){
+          true -> primaryView.setIdentity(newItem.identity!!.split("@")[0])
+          false -> primaryView.setIdentity(newItem.identity)
+        }
+
         primaryView.showIdentityBadge(true)
         primaryView.setMuted(newItem.muted)
         primaryView.setMirror(newItem.mirror)
