@@ -322,7 +322,7 @@
        <resource-file src="src/ios/Resources/network-quality-level-5~universal@1x.png" target="Resources/network-quality-level-5~universal@1x.png" />
        <resource-file src="src/ios/Resources/network-quality-level-5~universal@2x.png" target="Resources/network-quality-level-5~universal@2x.png" />
        <resource-file src="src/ios/Resources/network-quality-level-5~universal@3x.png" target="Resources/network-quality-level-5~universal@3x.png" />
-      <resource-file src="src/ios/Resources/videocam-24px 1.png" target="Resources/videocam-24px 1.png" />
+      
       <resource-file src="src/ios/Resources/VideoView.xib" target="Resources/VideoView.xib" />
       <!-- <framework src="TwilioVideo" type="podspec" spec="~> 4.4.0" />
       <framework src="IGListDiffKit" type="podspec" spec="~>4.0.0" /> -->
