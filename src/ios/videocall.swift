@@ -4,7 +4,7 @@
 var pluginResult = CDVPluginResult(status: CDVCommandStatus_ERROR)
     private var room: Room?
     private  var navigationController: UINavigationController?
-@objc(add:) func coolMethod(_ command: CDVInvokedUrlCommand) {
+@objc(coolMethod:) func coolMethod(_ command: CDVInvokedUrlCommand) {
 var pluginResult = CDVPluginResult(status: CDVCommandStatus_ERROR)
     let roomName = command.arguments[0]  as? String
     let identity = command.arguments[1]  as? String
