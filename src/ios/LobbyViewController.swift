@@ -27,20 +27,34 @@ class LobbyViewController: UIViewController {
     private let roomFactory = RoomFactory()
 //    private let deepLinkStore: DeepLinkStoreWriting = DeepLinkStore.shared
     private let notificationCenter = NotificationCenter.default
+//    private let navigationController = UINavigationController()
     private var room: Room!
     private var participant: LocalParticipant { room.localParticipant }
     private var shouldRenderVideo = true
-
+    var userToken = String()
+    var userIdentity = String()
+    var userID = String()
+    var userRoomName = String()
+    var lobynavi = UINavigationController()
+    
+    
+    
+   
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+       
+    
         resetRoom()
         configureVideoView()
-
-        roomTextField.attributedPlaceholder = NSAttributedString(
-            string: "Room",
-            attributes: [.foregroundColor: UIColor.lightGray]
-        )
+        if let myView = view?.subviews.first as? UIScrollView {
+            myView.canCancelContentTouches = false
+        }
+//        roomTextField.attributedPlaceholder = NSAttributedString(
+//            string: "Room",
+//            attributes: [.foregroundColor: UIColor.lightGray]
+//        )
         
 //        if let deepLink = deepLinkStore.consumeDeepLink() {
 //            switch deepLink {
@@ -48,14 +62,35 @@ class LobbyViewController: UIViewController {
 //            }
 //        }
 
-        roomTextField .addTarget(self, action: #selector(joinRoomButtonPressed(_:)), for: .editingDidEndOnExit)
-        
-        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard)))
-        
+//        roomTextField .addTarget(self, action: #selector(joinRoomButtonPressed(_:)), for: .editingDidEndOnExit)
+//
+//        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard)))
+//
         notificationCenter.addObserver(self, selector: #selector(handleRoomUpdate(_:)), name: .roomUpdate, object: nil)
         notificationCenter.addObserver(self, selector: #selector(handleSettingChange), name: .appSettingDidChange, object: nil)
         
         refresh()
+        
+//        self.joinRoomButtonPressed(buttonJOin)
+        
+//        self.performSegue(withIdentifier: "roomSegue", sender: self)
+       
+        
+
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        shouldRenderVideo = true
+        refresh()
+        configureVideoView()
+        navigationController?.setNavigationBarHidden(true, animated: false)
+        let defaults = UserDefaults.standard
+        
+        
+            self.dismiss(animated: true, completion: nil)
+    
+        
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -63,22 +98,41 @@ class LobbyViewController: UIViewController {
         
         shouldRenderVideo = false
         configureVideoView()
+       
+       
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidAppear(_ animated:Bool) {
+        super.viewDidAppear(true)
+        LoadRoomController()
 
-        shouldRenderVideo = true
-        refresh()
-        configureVideoView()
+    }
+    func LoadRoomController() {
+       
+        let storyboard = UIStoryboard(name: "Video", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "roomViewController") as! RoomViewController
+//        let vc = self.storyboard?.instantiateViewController(withIdentifier: "roomViewController") as! RoomViewController
+//        let MynavController = UINavigationController(rootViewController: vc)
+        vc.application = .shared
+        vc.modalPresentationStyle = .fullScreen
+        vc.roomnavi = self.lobynavi
+        vc.viewModel = RoomViewModelFactory().makeRoomViewModel(
+            roomName: self.userRoomName,
+            room: self.room
+        )
+//        lobynavi.pushViewController(vc, animated: true)
+//      self.present(MynavController, animated: true, completion: nil)
+        
+//        let roomViewController = storyboard.instantiateViewController(withIdentifier: "roomViewController") as! RoomViewController
+       self.present(vc, animated: true, completion: nil)
+        
     }
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         
-        let guide = view.safeAreaLayoutGuide
-        let height = guide.layoutFrame.origin.y + 108
-        containerView.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: height)
+//        let guide = view.safeAreaLayoutGuide
+//        let height = guide.layoutFrame.origin.y + 108
+//        containerView.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: height)
     }
 
     override func viewSafeAreaInsetsDidChange() {
@@ -87,13 +141,13 @@ class LobbyViewController: UIViewController {
         view.setNeedsLayout()
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+ override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
         case "roomSegue":
             let roomViewController = segue.destination as! RoomViewController
             roomViewController.application = .shared
             roomViewController.viewModel = RoomViewModelFactory().makeRoomViewModel(
-                roomName: "chetan04",
+                roomName: self.userRoomName,
                 room: room
             )
 //            let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -128,12 +182,12 @@ class LobbyViewController: UIViewController {
     }
     
     @IBAction func joinRoomButtonPressed(_ sender: Any) {
-        self.roomTextField.text = "chetan04"
+        self.roomTextField.text = self.userRoomName
         guard let roomName = roomTextField.text, !roomName.isEmpty else {
             roomTextField.becomeFirstResponder()
             return
         }
-        
+
         dismissKeyboard()
         performSegue(withIdentifier: "roomSegue", sender: self)
     }
@@ -163,21 +217,22 @@ class LobbyViewController: UIViewController {
     }
     
     private func configureVideoView() {
-        let config = VideoView.Config(
-            videoTrack: shouldRenderVideo ? participant.cameraTrack : nil,
-            shouldMirror: participant.shouldMirrorCameraVideo
-        )
-        videoView.configure(config: config)
+//        let config = VideoView.Config(
+//            videoTrack: shouldRenderVideo ? participant.cameraTrack : nil,
+//            shouldMirror: participant.shouldMirrorCameraVideo
+//        )
+//        videoView.configure(config: config)
     }
     
     private func refresh() {
-        loggedInUser.text = participant.identity
-        audioToggleButton.isSelected = !participant.isMicOn
-        videoToggleButton.isSelected = !participant.isCameraOn
-        flipCameraButton.isEnabled = participant.isCameraOn
+//        loggedInUser.text = participant.identity
+//        audioToggleButton.isSelected = !participant.isMicOn
+//        videoToggleButton.isSelected = !participant.isCameraOn
+//        flipCameraButton.isEnabled = participant.isCameraOn
     }
 
     @objc private func dismissKeyboard() {
         roomTextField.resignFirstResponder()
     }
 }
+

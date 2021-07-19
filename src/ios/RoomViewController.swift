@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 import IGListDiffKit
-
+import SwiftyPickerPopover
 class RoomViewController: UIViewController, UIPopoverPresentationControllerDelegate {
     @IBOutlet weak var disableMicButton: CircleToggleButton!
     @IBOutlet weak var disableCameraButton:  CircleToggleButton!
@@ -28,11 +28,33 @@ class RoomViewController: UIViewController, UIPopoverPresentationControllerDeleg
     private var shouldRenderVideo = true
     var application: UIApplication!
     var viewModel: RoomViewModel!
+    var participentDict = [String:Any]();
+    var participentArray = [String]()
     var tokenIS = ""
+    var userToken = String()
+    var userIdentity = String()
+    var loginUser = String()
+    var roomnavi = UINavigationController()
+    public var roomStatus = "RoomLeave"
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.participentArray = ["ram","deepak","chakri"]
 //        self.getAcessTokenAPI();
-        
+       
+        if let myView = view?.subviews.first as? UIScrollView {
+            myView.canCancelContentTouches = false
+        }
+        let nc = NotificationCenter.default
+        nc.addObserver(forName:Notification.Name(rawValue:"receiveThirdPartyList"),
+                       object:nil, queue:nil) {
+          notification in
+//         print( "\(notification.userInfo)")
+            var  jsonData = notification.userInfo
+            
+//        participentArray
+        }
+        loginUser = "iSPatient"
+     //   self.addButton.isHidden = true
         participantCollectionView.delegate = self
         participantCollectionView.register(ParticipantCell.self)
 
@@ -44,11 +66,13 @@ class RoomViewController: UIViewController, UIPopoverPresentationControllerDeleg
 
         viewModel.delegate = self
         viewModel.connect()
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         application.isIdleTimerDisabled = true
+        roomnavi.setNavigationBarHidden(true, animated: false)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -58,25 +82,36 @@ class RoomViewController: UIViewController, UIPopoverPresentationControllerDeleg
     }
     @IBAction func leaveButtonTapped(_ sender: Any) {
         viewModel.disconnect()
-        self.dismiss(animated: true, completion: nil)
-        //navigationController?.popViewController(animated: true)
+      self.dismiss(animated: true, completion: nil)
     }
     @IBAction func addButtonTapped(_ sender: Any) {
-       
-        let storyboard: UIStoryboard = UIStoryboard(name: "Video", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "popover") as! Popover
-        let navController = UINavigationController(rootViewController: vc)
-        let rightButton: UIBarButtonItem = UIBarButtonItem(title: "Cancel", style: UIBarButtonItem.Style.done, target: self, action: #selector(RoomViewController.cancelButtonClicked(_:)))
-        navController.navigationItem.rightBarButtonItem = rightButton
         
-        navController.modalPresentationStyle = UIModalPresentationStyle.popover
-        popover = navController.popoverPresentationController!
-        popover?.sourceRect = CGRect(x: UIScreen.main.bounds.midX, y: UIScreen.main.bounds.midY, width: 0, height: 0)
-        popover?.sourceView = self.view
-        popover?.delegate = self
-        popover?.permittedArrowDirections = UIPopoverArrowDirection(rawValue: 0)
-        vc.preferredContentSize = CGSize(width: 300, height: 300)
-        self.present(navController, animated: true, completion: nil)
+        StringPickerPopover(title: "Add Participent", choices: self.participentArray)
+                .setSelectedRow(0)
+            .setValueChange(action: { _, selectedDate,_ in
+                    print("current date \(selectedDate)")
+                })
+                .setDoneButton(action: { (popover, selectedRow, selectedString) in
+                    print("done row \(selectedRow) \(selectedString)")
+                })
+                .setCancelButton(action: { (_, _, _) in print("cancel")}
+                )
+            .appear(originView: sender as! UIView, baseViewController: self)
+       
+//        let storyboard: UIStoryboard = UIStoryboard(name: "Video", bundle: nil)
+//        let vc = storyboard.instantiateViewController(withIdentifier: "popover") as! Popover
+//        let navController = UINavigationController(rootViewController: vc)
+//        let rightButton: UIBarButtonItem = UIBarButtonItem(title: "Cancel", style: UIBarButtonItem.Style.done, target: self, action: #selector(RoomViewController.cancelButtonClicked(_:)))
+//        navController.navigationItem.rightBarButtonItem = rightButton
+//
+//        navController.modalPresentationStyle = UIModalPresentationStyle.popover
+//        popover = navController.popoverPresentationController!
+//        popover?.sourceRect = CGRect(x: UIScreen.main.bounds.midX, y: UIScreen.main.bounds.midY, width: 0, height: 0)
+//        popover?.sourceView = self.view
+//        popover?.delegate = self
+//        popover?.permittedArrowDirections = UIPopoverArrowDirection(rawValue: 0)
+//        vc.preferredContentSize = CGSize(width: 300, height: 300)
+//        self.present(navController, animated: true, completion: nil)
     }
     @objc func cancelButtonClicked(_ button:UIBarButtonItem!){
         print("Done clicked")
@@ -86,6 +121,7 @@ class RoomViewController: UIViewController, UIPopoverPresentationControllerDeleg
     }
     
     private func updateView() {
+        
         roomNameLabel.text = viewModel.data.roomName
         disableMicButton.isSelected = !viewModel.isMicOn
         disableCameraButton.isSelected = !viewModel.isCameraOn
@@ -94,6 +130,14 @@ class RoomViewController: UIViewController, UIPopoverPresentationControllerDeleg
         mainVideoView.configure(config: participant.videoConfig)
         mainIdentityLabel.text = participant.identity
         recordingView.isHidden = !viewModel.data.isRecording
+        if (loginUser == "iSPatient" && viewModel.data.participants.count == 2)
+        {
+            self.addButton.isHidden = true
+        }
+        else
+        {
+            self.addButton.isHidden = false
+        }
     }
     
     func getAcessTokenAPI()
@@ -207,3 +251,4 @@ extension RoomViewController: UICollectionViewDelegate {
         viewModel.togglePin(at: indexPath.item)
     }
 }
+
