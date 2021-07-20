@@ -184,6 +184,7 @@ class RoomActivity : BaseActivity() {
 
     listenBroadcast()
     setupRecordingAnimation()
+    connectButtonClick()
   }
 
   fun listenBroadcast() {
