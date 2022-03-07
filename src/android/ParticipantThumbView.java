@@ -24,9 +24,10 @@ import android.view.View;
 
 import androidx.core.content.ContextCompat;
 
+import com.cloud9.telehealth.R;
+import com.cloud9.telehealth.databinding.ParticipantViewBinding;
+
 import cordova.plugin.videocall.ParticipantView.ParticipantView;
-import io.ionic.starter.R;
-import io.ionic.starter.databinding.ParticipantViewBinding;
 
 
 public class ParticipantThumbView extends ParticipantView {
