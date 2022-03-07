@@ -40,4 +40,5 @@ public class videocall extends CordovaPlugin {
             callbackContext.error("Expected one non-empty string argument.");
         }*/
     }
+    
 }
