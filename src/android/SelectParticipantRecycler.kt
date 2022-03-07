@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import io.ionic.starter.R
+import com.cloud9.telehealth.R
 
 class SelectParticipantRecycler(
   var participantDetails: List<ParticipantDetails>,
@@ -26,7 +26,10 @@ class SelectParticipantRecycler(
   }
 
   override fun onBindViewHolder(holder: SelectParticipantRecycler.MyHolder, position: Int) {
-    holder.name.text = participantDetails[position].name
+    holder.name.text = when(participantDetails[position].name.contains("@")){
+      true -> participantDetails[position].name.split("@")[0]
+      else -> participantDetails[position].name
+    }
     holder.name.setOnClickListener(View.OnClickListener {
       participantSelectListener.onParticipantSelected(position)
     })
