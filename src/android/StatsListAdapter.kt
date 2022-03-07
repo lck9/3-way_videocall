@@ -23,13 +23,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.cloud9.telehealth.R
+import com.cloud9.telehealth.databinding.StatsViewBinding
 import com.twilio.video.RemoteAudioTrack
 import com.twilio.video.RemoteParticipant
 import com.twilio.video.RemoteVideoTrack
 
 import cordova.plugin.videocall.StatsListItem.StatsListItem
-import io.ionic.starter.R
-import io.ionic.starter.databinding.StatsViewBinding
 import src.cordova.plugin.videocall.RoomStats.RoomStats
 
 class StatsListAdapter(private val context: Context) : RecyclerView.Adapter<StatsListAdapter.ViewHolder>() {
