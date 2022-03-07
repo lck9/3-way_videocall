@@ -3,31 +3,30 @@ package src.cordova.plugin.videocall.ParticipantViewHolder
 import android.view.View
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
+import com.cloud9.telehealth.R
+import com.microsoft.appcenter.analytics.Analytics
 import com.twilio.video.NetworkQualityLevel
-import com.twilio.video.NetworkQualityLevel.NETWORK_QUALITY_LEVEL_FIVE
-import com.twilio.video.NetworkQualityLevel.NETWORK_QUALITY_LEVEL_FOUR
-import com.twilio.video.NetworkQualityLevel.NETWORK_QUALITY_LEVEL_ONE
-import com.twilio.video.NetworkQualityLevel.NETWORK_QUALITY_LEVEL_THREE
-import com.twilio.video.NetworkQualityLevel.NETWORK_QUALITY_LEVEL_TWO
-import com.twilio.video.NetworkQualityLevel.NETWORK_QUALITY_LEVEL_ZERO
+import com.twilio.video.NetworkQualityLevel.*
 import com.twilio.video.VideoTrack
 import cordova.plugin.videocall.ParticipantThumbView.ParticipantThumbView
 import cordova.plugin.videocall.ParticipantView.ParticipantView
-import io.ionic.starter.R
+import cordova.plugin.videocall.videocall.videocall
+import src.cordova.plugin.videocall.LocalParticipantManager.LocalParticipantManager
 import src.cordova.plugin.videocall.ParticipantViewState.ParticipantViewState
 import src.cordova.plugin.videocall.RoomViewEvent.RoomViewEvent
 import src.cordova.plugin.videocall.VideoTrackViewState.VideoTrackViewState
 import timber.log.Timber
+import java.text.SimpleDateFormat
+import java.util.*
 
 internal class ParticipantViewHolder(private val thumb: ParticipantThumbView) :
-        RecyclerView.ViewHolder(thumb) {
+    RecyclerView.ViewHolder(thumb) {
 
     private val localParticipantIdentity = thumb.context.getString(R.string.you)
 
     fun bind(participantViewState: ParticipantViewState, viewEventAction: (RoomViewEvent) -> Unit) {
         Timber.d("bind ParticipantViewHolder with data item: %s", participantViewState)
         Timber.d("thumb: %s", thumb)
-
         thumb.run {
             participantViewState.sid?.let { sid ->
                 setOnClickListener {
@@ -36,15 +35,20 @@ internal class ParticipantViewHolder(private val thumb: ParticipantThumbView) :
             }
             val identity = if (participantViewState.isLocalParticipant)
                 localParticipantIdentity else participantViewState.identity!!.split("@")[0]
+
             setIdentity(identity)
-            setMuted(participantViewState.isMuted)
+            setMuted(
+                if (participantViewState.isLocalParticipant) LocalParticipantManager.isAudioMuted
+                else participantViewState.isMuted
+            )
+//            setMuted(participantViewState.isMuted)
             setPinned(participantViewState.isPinned)
 
 //            if(identity != localParticipantIdentity)
-                updateVideoTrack(participantViewState)
+            updateVideoTrack(participantViewState)
 
             networkQualityLevelImg?.let {
-                setNetworkQualityLevelImage(it, participantViewState.networkQualityLevel)
+                setNetworkQualityLevelImage(it, participantViewState.networkQualityLevel, identity)
             }
         }
     }
@@ -71,7 +75,7 @@ internal class ParticipantViewHolder(private val thumb: ParticipantThumbView) :
             setState(ParticipantView.State.SWITCHED_OFF)
         } else {
             videoTrackViewState?.videoTrack?.let { setState(ParticipantView.State.VIDEO) }
-                    ?: setState(ParticipantView.State.NO_VIDEO)
+                ?: setState(ParticipantView.State.NO_VIDEO)
         }
     }
 
@@ -82,15 +86,43 @@ internal class ParticipantViewHolder(private val thumb: ParticipantThumbView) :
 
     private fun setNetworkQualityLevelImage(
         networkQualityImage: ImageView,
-        networkQualityLevel: NetworkQualityLevel?
+        networkQualityLevel: NetworkQualityLevel?,
+        identity: String
     ) {
+        val simpleDate = SimpleDateFormat("MM/dd/yyyy HH:mm:ss")
+        val dateAndTime = simpleDate.format(Date())
+        val nameAndRole = videocall.identity.split("@")[0]+"@"+videocall.identity.split("@")[1]
         when (networkQualityLevel) {
-            NETWORK_QUALITY_LEVEL_ZERO -> R.drawable.network_quality_level_0
-            NETWORK_QUALITY_LEVEL_ONE -> R.drawable.network_quality_level_1
-            NETWORK_QUALITY_LEVEL_TWO -> R.drawable.network_quality_level_2
-            NETWORK_QUALITY_LEVEL_THREE -> R.drawable.network_quality_level_3
-            NETWORK_QUALITY_LEVEL_FOUR -> R.drawable.network_quality_level_4
-            NETWORK_QUALITY_LEVEL_FIVE -> R.drawable.network_quality_level_5
+            NETWORK_QUALITY_LEVEL_ZERO -> {
+                if (identity == localParticipantIdentity)
+                    Analytics.trackEvent("$nameAndRole is Very Bad $dateAndTime")
+                R.drawable.network_quality_level_0
+            }
+            NETWORK_QUALITY_LEVEL_ONE -> {
+                if (identity == localParticipantIdentity)
+                    Analytics.trackEvent("$nameAndRole is Bad $dateAndTime")
+                R.drawable.network_quality_level_1
+            }
+            NETWORK_QUALITY_LEVEL_TWO -> {
+                if (identity == localParticipantIdentity)
+                    Analytics.trackEvent("$nameAndRole is Good $dateAndTime")
+                R.drawable.network_quality_level_2
+            }
+            NETWORK_QUALITY_LEVEL_THREE -> {
+                if (identity == localParticipantIdentity)
+                    Analytics.trackEvent("$nameAndRole is Very Good $dateAndTime")
+                R.drawable.network_quality_level_3
+            }
+            NETWORK_QUALITY_LEVEL_FOUR -> {
+                if (identity == localParticipantIdentity)
+                    Analytics.trackEvent("$nameAndRole is Excellent $dateAndTime")
+                R.drawable.network_quality_level_4
+            }
+            NETWORK_QUALITY_LEVEL_FIVE -> {
+                if (identity == localParticipantIdentity)
+                    Analytics.trackEvent("$nameAndRole is Marvellous $dateAndTime")
+                R.drawable.network_quality_level_5
+            }
             else -> null
         }?.let { image ->
             networkQualityImage.visibility = View.VISIBLE
