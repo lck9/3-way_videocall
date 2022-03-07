@@ -27,9 +27,9 @@ public class EnvUtil {
     public static String getNativeEnvironmentVariableValue(String environment) {
         if (environment != null) {
             if (environment.equals(TWILIO_API_DEV_ENV)) {
-                return TWILIO_DEV_ENV;
+                return "Installing";
             } else if (environment.equals(TWILIO_API_STAGE_ENV)) {
-                return TWILIO_STAGE_ENV;
+                return "Installing";
             }
         }
 
