@@ -5,8 +5,8 @@ import android.os.Bundle
 import androidx.preference.EditTextPreference
 import androidx.preference.ListPreference
 import androidx.preference.Preference
+import com.cloud9.telehealth.R
 import com.twilio.video.*
-import io.ionic.starter.R
 import src.cordova.plugin.videocall.BaseSettingsFragment.BaseSettingsFragment
 import src.cordova.plugin.videocall.BuildConfigUtils.isInternalFlavor
 import src.cordova.plugin.videocall.Preferences.Preferences
