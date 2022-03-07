@@ -1,7 +1,7 @@
 package src.cordova.plugin.videocall.AudioSettingsFragment
 
 import android.os.Bundle
-import io.ionic.starter.R
+import com.cloud9.telehealth.R
 import src.cordova.plugin.videocall.BaseSettingsFragment.BaseSettingsFragment
 
 
