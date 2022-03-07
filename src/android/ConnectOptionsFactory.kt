@@ -3,33 +3,14 @@ package src.cordova.plugin.videocall.ConnectOptionsFactory
 import android.content.Context
 import android.content.SharedPreferences
 import com.twilio.androidenv.Env
-import com.twilio.video.AudioCodec
-import com.twilio.video.BandwidthProfileMode
-import com.twilio.video.ConnectOptions
-import com.twilio.video.EncodingParameters
-import com.twilio.video.G722Codec
-import com.twilio.video.H264Codec
-import com.twilio.video.IsacCodec
-import com.twilio.video.NetworkQualityConfiguration
-import com.twilio.video.NetworkQualityVerbosity
-import com.twilio.video.OpusCodec
-import com.twilio.video.PcmaCodec
-import com.twilio.video.PcmuCodec
-import com.twilio.video.TrackPriority
-import com.twilio.video.TrackSwitchOffMode
-import com.twilio.video.VideoCodec
-import com.twilio.video.VideoDimensions
-import com.twilio.video.Vp8Codec
-import com.twilio.video.Vp9Codec
-
-import com.twilio.video.ktx.createBandwidthProfileOptions
+import com.twilio.video.*
 import com.twilio.video.ktx.createConnectOptions
 import cordova.plugin.videocall.EnvUtil.EnvUtil
 import src.cordova.plugin.videocall.Preferences.Preferences
 import src.cordova.plugin.videocall.RoomActivity.RoomActivity
+import src.cordova.plugin.videocall.SharedPreferencesUtil.get
 import tvi.webrtc.voiceengine.WebRtcAudioManager
 import tvi.webrtc.voiceengine.WebRtcAudioUtils
-import src.cordova.plugin.videocall.SharedPreferencesUtil.get
 
 class ConnectOptionsFactory(
     private val context: Context,
@@ -91,14 +72,19 @@ class ConnectOptionsFactory(
                 TrackPriority.HIGH,
                 Preferences.BANDWIDTH_PROFILE_HIGH_TRACK_PRIORITY_RENDER_DIMENSIONS,
                 Preferences.BANDWIDTH_PROFILE_HIGH_TRACK_PRIORITY_RENDER_DIMENSIONS_DEFAULT)
-        val bandwidthProfileOptions = createBandwidthProfileOptions {
+        /*val bandwidthProfileOptions = createBandwidthProfileOptions {
             mode(mode)
             maxSubscriptionBitrate(maxSubscriptionBitrate)
             maxTracks(maxVideoTracks)
             dominantSpeakerPriority(dominantSpeakerPriority)
             trackSwitchOffMode(trackSwitchOffMode)
             renderDimensions(renderDimensions)
-        }
+        }*/
+
+        val bandwidthProfileOptions =  BandwidthProfileOptions(
+            VideoBandwidthProfileOptions.Builder().
+            videoContentPreferencesMode(VideoContentPreferencesMode.AUTO)
+                .build())
 
         val acousticEchoCanceler = sharedPreferences.getBoolean(
                 Preferences.AUDIO_ACOUSTIC_ECHO_CANCELER,
