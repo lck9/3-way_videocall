@@ -15,7 +15,6 @@ package cordova.plugin.videocall.ParticipantView;/*
  */
 
 
-
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -25,19 +24,22 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
 import androidx.annotation.AttrRes;
 import androidx.annotation.IntDef;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.StyleRes;
 import androidx.constraintlayout.widget.ConstraintLayout;
+
+import com.cloud9.telehealth.R;
 import com.twilio.video.VideoScaleType;
 import com.twilio.video.VideoTextureView;
 import com.twilio.video.VideoTrack;
+
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
-import io.ionic.starter.R;
 import tvi.webrtc.VideoFrame;
 import tvi.webrtc.VideoSink;
 
@@ -136,7 +138,8 @@ public abstract class ParticipantView extends FrameLayout implements VideoSink {
     }
 
     public void setMuted(boolean muted) {
-        if (audioToggle != null) audioToggle.setVisibility(muted ? VISIBLE : GONE);
+        if (audioToggle != null)
+            audioToggle.setVisibility(muted ? VISIBLE : GONE);
     }
 
     public void setPinned(boolean pinned) {
